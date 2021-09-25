@@ -34,51 +34,53 @@
     <section class="welcome section-dark">
       <div class = "container">
         <div class="welcome-content">
-          <h2 class="section-title section-dark-title">Welcome to&nbsp;the&nbsp;louvre</h2>
+          <h2 class="section-title section-title-light">Welcome to&nbsp;the&nbsp;louvre</h2>
           <p class="welcome-text">From the castle to the museum</p> 
           <button class="welcome-btn"> Discover the Louvre</button>
         </div> 
         <div class="flex-wrapper">
-          <div class="slider-container">
-            <div class="slide active">
-              <img src="./assets/img/welcome-slider/1.jpg" alt="">
-            </div>
-            <div class="slide">
-              <img src="./assets/img/welcome-slider/2.jpg" alt="">
-            </div>
-            <div class="slide">
-              <img src="./assets/img/welcome-slider/3.jpg" alt="">
-            </div>  
-            <div class="slide">
-              <img src="./assets/img/welcome-slider/4.jpg" alt="">
-            </div>
-            <div class="slide">
-              <img src="./assets/img/welcome-slider/5.jpg" alt="">
+          <div class="slider-pic">
+            <div class="slider-container">
+              <div class="slide active">
+                <img src="./assets/img/welcome-slider/1.jpg" alt="">
+              </div>
+              <div class="slide">
+                <img src="./assets/img/welcome-slider/2.jpg" alt="">
+              </div>
+              <div class="slide">
+                <img src="./assets/img/welcome-slider/3.jpg" alt="">
+              </div>  
+              <div class="slide">
+                <img src="./assets/img/welcome-slider/4.jpg" alt="">
+              </div>
+              <div class="slide">
+                <img src="./assets/img/welcome-slider/5.jpg" alt="">
+              </div>
             </div>
           </div>
           <div class="slider-controls">
             <div class="slider-number">
               <p>  <span class="number-of-slider">01 </span> | <span class="number-of-all-sliders"> 05</span></p>
             </div>
-            <div class="dots-wrapper">
-              <span class="dot active"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
+            <div class="carousel-pagination">
+              <span class="slide-pagination active"></span>
+              <span class="slide-pagination"></span>
+              <span class="slide-pagination"></span>
+              <span class="slide-pagination"></span>
+              <span class="slide-pagination"></span>
             </div> 
-           <div class="arrows">
-            <button class="btn-prev"></button>
-            <button class="btn-next"></button>
+            <div class="arrows">
+              <button class="btn-prev"></button>
+              <button class="btn-next"></button>
+            </div>
           </div>
-         </div>
         </div>
       </div>
     </section>
     <section class="visiting section section-light" id="visiting">
       <div class="container">
-        <h2 class="section-title section-light-title underline-title">Virtual tour</h2>
-        <div class="visiting-flex-container" >
+        <h2 class="section-title section-title-dark underline-title">Virtual tour</h2>
+        <div class="visiting-flex-container section-content" >
           <div class="visiting-item">
             <a class = "visiting-item-link" href="tours/tour1.html" target="_blank">
                <img src="./assets/img/Royal-Palace.jpg" height="285" width="440" alt="Royal Palace">
@@ -126,23 +128,81 @@
                <p class="visiting-item-subtitle">360° Virtual Tour</p>
                <p class="visiting-item-info">Google Street Panorama View</p>
             </a>
-          </div>              
+          </div>
         </div>
       </div>
     </section>
     <section class="section section-dark" id="explore">
-      <div class="flex-container container">
-        <div class="explore-content">
-          <h2 class="section-title section-dark-title underline-title">Picture explore</h2>
-          <div class="explore-content-info section-text">
-            <p>Las Meninas is a 1656 painting by Diego Velázquez, the leading artist&nbsp;of the Spanish Golden Age.</p>
-            <p>It was cleaned in 1984 to remove a <span class=yellow-veil>"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
-            <p>The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
+      <div class="container">
+        <div class="explore-flex-container">
+          <div class="explore-content">
+            <h2 class="section-title section-title-light underline-title">Picture explore</h2>
+            <div class="section-text section-text-light section-content">
+              <p>Las Meninas is a 1656 painting by Diego Velázquez, the leading artist&nbsp;of the Spanish Golden Age.</p>
+              <p>It was cleaned in 1984 to remove a <span class=yellow-veil>"yellow veil"</span> of dust that had gathered since the previous restoration in the 19th century.</p>
+              <p>The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
+            </div>
           </div>
+          <img class="explore-img" src="./assets/img/Las-Meninas.jpg" alt="Las-Meninas">
         </div>
-        <img class="explore-img" src="./assets/img/Las-Meninas.jpg" height="700" width="720" alt="Las-Meninas">
+      </div>
+    </section>
+    <section class="section section-light" id="video">
+      <div class="container">
+        <div class="video-flex-container">
+          <h2 class="section-title section-title section-title-dark">Video&nbsp;journey</h2>
+          <p class="section-text section-text-dark video-text">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
+        </div>
+        <div class="player">
+          <div class="player-video">
+            <video class ="video" src= "https://youtu.be/zp1BXPX8jcU" poster="./assets/video/poster0.jpg" preload='metadata'></video>
+            <button class="player-play-btn toggle-play"></button>
+          </div>
+          <div class="player-controls">
+            <button class="player-video-action"></button>
+            <input class="player-video-progress progress " type="range" value = "50" min=0 max="100" step="1">
+           
+              <button class="player-volume"></button>
+              <input class="player-video-volume progress" type="range" value="48" min="0" max="100" step="1" >
+           
+            <button class="player-fullscreen"></button>
+          </div>
+          <div class = "video-slider">
+            <iframe width="452" height="254" 
+                    loading="lazy"
+                    src="https://www.youtube.com/embed/aWmJ5DgyWPI" 
+                    title="YouTube video player"  
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+            <iframe width="452" height="254" 
+                    loading="lazy" 
+                    src="https://www.youtube.com/embed/Vi5D6FKhRmo" 
+                    title="YouTube video player"  
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+            <iframe width="452" height="254" 
+                    loading="lazy" 
+                    src="https://www.youtube.com/embed/NOhDysLnTvY" 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+          </div> 
+          <div class="video-slider-pagination">
+            <img class ="back" src="./assets/svg/back.svg" alt="">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <img class ="next" src="./assets/svg/next.svg" alt="">
+          </div> 
+        </div>
       </div>
     </section>
   </main>
+  <script src="video.js"></script>
  </body>
 </html>
