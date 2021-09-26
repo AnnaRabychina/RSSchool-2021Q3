@@ -811,3 +811,11 @@ input:checked + label::after {
   background-color: var(--gold);
   cursor: pointer;
 }
+
+.parallax{
+  height: 400px;
+  width: 100%;
+  background-image: url(./assets/img/parallax.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
