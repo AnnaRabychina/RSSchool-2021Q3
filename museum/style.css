@@ -3,6 +3,7 @@
   --gold: #9d8665;
   --dark: #030303;
   --dark-red: #710707;
+  --gray: #666666
 }
 
 *,
@@ -112,7 +113,8 @@ ul {
   color: var(--gold);
 }
 
-.section {
+.section,
+.footer {
   padding-top: 75px;
   padding-bottom: 75px;
 }
@@ -317,7 +319,7 @@ img {
   cursor: pointer;
 }
 
-.slide-pagination .active {
+.slide-pagination.active {
   background-color: #D2B183;
 }
 
@@ -819,3 +821,125 @@ input:checked + label::after {
   background-attachment: fixed;
   background-size: cover;
 }
+
+.contacts{
+  padding-bottom: 60px;
+}
+
+.contacts-content {
+  padding-top: 103px;
+  display: flex;
+  gap: 198px;
+}
+
+.contacts-info p,
+.contacts-info a {
+  padding-bottom: 13px;
+}
+
+.contacts-info a {
+  display: block;
+}
+
+.contacts-subtitle {
+  font-style: medium;
+  font-weight: 500;
+  padding-bottom: 45px;
+}
+
+.contacts-map {
+  max-height: 620px;
+  max-width: 960px;
+}
+
+.footer-flex-container { 
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 706px;
+  width: 100%;
+}
+
+.footer-logo{
+  display: flex;
+  align-items: center;
+  align-self: start;
+}
+
+.footer-nav {
+  max-width: 363px;
+  width: 100%;
+}
+
+.footer-nav-list {
+  height: 128px;
+  display: grid;
+  grid-template: 1fr 1fr 1fr/ 107px 107px;
+  justify-content: space-between;
+  color: var(--gray);
+}
+
+.footer-social {
+  width: 100%;
+  max-width: 336px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.footer-social-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-social-item  {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--gray);
+  transition: all 0.4s linear;
+}
+
+.footer-social-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+}
+  
+.footer-social-icon {
+  fill: var(--light);
+}
+
+.footer-social-item:hover {
+  border: 1px solid var(--gold);
+}
+
+.footer-social-item:hover .footer-social-icon {
+  fill: var(--gold);
+}
+
+.footer-info{
+  padding-top: 50px;
+}
+
+.footer-text {
+ color: var(--gray);
+}
+
+.footer-line {
+  padding-top: 50px;
+  width: 100%;
+  border-bottom: 3px solid var(--gray);
+}
+
+
