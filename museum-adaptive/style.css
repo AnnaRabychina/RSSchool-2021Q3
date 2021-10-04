@@ -1309,6 +1309,8 @@ input:checked + label::after {
 
 .footer-info{
   padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer-text {
@@ -1699,4 +1701,66 @@ input:checked + label::after {
    max-height: 1080px;
 }
 
+.tickets-img {
+  max-height: 340px;
+  max-width: 444px;
+}
+
+.tickets-amount-wrapper {
+  margin-left: 60px;
+}
+.section-amount-subtitle {
+  margin-bottom: 10px;
+}
+
+.button-amount,
+.input-amount {
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+}
+.age-text {
+  padding: 25px 0 10px 0;
+}
+
+.section-amount-total-subtitle {
+  padding-top: 40px;
+}
+
+.tickets-buy-btn {
+  margin-top: 40px;
+}
+
+.parallax {
+  height: 300px;
+}
+
+.contacts-content {
+  flex-direction: column;
+}
+
+.contacts-subtitle {
+  font-size: 20px;
+  padding-bottom: 30px;
+  line-height: 23px;
+}
+
+.contacts-map {
+  padding-top: 40px;
+  max-height: 476px;
+  max-width: 728px;
+}
+
+.footer-flex-container {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-content {
+  max-width: 100%;
+}
+
+.footer-social-list {
+  justify-content: flex-end;
+}
 }
