@@ -8,11 +8,9 @@
   <title>Museum</title>
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
-  
-
-   <link  rel="stylesheet"  href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+  <link  rel="stylesheet"  href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
   <link rel="stylesheet"  href="style.css">
-   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>    
@@ -156,7 +154,14 @@
               <p>The cleaning provoked furious protests, not because the picture had been damaged in any way, but because it looked different.</p>
             </div>
           </div>
-          <img class="explore-img" src="./assets/img/Las-Meninas.jpg" alt="Las-Meninas">
+          <div class="img-comp-container">
+            <div class="explore-img ">
+              <img src="./assets/img/explore/after.jpg" alt = "Las-Meninas-after" width="720" height="700">
+            </div>
+            <div class="explore-img img-comp-overlay">
+               <img src="./assets/img/explore/before.jpg" alt = "Las-Meninas-before" width="720" height="700">
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -466,6 +471,8 @@
   <script src="./assets/js/gallery.js"></script>
   <script src="./assets/js/welcome-slider.js"></script>
   <script src="./assets/js/map.js"></script>
+  <script src="./assets/js/explore.js"></script>
+  
   
  </body>
 </html>
