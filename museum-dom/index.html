@@ -6,8 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <title>Museum</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+  
+
+   <link  rel="stylesheet"  href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
   <link rel="stylesheet"  href="style.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>    
@@ -173,38 +178,60 @@
               <input class="player-video-volume progress" type="range" value="48" min="0" max="100" step="1" >
             <button class="player-fullscreen"></button>
           </div>
-          <div class = "video-slider flex-wrapper">
-            <iframe width="452" height="254" 
-                    loading="lazy"
-                    src="https://www.youtube.com/embed/aWmJ5DgyWPI" 
-                    title="YouTube video player"  
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-            </iframe>
-            <iframe width="452" height="254" 
-                    loading="lazy" 
-                    src="https://www.youtube.com/embed/Vi5D6FKhRmo" 
-                    title="YouTube video player"  
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-            </iframe>
-            <iframe width="452" height="254" 
-                    loading="lazy" 
-                    src="https://www.youtube.com/embed/NOhDysLnTvY" 
-                    title="YouTube video player" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-            </iframe>
-          </div> 
-          <div class="video-slider-pagination">
-            <button class ="back"></button>
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <button class ="next"></button>
-          </div> 
+          <div class="swiper">
+            <div class = "video-slider flex-wrapper swiper-wrapper">
+              <div class="swiper-slide">
+                <iframe width="452" height="254" 
+                        loading="lazy"
+                        src="https://www.youtube.com/embed/aWmJ5DgyWPI" 
+                        title="YouTube video player"  
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+              </div>
+              <div class="swiper-slide">
+                <iframe width="452" height="254" 
+                        loading="lazy" 
+                        src="https://www.youtube.com/embed/Vi5D6FKhRmo" 
+                        title="YouTube video player"  
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+              </div>
+              <div class="swiper-slide">
+                <iframe width="452" height="254" 
+                        loading="lazy" 
+                        src="https://www.youtube.com/embed/NOhDysLnTvY" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+              </div>
+              <div class="swiper-slide">
+                <iframe width="452" height="254" 
+                        loading="lazy" 
+                        src="https://www.youtube.com/embed/2OR0OCr6uRE" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+              </div>
+              <div class="swiper-slide">
+                <iframe width="452" height="254" 
+                        loading="lazy" 
+                        src="https://www.youtube.com/embed/zp1BXPX8jcU" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+              </div>
+            </div> 
+            <div class="video-slider-pagination ">
+              <button class ="swiper-button-prev"></button>
+              <div class="swiper-pagination"></div>
+              <button class ="swiper-button-next"></button>
+            </div> 
+          </div>
         </div>
       </div>
     </section>
@@ -367,7 +394,8 @@
             <a class="section-text" href="tel:+330140205050"> phone: +33(0) 1 40 20 50 50</a> 
             <a class="section-text" href="info@louvre.fr">mail: info@louvre.fr</a>
           </div>
-          <img class="contacts-map" src="./assets/img/map.png" alt="map">
+            <div id='map' class='contacts-map'>
+          </div>
         </div>
       </div>
     </section>
@@ -432,9 +460,12 @@
       <p class="section-text footer-text">Anna Rabychyna</p>        
     </div>
   </footer>
+   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
   <script src="./assets/js/video.js"></script>
   <script src="./assets/js/tickets.js"></script>
   <script src="./assets/js/gallery.js"></script>
   <script src="./assets/js/welcome-slider.js"></script>
+  <script src="./assets/js/map.js"></script>
+  
  </body>
 </html>
