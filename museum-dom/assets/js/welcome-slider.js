@@ -88,8 +88,8 @@ function swipeDetect (el){
 	let endPosY = 0;
 	let dist = 0;
 
-	let threshold = 30;
-	let restraint = 30;
+	let threshold = 20;
+	let restraint = 20;
 	let allowedTime = 300;
 
 	surface.addEventListener('touchstart',function(e) {

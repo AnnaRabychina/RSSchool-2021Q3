@@ -6,6 +6,29 @@ progress.forEach(el => el.addEventListener('input', function () {
   this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #C4C4C4 ${value}%, #C4C4C4 100%)`
 }));
  
+
+const swiperVideo = new Swiper('.swiper-video', {
+  direction: 'horizontal',
+  slidesPerView: 1,
+  loop: true,
+  simulateTouch: true,
+  touchAngle: 45,
+  grabCursor: true,
+  preloadAImages: false,
+  pagination: {
+    el: '.video-pagination',
+    clickable: true,
+  },
+   navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+ 
+});
+
+
+
+
 const swiper = new Swiper('.swiper', {
   direction: 'horizontal',
   slidesPerView: 3,
@@ -51,3 +74,8 @@ const swiper = new Swiper('.swiper', {
   }
   
 });
+
+
+
+
+
