@@ -2,6 +2,8 @@ const time = document.querySelector('.time');
 const data = document.querySelector('.date');
 const greeting = document.querySelector('.greeting');
 const name = document.querySelector('.name');
+const body = document.querySelector('.body');
+
 
 function showDate() {
     const date = new Date();
@@ -59,7 +61,6 @@ function showTime() {
     }
   }
   window.addEventListener('load', getLocalStorage)
-
 
 
 
