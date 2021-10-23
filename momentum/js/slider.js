@@ -1,8 +1,11 @@
 const slideNext = document.querySelector('.slide-next');
 const slidePrev = document.querySelector('.slide-prev');
+const body = document.querySelector('.body');
 let randomNum ;
 let min = 1;
 let max = 20;
+
+import {getTimeOfDay} from './timeOfDay.js'
 
 function getRandomNum() {
   randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -30,6 +33,7 @@ function getSlidePrev() {
 
 slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
-
 getRandomNum();
 setBg();
+
+export {slideNext, slidePrev, body, randomNum, min, max, getRandomNum, setBg, getSlideNext, getSlidePrev} 
