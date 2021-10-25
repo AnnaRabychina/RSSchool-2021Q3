@@ -1,15 +1,16 @@
 const nextQuote = document.querySelector('.change-quote');
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
-let numQuote = 0;
+let numQuote = Math.floor(Math.random() * 101) ;
 
 async function getQuotes() {  
-  const quotes = './data.json';
+  const quotes = './data_en.json';
   const res = await fetch(quotes);
   const data = await res.json();
   quote.textContent = `${data[numQuote].text}`;
   author.textContent = `${data[numQuote].author}`;
 }
+import {randomNum, getRandomNum} from './slider.js'
 
 function changeQuote() {
   numQuote === 100 ? numQuote =0 : numQuote =  numQuote + 1;

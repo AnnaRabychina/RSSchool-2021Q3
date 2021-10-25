@@ -11,7 +11,7 @@
   }
 
   if (hours >= 12 && hours < 18) {
-    return 'day';
+    return 'afternoon';
   }
 
   if (hours >= 18 && hours < 24) {

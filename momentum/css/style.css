@@ -31,16 +31,67 @@
   padding: 20px;
 }
 
+.audio-header {
+  margin-left: 220px;
+  margin-bottom: -5px;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #fff;
+  text-shadow: 1px 1px 0 0 #fff;
+}
 .player-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 120px;
+  width: 520px;
   margin-bottom: 28px;
+}
+
+.player-progress{
+  width: 30%;
+} 
+
+.progress {
+  background: linear-gradient(to right, #6cfa0d, 0%,  #6cfa0d, 0%, #C4C4C4 0%, #C4C4C4 100%);
+  border-radius: 0;
+  -webkit-appearance: none;
+  height: 3px;
+} 
+
+.progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.volume-controls{
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.player-volume{
+  width: 70%;
+}
+
+.mute-btn {
+  display: flex;
+  align-items: center;
+  margin: 12px;
+}
+
+.button-opacity {
+  opacity: 0.4;
 }
 
 .play-list {
   text-align: left;
+  background-color: rgba(0,0,0,0.2);
 }
 
 .play-item {
@@ -65,8 +116,9 @@
   font-weight: 900;
 }
 
+.item-active,
 .item-active::before {
-  color: #C5B358;
+  color: #6cfa0d;
 }
 
 .player-icon,
