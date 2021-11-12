@@ -8,6 +8,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Art Quiz</h1>
+    <div class="main-container">
+      <header>
+          <h1>Art Quiz</h1>
+          <div class ="logo">
+            <img class ="logo-image" src="images/logo.png" alt="logo">
+          </div>
+          <div class="header-title"></div>  
+      </header>
+      <div class="page main-page">
+          <div class="quiz-navigation">
+              <div class="item-quiz artists-quiz">
+                  <div class= "btn-page btn-page-artists"></div>
+                  <h2 class="btn-page-title"> <span class="title-bold">artists</span>  quiz </h2> 
+              </div>
+              <div class="item-quiz artists-quiz">
+                <div class= "btn-page btn-page-pictures"></div>
+                <h2 class="btn-page-title"> <span class="title-bold">pictures</span> quiz</h2> 
+              </div>
+          </div>
+          <button class="btn-settings">settings</button> 
+      </div>
+
+                 
+            
+           <!---<button data-page="page-artists" class="btn-page btn-page-artists">
+                artists
+            </button>
+            <button data-page="page-pictures" class="btn-page btn-page-pictures">
+               pictures
+            </button> -->
+          
+          <div class="page page-artists hide">
+          </div>
+          <div class="page page-pictures hide">
+          </div>
+          <div class="page page-settings hide">
+
+
+          </div>
+        </div>
+    </div>
 </body>
 </html>
