@@ -1,5 +1,6 @@
 :root {
   --dark-red: #660033;
+  --light: #ffffff;
   --font1: 36px;
   --font2: 18px;
   --margin: 75px;
@@ -49,6 +50,17 @@ h1 {
   width: 1px;
 } 
 
+h2 {
+  font-size: var(--font1);
+  font-weight: 300;
+  text-transform: uppercase;  
+}
+
+p {
+  margin: 0;
+
+}
+
  .logo {
    margin: 20px 0 10px 0;
    display: flex;
@@ -63,24 +75,26 @@ h1 {
 
 .header-title {
  height: 75px;
+ 
 }
 
-.quiz-navigation {
+.page-flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.item-quiz {
+.navigation,
+.settings {
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: box-shadow 1s ease;
+  transition: all 1s ease;
   width: 415px;
  }
 
- .item-quiz:hover,
- .btn-settings:hover {
+ .navigation:hover,
+ .btn:hover {
    box-shadow:0 0 15px 5px rgba(0, 0, 0, 0.3) ;
  }
 
@@ -94,67 +108,152 @@ h1 {
   flex-direction: column;
 }
 
-.btn-page {
+.navigation-img {
   width: 415px;
   height: 415px;
-
 }
 
-.btn-page-artists {
+.navigation-img-artists {
   background: url("images/artists-quiz.png") center no-repeat;
 }
 
-.btn-page-pictures {
+.navigation-img-pictures {
   background: url("images/pictures-quiz.png") center no-repeat;
 }
 
-.btn-page-title {
+.navigation-title {
   margin: 15px 10px 10px 0;
-  text-align: right;
-  text-transform: uppercase;
   align-self: flex-end;
-  font-size: var(--font1);
-  font-weight: 300;
 }
 
 .title-bold {
   font-weight: 700;
 }
 
-.page +.hide{
+.hide-page {
   display: none;
 }
 
-.btn-settings {
+.btn {
+  display: block;
   margin: var(--margin) 0 20px 0;
-  position: relative;
-  width: 150px;
   height: 50px;
-  padding: 14px 7px 14px 53px;
-  font-family: "Montserrat", sans-serif;
+  width: 150px;
+  background-color:  var(--dark-red);
+  color: var(--light);
   font-size: var(--font2);
   text-transform: uppercase;
-  text-align: right;
-  background-color:  var(--dark-red);
-  color: #ffffff;
-  align-self: center;
   border: 0;
   transition: all 1s ease;
 }
 
+.btn-settings {
+  position: relative;
+  padding: 14px 7px 14px 53px;
+  font-family: "Montserrat", sans-serif;
+  text-align: right;
+  align-self: center; 
+}
+
 .btn-settings:before {
-  background-image: url("images/Settings.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  content: "";
+  position: absolute;
   display: block;
+  content: "";
   height: 45px;
   width: 45px;
   left: 3px;
-  position: absolute;
   top: 3px;
+  background-image: url("images/Settings.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
   transition: all 1s ease;
 }
 
+.settings {
+  padding: 20px;
+  align-items: center;
+  background-color: var(--light);
+  justify-content: space-between;
+}
 
+.settings-img {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  margin: 20px;
+}
+
+.settings-img-volume,
+.volume-icon {
+  background: url("images/volume-on.svg") center no-repeat;
+  
+}
+
+.volume-wrapper,
+.timer--wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.timer--wrapper {
+  flex-direction: column;
+}
+
+.volume-icon {
+  background: url("images/volume-on.svg") center no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.volume-off {
+  background-image: url("images/volume-off.svg");
+}
+
+.settings-img-timer {
+  background: url("images/timer-picture.svg") center no-repeat;
+}
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.checkbox:checked+.label {
+  background-image: url("images/check.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+label {
+  border: 1px solid var(--dark-red);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  height: 30px;
+  width: 30px;
+  transition: all 1s ease;
+}
+
+.label:hover {
+  box-shadow: -1px 1px 9px 3px rgba(0, 0, 0, 0.25);
+}
+
+
+.text {
+  font-size: var(--font2);
+  text-transform: uppercase;
+}
+
+
+.btn-container {
+  justify-content: center;
+}
+
+.btn-save {
+  margin-right: 50px;
+  align-self: center; 
+}
 

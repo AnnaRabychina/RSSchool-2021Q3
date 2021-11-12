@@ -1,53 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Art Quiz</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="main-container">
       <header>
-          <h1>Art Quiz</h1>
-          <div class ="logo">
-            <img class ="logo-image" src="images/logo.png" alt="logo">
-          </div>
-          <div class="header-title"></div>  
+        <h1>Art Quiz</h1>
+        <div class="logo">
+          <img class="logo-image" src="images/logo.png" alt="logo" />
+        </div>
+        <div class="header-title"></div>
       </header>
-      <div class="page main-page">
-          <div class="quiz-navigation">
-              <div class="item-quiz artists-quiz">
-                  <div class= "btn-page btn-page-artists"></div>
-                  <h2 class="btn-page-title"> <span class="title-bold">artists</span>  quiz </h2> 
-              </div>
-              <div class="item-quiz artists-quiz">
-                <div class= "btn-page btn-page-pictures"></div>
-                <h2 class="btn-page-title"> <span class="title-bold">pictures</span> quiz</h2> 
-              </div>
+      <div class="page main-page hide-page">
+        <div class="page-flex-container">
+          <div class="navigation artists-quiz">
+            <div class="navigation-img navigation-img-artists"></div>
+            <h2 class="navigation-title">
+              <span class="title-bold">artists</span> quiz
+            </h2>
           </div>
-          <button class="btn-settings">settings</button> 
-      </div>
-
-                 
-            
-           <!---<button data-page="page-artists" class="btn-page btn-page-artists">
-                artists
-            </button>
-            <button data-page="page-pictures" class="btn-page btn-page-pictures">
-               pictures
-            </button> -->
-          
-          <div class="page page-artists hide">
-          </div>
-          <div class="page page-pictures hide">
-          </div>
-          <div class="page page-settings hide">
-
-
+          <div class="navigation pictures-quiz">
+            <div class="navigation-img navigation-img-pictures"></div>
+            <h2 class="navigation-title">
+              <span class="title-bold">pictures</span> quiz
+            </h2>
           </div>
         </div>
+        <button class="btn btn-settings">settings</button>
+      </div>
+      <div class="page page-artists hide-page"></div>
+      <div class="page page-pictures hide-page"></div>
+      <div class="page page-settings">
+        <div class="page-flex-container">
+          <div class="settings settings-volume">
+            <div class="settings-img settings-img-volume"></div>
+            <div class="volume-wrapper">
+              <div class="volume-icon"></div>
+              <input
+                type="range"
+                class="progress"
+                id="volume"
+                min="0"
+                max="1"
+                value="0.5"
+                step="0.01"
+              />
+            </div>
+            <h2 class="settings-title title-bold">volume</h2>
+          </div>
+          <div class="settings settings-timer">
+            <div class="settings-img settings-img-timer"></div>
+            <div class="timer--wrapper">
+              <input
+                type="checkbox"
+                class="checkbox"
+                id="timer"
+                name="timer-checkbox"
+                checked="checked"
+              />
+              <label for="timer" class="label"></label>
+              <p class="text">on/off</p>
+            </div>
+            <h2 class="settings-title title-bold">time game</h2>
+          </div>
+        </div>
+        <div class="page-flex-container btn-container">
+          <button class="btn btn-save">save</button>
+          <button class="btn btn-default">default</button>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
