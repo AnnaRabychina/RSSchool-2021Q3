@@ -421,3 +421,82 @@ label {
 .page-question-author-img {
   display: block;
 }
+
+.popup {
+  margin: 0 auto;
+  width: calc(100% - 40px);
+}
+
+.overlay {
+  background-color: #000000;
+  display: block;
+  height: 100vh;
+  left: -200vw;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 14;
+}
+
+.overlay-show {
+  left: 0;
+  opacity: 0.5;
+}
+
+.popup-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--light);
+  border-radius: 10px;
+  box-sizing: border-box;
+  left: -200vw;
+  min-height: 800px;
+  padding: 30px 0;
+  position: fixed;
+  top: 3%;
+  transition: left 1s ease-out;
+  width: 100px;
+  z-index: 15;
+}
+
+.popup-content-show {
+  left: calc(50% - 405px);
+  transition: left 1s ease-out;
+  width: 810px;
+}
+
+.popup-answer-icon {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 60px;
+  margin-bottom: 20px;
+  width: 60px;
+}
+
+.popup-answer-icon-correct {
+  background-image: url('./images/answer-correct.png');
+}
+
+.popup-answer-icon-wrong {
+  background-image: url('./images/answer-wrong.png');
+}
+
+.popup-picture {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px rgb(0 0 0 / 78%);
+  height: 500px;
+  width: 500px;
+}
+
+.popup-text {
+  font-size: var(--font2);
+  text-align: center;
+  text-transform: uppercase;
+}
