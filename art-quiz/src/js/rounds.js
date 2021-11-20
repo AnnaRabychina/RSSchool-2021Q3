@@ -30,14 +30,10 @@ const rounds = {
 };
 
 const uniqAnswersByAuthor = [...new Set(questionsByAuthor.map(item => item.author))];
-//const uniqAnswersByPictures = [...new Set(questionsByPictures.map(item => item.imageNum))];
 
 const variantsOfAnswers = {
   uniqAnswersByAuthor,
   questionsByPictures
 };
-
-console.log('rounds', rounds);
-console.log('uniqAnswers', variantsOfAnswers);
 
 export { createRounds, rounds, variantsOfAnswers };

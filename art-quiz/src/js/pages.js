@@ -21,5 +21,5 @@ function openPage() {
 buttons.forEach(btn => btn.addEventListener('click', openPage));
 
 export {
-  buttons, pages
+  buttons, pages, openPage
 };

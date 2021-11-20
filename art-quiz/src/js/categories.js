@@ -1,5 +1,8 @@
 import categories from './categoriesData';
 import { rounds, variantsOfAnswers } from './rounds';
+import {
+  renderPopup, showPopup, hidePopup, renderResultPopup
+} from './popup';
 
 const categoriesContainer = document.querySelector('.categories-container');
 const picturesBtn = document.querySelector('.pictures-quiz');
@@ -21,13 +24,6 @@ const answerElementsImg = [
   document.getElementById('answerImg3'),
   document.getElementById('answerImg4')
 ];
-
-const nextBtn = document.querySelector('.btn-next');
-const answerIcon = document.querySelector('.popup-answer-icon');
-const popupPicture = document.querySelector('.popup-picture');
-const popupTitle = document.querySelector('.popup-title');
-const popupAuthor = document.querySelector('.popup-text-author');
-const popupYear = document.querySelector('.popup-text-year');
 
 let pathCategories;
 let typeCategory;
@@ -122,6 +118,25 @@ const renderQuestion = (num) => {
   }
 };
 
+const enableAnswers = (answers) => {
+  answers.forEach(item => {
+    item.classList.remove('answer-correct', 'answer-wrong');
+  });
+};
+
+const openNextStep = () => {
+  currQuestion += 1;
+  if (currQuestion < questions.length) {
+    renderQuestion(currQuestion);
+    hidePopup();
+    enableAnswers(typeCategory === 'artists' ? answerElements : answerElementsImg);
+  } else {
+    hidePopup();
+    renderResultPopup(typeCategory);
+    showPopup();
+  }
+};
+
 const openRound = (el) => {
   indexOfRound = el.dataset.id;
   if (typeCategory === 'artists') {
@@ -135,28 +150,13 @@ const openRound = (el) => {
   score = 0;
 };
 
-const showPopup = () =>{
-  document.querySelector('.popup-content').classList.add('popup-content-show');
-  document.querySelector('.overlay').classList.add('overlay-show');
-};
-
-const hidePopup = () => {
-  document.querySelector('.popup-content').classList.remove('popup-content-show');
-  document.querySelector('.overlay').classList.remove('overlay-show');
-};
-
-const enableAnswers = (answers) => {
-  answers.forEach(item => {
-    item.classList.remove('answer-correct', 'answer-wrong');
-    answerIcon.classList.remove('popup-answer-correct', 'popup-answer-wrong');
-  });
-};
-
 const updateAnswerTracker = status =>{
   answersTracker.children[currQuestion].classList.add(`${status}`);
 };
 
 const checkAnswer = el => {
+  renderPopup();
+  const answerIcon = document.querySelector('.popup-answer-icon');
   if (typeCategory === 'artists'
     ? el.target.innerHTML === questions[currQuestion].author
     : el.target.dataset.img === questions[currQuestion].imageNum) {
@@ -174,10 +174,6 @@ const checkAnswer = el => {
     }, 1000);
   }
   results.push(el.target.innerHTML === questions[currQuestion].author ? 1 : 0);
-  popupTitle.textContent = questions[currQuestion].name;
-  popupAuthor.textContent = questions[currQuestion].author;
-  popupYear.textContent = questions[currQuestion].year;
-  popupPicture.style.backgroundImage = `url('./images/img/${questions[currQuestion].imageNum}.jpg')`;
   showPopup();
 };
 
@@ -197,27 +193,12 @@ function changeCategory(type) {
   fillCategories();
 }
 
-const showFinalPopup = () =>{
-
-};
-
-const openNextStep = () => {
-  currQuestion += 1;
-  if (currQuestion < questions.length) {
-    renderQuestion(currQuestion);
-    hidePopup();
-    enableAnswers(typeCategory === 'artists' ? answerElements : answerElementsImg);
-  } else {
-    showFinalPopup();
-  }
-};
-
 artistsBtn.addEventListener('click', () => changeCategory('artists'));
 picturesBtn.addEventListener('click', () => changeCategory('pictures'));
 answerElements.forEach(answer => answer.addEventListener('click', (el) => checkAnswer(el)));
 answerElementsImg.forEach(answer => answer.addEventListener('click', (el) => checkAnswer(el)));
-nextBtn.addEventListener('click', () => openNextStep());
 
 export {
-  categoriesContainer, pathCategories, fillCategories, insertCategory, changeCategory, openRound
+  categoriesContainer, pathCategories, fillCategories, insertCategory,
+  changeCategory, openRound, openNextStep, currQuestion, questions, score
 };
