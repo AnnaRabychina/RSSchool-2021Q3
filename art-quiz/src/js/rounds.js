@@ -4,11 +4,11 @@ const questionsByAuthor = [];
 const questionsByPictures = [];
 
 images.forEach((item, index) => {
-  if (index % 2 === 0) {
+  if (index < 120) {
     questionsByAuthor.push(item);
   }
 
-  if (index % 2 !== 0) {
+  if (index >= 120) {
     questionsByPictures.push(item);
   }
 });
@@ -30,14 +30,14 @@ const rounds = {
 };
 
 const uniqAnswersByAuthor = [...new Set(questionsByAuthor.map(item => item.author))];
-const uniqAnswersByPictures = [...new Set(questionsByPictures.map(item => item.author))];
+//const uniqAnswersByPictures = [...new Set(questionsByPictures.map(item => item.imageNum))];
 
-const uniqAnswers = {
+const variantsOfAnswers = {
   uniqAnswersByAuthor,
-  uniqAnswersByPictures
+  questionsByPictures
 };
 
 console.log('rounds', rounds);
-console.log('uniqAnswers', uniqAnswers);
+console.log('uniqAnswers', variantsOfAnswers);
 
-export { createRounds, rounds, uniqAnswers };
+export { createRounds, rounds, variantsOfAnswers };

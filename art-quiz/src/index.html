@@ -46,10 +46,7 @@
         </button>
       </div>
       <div class="page page-categories modal hide">
-        <div class="logo">
-          <img class="logo-image" src="images/logo.png" alt="logo" />
-        </div>
-        <div class="page-flex-container">
+         <div class="page-flex-container">
           <button
             class="btn btn-page btn-home"
             data-next-page="main-page"
@@ -70,28 +67,58 @@
       </div>
       <div class="page page-pictures modal hide">
         <div class="page-pictures-container">
-          <div class="page-question" id="question">
-            Какую из картин написал?
+          <div class="page-flex-container">
+            <button
+              class="btn btn-page btn-home"
+              data-next-page="main-page"
+              data-page="page-pictures"
+            >
+              home
+            </button>
+
+            <button
+              class="btn btn-page btn-category"
+              data-next-page="page-categories"
+              data-page="page-pictures"
+            >
+              category
+            </button>
+              
           </div>
-          <div class="page-question-picture">
-            <img class="page-question-picture-img" src="" alt="" />
+          <div class="page-pictures-question"></div>
+          <div class="answers-pictures">
+            <div class="answer-picture-item" id="answerImg1"></div>
+            <div class="answer-picture-item" id="answerImg2"></div>
+            <div class="answer-picture-item" id="answerImg3"></div>
+            <div class="answer-picture-item" id="answerImg4"></div>
+            <div class="answers-tracker"></div>
           </div>
+          
         </div>
       </div>
+
       <div class="page page-artists modal hide">
-          <div class="page-pictures-container">
-            <div class="page-flex-container">
-              <button
-                class="btn btn-page btn-home"
-                data-next-page="page-categories"
-                data-page="page-artists"
-              >
-              category
-              </button>
-            <div class="page-question">Кто автор этой картины?</div>
-          </div>
+        <div class="page-flex-container">
+          <button
+            class="btn btn-page btn-home"
+            data-next-page="main-page"
+            data-page="page-artists"
+          >
+            home
+          </button>
+          <div class="page-question">Кто автор данной картины?</div>
+          <button
+            class="btn btn-page btn-category"
+            data-next-page="page-categories"
+            data-page="page-artists"
+          >
+            category
+          </button>
+        </div>
+        <div class="page-pictures-container">
           <div class="page-question-picture">
             <img class="page-question-author-img" src="" alt="" />
+            <div class="answers-tracker"></div>
           </div>
           <ul class="answers-list">
             <li class="answer-item" id="answer1"></li>

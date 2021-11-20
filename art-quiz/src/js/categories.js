@@ -1,21 +1,48 @@
 import categories from './categoriesData';
-import { rounds, uniqAnswers } from './rounds';
+import { rounds, variantsOfAnswers } from './rounds';
 
 const categoriesContainer = document.querySelector('.categories-container');
 const picturesBtn = document.querySelector('.pictures-quiz');
 const artistsBtn = document.querySelector('.artists-quiz');
+
+const imgQuestion = document.querySelector('.page-question-author-img');
+const answersTracker = document.querySelector('.answers-tracker');
+const answerElements = [
+  document.getElementById('answer1'),
+  document.getElementById('answer2'),
+  document.getElementById('answer3'),
+  document.getElementById('answer4')
+];
+
+const picturesQuestion = document.querySelector('.page-pictures-question');
+const answerElementsImg = [
+  document.getElementById('answerImg1'),
+  document.getElementById('answerImg2'),
+  document.getElementById('answerImg3'),
+  document.getElementById('answerImg4')
+];
+
+const nextBtn = document.querySelector('.btn-next');
+const answerIcon = document.querySelector('.popup-answer-icon');
+const popupPicture = document.querySelector('.popup-picture');
+const popupTitle = document.querySelector('.popup-title');
+const popupAuthor = document.querySelector('.popup-text-author');
+const popupYear = document.querySelector('.popup-text-year');
+
 let pathCategories;
 let typeCategory;
 let categoriesList;
 let indexOfRound;
 let questions;
 let currQuestion = 0;
-let variantsOfAnswers;
+let score = 0;
+let variants;
+let results = [];
 
-function insertCategory(categoryObj) {
+const insertCategory = (categoryObj) => {
   const categoryItem = document.createElement('div');
   categoryItem.classList.add('category-item');
-  categoryItem.dataset.id = categoryObj.number;
+  categoryItem.dataset.id = categoryObj.number - 1;
   categoriesContainer.append(categoryItem);
   const categoryNumber = document.createElement('div');
   categoryNumber.classList.add('category-number');
@@ -34,85 +61,162 @@ function insertCategory(categoryObj) {
   categoryItem.append(categoryNumber);
   categoryItem.append(categoryTitle);
   categoryItem.append(categoryImg);
-}
+};
 
-function shuffleAnswers(answers) {
+const shuffleAnswers = (answers) => {
   return answers.sort(() => Math.random() - 0.5);
-}
+};
 
-function addAnswers(correctAnswer) {
+const addAnswers = (correctAnswer, author) => {
   let answers = [correctAnswer];
   const randomAnswers = () => {
     while (answers.length < 4) {
-      let randomNum = Math.floor(Math.random() * variantsOfAnswers.length);
-      let variant = variantsOfAnswers[randomNum];
-      if (variant !== correctAnswer && !answers.includes(variant)) {
-        answers.push(variant);
-      } else {
-        randomAnswers();
+      let randomNum = Math.floor(Math.random() * variants.length);
+      let variant = variants[randomNum];
+      if (typeCategory === 'artists') {
+        if (variant !== correctAnswer && !answers.includes(variant)) {
+          answers.push(variant);
+        } else {
+          randomAnswers();
+        }
+      }
+      if (typeCategory === 'pictures') {
+        if (variant.imageNum !== correctAnswer
+          && !answers.includes(variant.imageNum)
+          && variant.author !== author) {
+          answers.push(variant.imageNum);
+        } else {
+          randomAnswers();
+        }
       }
     }
   };
   randomAnswers();
   shuffleAnswers(answers);
   return answers;
-}
+};
 
-const imgQuestion = document.querySelector('.page-question-author-img');
-
-const answerElements = [
-  document.getElementById('answer1'),
-  document.getElementById('answer2'),
-  document.getElementById('answer3'),
-  document.getElementById('answer4')
-];
-
-function renderQuestion(num) {
-  questions[num].answers = addAnswers(questions[num].author);
-  imgQuestion.src = `./images/img/${questions[num].imageNum}.jpg`;
-  answerElements.forEach((answer, index) => {
-    answer.textContent = questions[num].answers[index];
+const answerTracker = () => {
+  questions.forEach(() => {
+    const trackerItem = document.createElement('div');
+    trackerItem.classList.add('answers-tracker-item');
+    answersTracker.append(trackerItem);
   });
-}
+};
 
-function openRound(el) {
-  indexOfRound = el.dataset.id;
+const renderQuestion = (num) => {
   if (typeCategory === 'artists') {
-    questions = rounds.roundsByAuthor[indexOfRound];
-  } else {
-    questions = rounds.roundsByPictures[indexOfRound];
+    questions[num].answers = addAnswers(questions[num].author);
+    imgQuestion.src = `./images/img/${questions[num].imageNum}.jpg`;
+    answerElements.forEach((item, index) => {
+      item.textContent = questions[num].answers[index];
+    });
   }
-  renderQuestion(currQuestion);
-}
-
-const checkAnswer = el =>{
-  if (el.target.innerHTML === questions[currQuestion].author) {
-    el.target.classList.add('answer-correct');
-  } else {
-    el.target.classList.add('answer-wrong');
+  if (typeCategory === 'pictures') {
+    picturesQuestion.textContent = `Какую из картин написал ${questions[num].author}?`;
+    questions[num].answers = addAnswers(questions[num].imageNum, questions[num].author);
+    answerElementsImg.forEach((item, index) => {
+      item.style.backgroundImage = `url('./images/img/${questions[num].answers[index]}.jpg')`;
+      item.dataset.img = questions[num].answers[index];
+    });
   }
 };
 
-answerElements.forEach(answer => answer.addEventListener('click', (el) => checkAnswer(el)));
+const openRound = (el) => {
+  indexOfRound = el.dataset.id;
+  if (typeCategory === 'artists') {
+    questions = rounds.roundsByAuthor[indexOfRound];
+  }
+  if (typeCategory === 'pictures') {
+    questions = rounds.roundsByPictures[indexOfRound];
+  }
+  renderQuestion(currQuestion);
+  answerTracker();
+  score = 0;
+};
 
-function fillCategories() {
+const showPopup = () =>{
+  document.querySelector('.popup-content').classList.add('popup-content-show');
+  document.querySelector('.overlay').classList.add('overlay-show');
+};
+
+const hidePopup = () => {
+  document.querySelector('.popup-content').classList.remove('popup-content-show');
+  document.querySelector('.overlay').classList.remove('overlay-show');
+};
+
+const enableAnswers = (answers) => {
+  answers.forEach(item => {
+    item.classList.remove('answer-correct', 'answer-wrong');
+    answerIcon.classList.remove('popup-answer-correct', 'popup-answer-wrong');
+  });
+};
+
+const updateAnswerTracker = status =>{
+  answersTracker.children[currQuestion].classList.add(`${status}`);
+};
+
+const checkAnswer = el => {
+  if (typeCategory === 'artists'
+    ? el.target.innerHTML === questions[currQuestion].author
+    : el.target.dataset.img === questions[currQuestion].imageNum) {
+    score += 1;
+    el.target.classList.add('answer-correct');
+    answerIcon.classList.add('popup-answer-correct');
+    setTimeout(() =>{
+      updateAnswerTracker('correct');
+    }, 1000);
+  } else {
+    el.target.classList.add('answer-wrong');
+    answerIcon.classList.add('popup-answer-wrong');
+    setTimeout(() =>{
+      updateAnswerTracker('wrong');
+    }, 1000);
+  }
+  results.push(el.target.innerHTML === questions[currQuestion].author ? 1 : 0);
+  popupTitle.textContent = questions[currQuestion].name;
+  popupAuthor.textContent = questions[currQuestion].author;
+  popupYear.textContent = questions[currQuestion].year;
+  popupPicture.style.backgroundImage = `url('./images/img/${questions[currQuestion].imageNum}.jpg')`;
+  showPopup();
+};
+
+const fillCategories = () =>{
   categoriesContainer.innerHTML = '';
   categories.map(el => insertCategory(el));
   categoriesList = document.querySelectorAll('.category-item');
   categoriesList.forEach(category => category.addEventListener('click', () => openRound(category)));
-}
+};
 
 function changeCategory(type) {
   typeCategory = type;
   pathCategories = `images/categories-${type}/`;
   categoriesContainer.dataset.page = 'page-categories';
   categoriesContainer.dataset.nextPage = type === 'artists' ? 'page-artists' : 'page-pictures';
-  variantsOfAnswers = type === 'artists' ? uniqAnswers.uniqAnswersByAuthor : uniqAnswers.uniqAnswersByPictures;
+  variants = type === 'artists' ? variantsOfAnswers.uniqAnswersByAuthor : variantsOfAnswers.questionsByPictures;
   fillCategories();
 }
 
+const showFinalPopup = () =>{
+
+};
+
+const openNextStep = () => {
+  currQuestion += 1;
+  if (currQuestion < questions.length) {
+    renderQuestion(currQuestion);
+    hidePopup();
+    enableAnswers(typeCategory === 'artists' ? answerElements : answerElementsImg);
+  } else {
+    showFinalPopup();
+  }
+};
+
 artistsBtn.addEventListener('click', () => changeCategory('artists'));
 picturesBtn.addEventListener('click', () => changeCategory('pictures'));
+answerElements.forEach(answer => answer.addEventListener('click', (el) => checkAnswer(el)));
+answerElementsImg.forEach(answer => answer.addEventListener('click', (el) => checkAnswer(el)));
+nextBtn.addEventListener('click', () => openNextStep());
 
 export {
   categoriesContainer, pathCategories, fillCategories, insertCategory, changeCategory, openRound

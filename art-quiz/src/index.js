@@ -11,4 +11,4 @@ import {
   categoriesContainer, pathCategories, fillCategories, insertCategory, changeCategory, openRound
 } from './js/categories';
 
-import { createRounds, rounds, uniqAnswers } from './js/rounds';
+import { createRounds, rounds, variantsOfAnswers } from './js/rounds';
