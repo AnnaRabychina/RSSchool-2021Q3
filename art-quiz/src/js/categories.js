@@ -8,8 +8,9 @@ const categoriesContainer = document.querySelector('.categories-container');
 const picturesBtn = document.querySelector('.pictures-quiz');
 const artistsBtn = document.querySelector('.artists-quiz');
 
-const imgQuestion = document.querySelector('.page-question-author-img');
+const imgQuestion = document.querySelector('.page-artists-img');
 const answersTracker = document.querySelector('.answers-tracker');
+
 const answerElements = [
   document.getElementById('answer1'),
   document.getElementById('answer2'),
@@ -92,14 +93,6 @@ const addAnswers = (correctAnswer, author) => {
   return answers;
 };
 
-const answerTracker = () => {
-  questions.forEach(() => {
-    const trackerItem = document.createElement('div');
-    trackerItem.classList.add('answers-tracker-item');
-    answersTracker.append(trackerItem);
-  });
-};
-
 const renderQuestion = (num) => {
   if (typeCategory === 'artists') {
     questions[num].answers = addAnswers(questions[num].author);
@@ -116,6 +109,14 @@ const renderQuestion = (num) => {
       item.dataset.img = questions[num].answers[index];
     });
   }
+};
+
+const answerTracker = () => {
+  questions.forEach(() => {
+    const trackerItem = document.createElement('div');
+    trackerItem.classList.add('answers-tracker-item');
+    answersTracker.append(trackerItem);
+  });
 };
 
 const enableAnswers = (answers) => {
@@ -139,15 +140,16 @@ const openNextStep = () => {
 
 const openRound = (el) => {
   indexOfRound = el.dataset.id;
+  currQuestion = 0;
+  score = 0;
   if (typeCategory === 'artists') {
     questions = rounds.roundsByAuthor[indexOfRound];
+    answerTracker();
   }
   if (typeCategory === 'pictures') {
     questions = rounds.roundsByPictures[indexOfRound];
   }
   renderQuestion(currQuestion);
-  answerTracker();
-  score = 0;
 };
 
 const updateAnswerTracker = status =>{
@@ -200,5 +202,5 @@ answerElementsImg.forEach(answer => answer.addEventListener('click', (el) => che
 
 export {
   categoriesContainer, pathCategories, fillCategories, insertCategory,
-  changeCategory, openRound, openNextStep, currQuestion, questions, score
+  changeCategory, openRound, openNextStep, currQuestion, questions, score, typeCategory
 };

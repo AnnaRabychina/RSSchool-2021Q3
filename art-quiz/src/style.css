@@ -1,10 +1,10 @@
 :root {
   --dark-red: #660033;
   --light: #ffffff;
-  --font1: 36px;
+  --font1: 24px;
   --font2: 18px;
   --font3: 14px;
-  --margin: 75px;
+  --margin: 20px;
 }
 
 *,
@@ -22,7 +22,6 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size:  var(--font1);
   font-weight: 300;
-  line-height: 44px;
   color: var(--dark-red);
   background-color: #dddddd;
   background-size: cover;
@@ -34,15 +33,14 @@ ul {
   padding: 0;
   margin: 0;
 }
- 
 
 .main-container {
   margin: 0 auto;
   position: relative;
-  max-width: 1440px;
-  height: 1024px;
+  min-width: 360px;
   overflow: hidden;
   width: 100%;
+  height: 100vh;
 }
 
 header {
@@ -70,14 +68,14 @@ p {
 }
 
 .logo {
-  margin: 20px 0 10px 0;
+  margin: 10px 0;
   display: flex;
   justify-content: center;
 }
 
 .logo-image {
-  height: 140px;
-  width: 220px;
+  height: 63px;
+  width: 100px;
   display: block;
 }
 
@@ -90,22 +88,25 @@ p {
 
 .navigation,
 .settings {
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
   transition: all 1s ease;
-  width: 415px;
+  width: 330px;
+  height: 213px;
+  margin-bottom: 10px;
  }
 
 .navigation:hover,
 .btn:hover,
+.btn:focus,
 .category-item:hover {
   box-shadow:0 0 15px 7px rgba(0, 0, 0, 0.3) ;
   cursor: pointer;
  }
-
+ 
 .page {
-  margin: 20px;
+  padding: 10px;
   box-sizing: border-box;
 }
 
@@ -121,21 +122,29 @@ p {
 }
 
 .navigation-img {
-  width: 415px;
-  height: 415px;
+  width: 100%;
+  height: 100%;
 }
 
 .navigation-img-artists {
   background: url("images/artists-quiz.png") center no-repeat;
+  background-size: cover;
 }
 
 .navigation-img-pictures {
   background: url("images/pictures-quiz.png") center no-repeat;
+  background-size: cover;
 }
 
 .navigation-title {
-  margin: 15px 10px 10px 0;
+  position: absolute;
+  bottom: 5px;
+  padding-right: 5px;
+  margin: 0;
+  width: 100%;
+  background-color: rgba(250, 250, 250, 0.5);
   align-self: flex-end;
+  text-align: right;
 }
 
 .title-bold {
@@ -148,7 +157,7 @@ p {
 
 .btn {
   display: block;
-  margin: var(--margin) 0 20px 0;
+  margin: 10px 0;
   height: 50px;
   width: 150px;
   background-color:  var(--dark-red);
@@ -215,7 +224,6 @@ p {
   position: absolute;
   top: 0;
   left: 0;
-  max-width: 1440px;
   width: 100%;
   height: 100%;
   z-index: 10;
@@ -232,26 +240,30 @@ p {
 .modal.hide {
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-100%);
+  transform: translateX(-300%);
 }
 
 .settings {
-  padding: 20px;
+  padding: 5px;
   align-items: center;
   background-color: var(--light);
   justify-content: space-between;
 }
 
+.settings-title {
+  margin: 0;
+}
+
 .settings-img {
-  width: 100px;
-  height: 100px;
-  background-size: contain;
-  margin: 20px;
+  width: 67px;
+  height: 67px;
+  background-size:cover;
+  margin: 5px;
 }
 
 .settings-img-volume,
 .volume-icon {
-  background: url("images/volume-on.svg") center no-repeat;
+  background: url("images/volume-on.png") center no-repeat;
 }
 
 .volume-wrapper,
@@ -283,7 +295,7 @@ p {
 }
 
 .volume-icon {
-  background: url("images/volume-on.svg") center no-repeat;
+  background: url("images/volume-on.png") center no-repeat;
   background-size: contain;
   width: 20px;
   height: 20px;
@@ -291,11 +303,11 @@ p {
 }
 
 .volume-off {
-  background-image: url("images/volume-off.svg");
+  background-image: url("images/volume-off.png");
 }
 
 .settings-img-timer {
-  background: url("images/timer-picture.svg") center no-repeat;
+  background: url("images/timer-picture.png") center no-repeat;
 }
 
 .checkbox {
@@ -329,22 +341,17 @@ label {
   text-transform: uppercase;
 }
 
-.btn-container {
-  justify-content: center;
-}
-
 .btn-save {
-  margin-right: 50px;
-  align-self: center; 
+  margin-right: 5px;
 }
 
 .categories-container{
-  gap: 1rem 1rem;
+  gap: 5px 3px;
   margin: 0 auto;
 }
 
 .category-item {
-  width: calc(100% / 6);
+  width: 30%;
   height: auto;
   background-color: var(--light);
   transition: all 1s ease;
@@ -352,7 +359,7 @@ label {
 
 .category-img{
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .category-img-active{
@@ -365,19 +372,26 @@ label {
 }
 
 .category-number {
-  padding: 20px 10px 10px 10px;
-  font-size: 72px;
+  padding: 3px;
+  font-size: 32px;
   font-weight: 700;
 }
 
 .category-title {
-  padding-left: 10px;
-  font-size: var(--font3);
+  padding-left: 3px;
+  font-size: 13px;
   text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+.page-pictures-question, 
+.page-artists-question {
+  padding: 5px 0;
+  text-align: center;
 }
 
 .page-pictures-container {
-  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -391,8 +405,9 @@ label {
 
 .answer-item {
   border: 2px solid var(--dark-red);
+  padding: 5px 0;
   border-radius: 25px;
-  font-size: var(--font2);
+  font-size: var(--font3);
   text-align: center;
 
 }
@@ -409,55 +424,68 @@ label {
   background-color: red;
 }
 
-.page-question-picture {
+.page-artists-picture {
   display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: auto;
   margin: 20px 0;
 }
 
-.page-question-picture-img {
+.page-artists-img {
   display: block;
-
+  width: 100%;
+  height: auto;
 }
 
 .answers-pictures {
+  margin: 0 auto;
   align-items: center;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  height: 650px;
+  height: 80%;
   justify-content: space-between;
-  position: relative;
-  width: 80%;
+  width: 100%;
 }
 
 .answer-picture-item {
+  position: relative;
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 10px;
   cursor: pointer;
-  height: 300px;
+  height: 200px;
   transition: box-shadow .5s ease;
   width: 49%;
+}
+
+.answer-picture-check{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: red;
+  opacity: 0;
 }
 
 .answers-tracker {
   position: absolute;
   display: flex;
-  bottom: 10px;
+  bottom: 5px;
   height: 20px;
   justify-content: space-around;
-  left: 25%;
-  width: 50%;
-  z-index: 11;
+  left: 0;
+  width: 100%;
+  z-index: 99;
 }
 
 .answers-tracker-item {
   border: 1px solid #000;
+  background-color:#C4C4C4;
   border-radius: 50%;
   height: 10px;
   width: 10px;
@@ -495,16 +523,15 @@ label {
 
 .popup-content {
   display: flex;
-  width: 810px;
-  height:  810px;
+  width: 90%;
+  height: 90%;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--light);
   border-radius: 10px;
   box-sizing: border-box;
-  left: -200vw;
-  max-height: 810px;
+  left: -400%;
   padding: 20px 0;
   position: fixed;
   top: 3%;
@@ -513,7 +540,7 @@ label {
 }
 
 .popup-content-show {
-  left: calc(50% - 405px);
+  left: calc(50% - 160px);
   transition: left 1s ease-out;
 }
 
@@ -549,8 +576,8 @@ label {
   background-size: cover;
   border-radius: 15px;
   box-shadow: 5px 5px 15px rgb(0 0 0 / 78%);
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
 }
 
 .popup-title {
@@ -571,4 +598,183 @@ label {
 
 .popup-text-score {
   font-size: 96px;
+}
+
+@media (min-width: 520px) { 
+  .logo-image {
+    height: 95px;
+    width: 150px;
+  }
+ 
+  .page-pictures-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .page-artists-img {
+    width: 90%;
+  }
+
+  .answers-tracker {
+    left: 25%;
+    width: 50%;
+    bottom: 5px;
+  }
+}
+
+@media (min-width: 768px) { 
+  :root {
+    --font1: 36px;
+    --font2: 18px;
+    --font3: 14px;
+    --margin: 75px;
+  }
+
+  .logo-image {
+    height: 95px;
+    width: 150px;
+  }
+
+  .navigation,
+  .settings {
+    width: 500px;
+    height: 320px;
+ }
+  
+  .settings {
+    padding: 20px;
+  }
+
+  .settings-img {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+  }
+
+  .category-item {
+    width: 24%;
+  }
+
+  .category-title {
+    padding-left: 10px;
+    font-size: var(--font2);
+    letter-spacing: inherit;
+  }
+
+  .category-number {
+    padding-left: 10px;
+    font-size: var(--font1);
+  }
+
+  .answers-pictures {
+    height: 650px;
+    width: 100%;
+  }
+
+  .answer-picture-item {
+    height: 300px;
+  }
+
+  .answer-item {
+    font-size: 24px;
+  }
+
+  .popup-content {
+    width: 80%;
+    height: 90%;
+  }
+
+  .popup-content-show {
+    left: calc(50% - 307px);
+  }
+
+  .popup-title {
+    font-size: var(--font1);
+  }
+
+  .popup-text {
+    font-size: var(--font2);
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .popup-picture {
+    height: 400px;
+    width: 400px;
+  }
+}
+
+@media (min-width: 1024px) { 
+
+  .main-container {
+    max-width: 1440px;
+    width: 100%;
+    height: 1024px;
+  }
+
+  .main-page {
+    max-width: 1024px;
+  }
+
+  .modal {
+    max-width: 1440px;
+  }
+
+  .logo {
+    margin: 20px 0 var(--margin) 0;
+  }
+
+  .logo-image {
+    height: 140px;
+    width: 220px;
+  }
+
+  .navigation,
+  .settings {
+    width: 415px;
+    height: 415px;
+    margin-bottom: var(--margin);
+ }
+  
+  .navigation-title {
+    position: static;
+    margin: 15px 10px 10px 0;
+    background-color: inherit;
+    align-self: flex-end;
+  }
+
+  .categories-container {
+    row-gap: 10px;
+  }
+
+  .category-item {
+    width: 15%;
+  }
+
+  .category-number {
+    padding: 20px 10px 10px 10px;
+    font-size: 76px;
+  }
+
+  .page-pictures-container {
+    width: 800px;
+  }
+  
+  .page-artists-picture{
+    width: 80%;
+    margin: 20px auto;
+  }
+
+  .answers-pictures {
+    width: 80%;
+  }
+
+  .popup-content {
+    width: 810px;
+    max-height: 810px;
+  }
+
+  .popup-content-show {
+    left: calc(50% - 405px);
+  }
 }

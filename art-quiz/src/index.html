@@ -14,7 +14,6 @@
         <div class="logo">
           <img class="logo-image" src="images/logo.png" alt="logo" />
         </div>
-        <div class="page-title"></div>
         <div class="page-flex-container">
           <div
             class="navigation artists-quiz btn-page"
@@ -55,13 +54,6 @@
             home
           </button>
           <div class="page-title">categories</div>
-          <button
-            class="btn btn-page btn-score"
-            data-next-page="main-page"
-            data-page="page-categories"
-          >
-            score
-          </button>
         </div>
         <div class="page-flex-container categories-container btn-page"></div>
       </div>
@@ -85,11 +77,18 @@
           </div>
           <div class="page-pictures-question"></div>
           <div class="answers-pictures">
-            <div class="answer-picture-item" id="answerImg1"></div>
-            <div class="answer-picture-item" id="answerImg2"></div>
-            <div class="answer-picture-item" id="answerImg3"></div>
-            <div class="answer-picture-item" id="answerImg4"></div>
-            <div class="answers-tracker"></div>
+            <div class="answer-picture-item" id="answerImg1">
+            <div class="answer-picture-check"></div>
+            </div>
+            <div class="answer-picture-item" id="answerImg2">
+              <div class="answer-picture-check"></div>
+            </div>
+            <div class="answer-picture-item" id="answerImg3">
+              <div class="answer-picture-check"></div>
+            </div>
+            <div class="answer-picture-item" id="answerImg4">
+              <div class="answer-picture-check"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -102,7 +101,6 @@
           >
             home
           </button>
-          <div class="page-question">Кто автор данной картины?</div>
           <button
             class="btn btn-page btn-category"
             data-next-page="page-categories"
@@ -111,9 +109,11 @@
             category
           </button>
         </div>
+ 
         <div class="page-pictures-container">
-          <div class="page-question-picture">
-            <img class="page-question-author-img" src="" alt="" />
+          <div class="page-artists-question">Кто автор данной картины?</div>
+          <div class="page-artists-picture">
+            <img class="page-artists-img" src="" alt="" />
             <div class="answers-tracker"></div>
           </div>
           <ul class="answers-list">
@@ -125,10 +125,12 @@
         </div>
       </div>
       <div class="page page-settings modal hide">
-        <div class="logo">
-          <img class="logo-image" src="images/logo.png" alt="logo" />
+        <div class="page-flex-container">
+          <div class="logo">
+            <img class="logo-image" src="images/logo.png" alt="logo" />
+          </div>
+          <div class="page-title">settings</div>
         </div>
-        <div class="page-title">settings</div>
         <div class="page-flex-container">
           <div class="settings settings-volume">
             <div class="settings-img settings-img-volume"></div>
@@ -161,7 +163,7 @@
             <h2 class="settings-title title-bold">time game</h2>
           </div>
         </div>
-        <div class="page-flex-container btn-container">
+        <div class="page-flex-container ">
           <button
             class="btn btn-page btn-save"
             data-next-page="main-page"

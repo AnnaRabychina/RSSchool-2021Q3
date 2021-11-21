@@ -48,6 +48,16 @@ const categories = [
     number: '10',
     category: 'minimalism',
     name: 'category-10'
+  },
+  {
+    number: '11',
+    category: 'interior',
+    name: 'category-11'
+  },
+  {
+    number: '12',
+    category: 'industrial',
+    name: 'category-12'
   }
 ];
 
