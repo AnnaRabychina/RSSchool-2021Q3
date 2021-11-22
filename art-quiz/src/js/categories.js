@@ -112,6 +112,7 @@ const renderQuestion = (num) => {
 };
 
 const answerTracker = () => {
+  answersTracker.innerHTML = '';
   questions.forEach(() => {
     const trackerItem = document.createElement('div');
     trackerItem.classList.add('answers-tracker-item');
@@ -133,6 +134,7 @@ const openNextStep = () => {
     enableAnswers(typeCategory === 'artists' ? answerElements : answerElementsImg);
   } else {
     hidePopup();
+    enableAnswers(typeCategory === 'artists' ? answerElements : answerElementsImg);
     renderResultPopup(typeCategory);
     showPopup();
   }

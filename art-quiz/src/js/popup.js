@@ -26,7 +26,7 @@ const renderResultPopup = (type) =>{
   popupContent.innerHTML = `
     <div class="popup-answer-icon"></div>
     <h2 class="popup-title popup-title-finish">Congratulations!</h2>
-    <p class="popup-text popup-text-score">${score}/${currQuestion}</p>
+    <p class="popup-text-score">${score}/${currQuestion}</p>
     <div class="popup-finish-icon" style="background-image:url('./images/finish.png')"></div>
     <button class="btn btn-end btn-page"
       data-next-page="page-categories"
