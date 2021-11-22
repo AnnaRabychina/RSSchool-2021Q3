@@ -600,6 +600,33 @@ label {
   font-size: 96px;
 }
 
+footer {
+  position: fixed;
+  display: none;
+  left: 0; bottom: 0; 
+  padding: 10px;
+  width: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+  height: 70px;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.footer-text {
+  align-items: center;
+  font-size: var(--font2);
+  text-decoration: none;
+  color: dimgray;
+}
+
+.footer-logo {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
 @media (min-width: 520px) { 
   .logo-image {
     height: 95px;
@@ -701,6 +728,10 @@ label {
   .popup-picture {
     height: 400px;
     width: 400px;
+  }
+
+  footer {
+    display: flex;
   }
 }
 
