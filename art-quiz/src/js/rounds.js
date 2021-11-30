@@ -4,11 +4,11 @@ const questionsByAuthor = [];
 const questionsByPictures = [];
 
 images.forEach((item, index) => {
-  if (index < 120) {
+  if (index < images.length / 2) {
     questionsByAuthor.push(item);
   }
 
-  if (index >= 120) {
+  if (index >= images.length / 2) {
     questionsByPictures.push(item);
   }
 });

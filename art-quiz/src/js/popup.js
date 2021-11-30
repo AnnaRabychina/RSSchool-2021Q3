@@ -1,6 +1,6 @@
 import {
   currQuestion, openNextStep, questions, score
-} from './categories';
+} from './quiz';
 
 import {
   openPage
