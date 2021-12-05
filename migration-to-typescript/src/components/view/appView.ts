@@ -1,7 +1,7 @@
 import News from './news/news';
 import Sources from './sources/sources';
 
-interface ISource {
+export interface ISource {
     id: string;
     name: string;
   }
@@ -20,7 +20,7 @@ export interface IArticle {
 export interface IApiNews {
     status: string;
     totalResults: number;
-    articles: IArticle[];
+    articles: Array<IArticle>;
   }
 
   export interface ISources extends ISource{
@@ -33,7 +33,7 @@ export interface IApiNews {
   
   export interface IApiSources{
     status: string;
-    sources: ISources[];
+    sources: Array<ISources>;
   }
 
 export class AppView {
