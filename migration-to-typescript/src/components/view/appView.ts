@@ -19,7 +19,7 @@ export interface IArticle {
 
 export interface IApiNews {
     status: string;
-    totalResults: number;
+    totalResults?: number;
     articles: Array<IArticle>;
   }
 
@@ -44,12 +44,12 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    drawNews(data: IApiNews) {
+    drawNews(data: IApiNews | undefined ) : void {
         const values = data?.articles ? data?.articles : [];
         this.news.draw(values);
     }
 
-    drawSources(data: IApiSources) {
+    drawSources(data: IApiSources) : void {
         const values = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }

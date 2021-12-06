@@ -1,7 +1,7 @@
 import AppLoader from './appLoader';
 import {IApiSources, IApiNews} from '../view/appView'; 
 
-export type CallbackType<T> = (data: T) => void
+export type CallbackType<T> = (data: T) => void;
 
 class AppController extends AppLoader {
         getSources(callback:CallbackType<IApiSources>) {
@@ -13,7 +13,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback:CallbackType<IApiNews>) {
+    getNews(e: Event, callback:CallbackType<IApiNews>) : void {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
