@@ -29,23 +29,23 @@ ul {
 
 .container {
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: 1600px;
 }
 
-.header {
+.header,
+.footer {
     background-color: #121C1E;
 }
 
-.header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header-row,
+.footer-row {
     width: 100%;
-    max-width: 1600px;
     height: 70px;
     margin: 0 auto;
 }
 
+.header-row,
+.footer-row, 
 .nav {
     display: flex;
     justify-content: space-between;
@@ -86,7 +86,8 @@ ul {
     color: #278D9F;
 }
 
-.header-controls {
+.header-controls,
+.footer-info {
     display: flex;
     align-items: center;
 }
@@ -130,4 +131,24 @@ ul {
     line-height: 40px;
     font-size: 20px;
     background-color: #278D9F;
+}
+
+.copyright {
+    padding-right: 20px;
+}
+
+.github-username {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 20px;
+    transition: 0.3s;
+}
+
+.footer-logo {
+    width: 160px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../assets/svg/rss.svg);
+    transition: 0.3s;
 }
