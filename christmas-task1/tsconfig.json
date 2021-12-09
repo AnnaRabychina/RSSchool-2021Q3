@@ -3,6 +3,7 @@
     "target": "es6",
     "module": "commonjs",
     "allowJs": true,
+    "sourceMap": true,
     "checkJs": false,
     "removeComments": true,
     "downlevelIteration": true,

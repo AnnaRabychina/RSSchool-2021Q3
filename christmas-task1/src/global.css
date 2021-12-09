@@ -56,7 +56,7 @@ ul {
     margin-right: 30px;
     width: 48px;
     height: 60px;
-    background-image: url(../assets/svg/tree.svg);
+    background-image: url("../assets/svg/tree.svg");
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -103,7 +103,7 @@ ul {
     color: #fff;
     font-size: 18px;
     background-color: rgba(31, 112, 127, .3);
-    background-image: url(../assets/svg/search.svg);
+    background-image: url("../assets/svg/search.svg");
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 330px center;
@@ -113,7 +113,7 @@ ul {
 .select-toys {
     width: 48px;
     height: 60px;
-    background-image: url(../assets/svg/ball-2.svg);
+    background-image: url("../assets/svg/ball-2.svg");
     background-size: 48px 60px;
     background-position: left -8px;
     background-repeat: no-repeat;
@@ -133,6 +133,64 @@ ul {
     background-color: #278D9F;
 }
 
+.page {
+    min-width: 100%;
+    min-height: calc(100vh - 140px);
+    background-image: url("../assets/bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.card-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 305px;
+    height: 280px;
+    border-radius: 10px;
+    border: 1px solid #278D9F;
+    backdrop-filter: blur(6px);
+    background-color: rgba(40, 94, 104, 0.4);
+}
+
+.card-title {
+    width: 100%;
+    font-size: 20px;
+    font-stretch: condensed;
+    padding-left: 10px;
+}
+
+.card-img {
+    width: 90px;
+    height: 112px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.card-info {
+    width: 195px;
+    margin-top: -20px;
+    padding-left: 10px;
+    pointer-events: none;
+    line-height: 1;
+    user-select: none;
+}
+
+.card-info p span {
+    padding-left: 7px;
+}
+
 .copyright {
     padding-right: 20px;
 }
@@ -149,6 +207,6 @@ ul {
     height: 60px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url(../assets/svg/rss.svg);
+    background-image: url("../assets/svg/rss.svg");
     transition: 0.3s;
 }
