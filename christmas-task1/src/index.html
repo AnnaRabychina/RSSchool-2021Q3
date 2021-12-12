@@ -25,11 +25,60 @@
         </div>
       </div>
     </header>
-    <div class="page">
-
-
-
-    </div>
+    <main class="main">
+      <div class="page">
+        <div class = "settings-container">
+          <h2 class="controls-title">Сортировать</h2>
+          <select class="sort-select">
+            <option selected value="sort-name-max">По названию от «А» до «Я»</option>
+            <option value="sort-name-min">По названию от «Я» до «А»</option>
+            <option value="sort-year-max">Год приобретения по возрастанию</option>
+            <option value="sort-year-min">Год приобретения по убыванию</option>
+          </select>
+           <h2 class="controls-title">Фильтры по значению</h2>
+          <div class="shape">Форма:  
+            <button data-shape="шар"></button>
+            <button data-shape="колокольчик"></button>
+            <button data-shape="шишка"></button>
+            <button data-shape="снежинка"></button>
+            <button data-shape="фигурка"></button>
+          </div>
+          <div class="color">Цвет:   
+            <button data-color="белый"></button>
+            <button data-color="желтый"></button>
+            <button data-color="красный"></button>
+            <button data-color="синий"></button>
+            <button data-color="зелёный"></button>
+          </div>
+          <div class="size">Размер: 
+            <button data-size="большой"></button>
+            <button data-size="средний"></button>
+            <button data-size="малый"></button>
+          </div>
+          <div class="favorite-container">Только любимые:
+              <input type="checkbox" class="favorite-input" id="checkbox" />
+              <label for="checkbox" class="favorite-input-label"></label>
+          </div> 
+          <h2 class="controls-title">Фильтры по диапазону</h2>
+          <div class="count">
+            <p>Количество экземпляров:</p>
+            <div class="count-slider-container">
+              <output class="slider-output">1</output>
+              <div class="count-slider"></div>
+              <output class="slider-output">12</output>
+            </div>          
+          </div>
+          <div class="year">
+            <p>Год приобретения:<p> 
+            <div class="year-slider-container">
+              <output class="slider-output">1940</output>
+              <div class="year-slider"></div>
+              <output class="slider-output">2020</output>
+            </div>          
+          </div>
+          <button class="reset">Сброс фильтров</button>
+      </div>
+    </main>
     <footer class="footer">
       <div class="container">
         <div class="footer-row">

@@ -41,4 +41,3 @@ function insertElement(parentNode: HTMLElement, tagName: string, className: stri
   }
   return el;
  }
-
