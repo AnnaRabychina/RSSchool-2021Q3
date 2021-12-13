@@ -39,8 +39,5 @@
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3",
     "webpack-remove-empty-scripts": "^0.7.1"
-  },
-  "dependencies": {
-    "nouislider": "^15.5.0"
   }
 }

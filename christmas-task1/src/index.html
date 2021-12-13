@@ -17,7 +17,7 @@
             <a class="nav-link" href="#">ёлка</a>
           </nav>
           <div class="header-controls">
-            <input type="search" class="search" autocomplete="off" />
+            <input type="search" class="search" autocomplete="off" autofocus/>
             <div class="select-toys">
               <span>0</span>
             </div>
@@ -63,10 +63,10 @@
           <div class="count">
             <p>Количество экземпляров:</p>
             <div class="count-slider-container">
-              <output class="slider-output">1</output>
-              <div class="count-slider"></div>
-              <output class="slider-output">12</output>
-            </div>          
+              <output class="slider-output-min">1</output>
+              <div class="count-slider" id ="count-slider" ></div>
+              <output class="slider-output-max">12</output>
+            </div>
           </div>
           <div class="year">
             <p>Год приобретения:<p> 
@@ -74,7 +74,7 @@
               <output class="slider-output">1940</output>
               <div class="year-slider"></div>
               <output class="slider-output">2020</output>
-            </div>          
+            </div>
           </div>
           <button class="reset">Сброс фильтров</button>
       </div>

@@ -50,3 +50,27 @@
 .card-info p span {
     padding-left: 7px;
 }
+
+.mark {
+    position: absolute;
+    top: 80%;
+    width: 60px;
+    height: 40px;
+    background: #24C5DB;
+    left: -8px;
+    border-radius: 0 20px 20px 0;
+}
+
+.card-item.selected .mark {
+    background: #CBB77A;
+}
+
+.mark::before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-bottom: 7px solid #14455b;
+    border-left: 7px solid transparent;
+    top: -8px;
+}
