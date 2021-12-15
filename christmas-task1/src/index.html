@@ -17,7 +17,7 @@
             <a class="nav-link" href="#">ёлка</a>
           </nav>
           <div class="header-controls">
-            <input type="search" class="search" autocomplete="off" autofocus/>
+            <input type="search" class="search" autocomplete="off" autofocus placeholder="Введите текст для поиска"/>
             <div class="select-toys">
               <span>0</span>
             </div>
@@ -26,7 +26,7 @@
       </div>
     </header>
     <main class="main">
-      <div class="page">
+      <div class="page" id ="app">
         <div class = "settings-container">
           <h2 class="controls-title">Сортировать</h2>
           <select class="sort-select">
@@ -64,7 +64,10 @@
             <p>Количество экземпляров:</p>
             <div class="count-slider-container">
               <output class="slider-output-min">1</output>
-              <div class="count-slider" id ="count-slider" ></div>
+              <div class="container-slider">
+                <input type="range" min="0" step="1" max="10" value="3">
+                <input type="range" min="0" step="1" max="10" value="7">
+              </div>
               <output class="slider-output-max">12</output>
             </div>
           </div>
@@ -77,6 +80,8 @@
             </div>
           </div>
           <button class="reset">Сброс фильтров</button>
+        </div>
+        <div class="cards-container"></div>
       </div>
     </main>
     <footer class="footer">

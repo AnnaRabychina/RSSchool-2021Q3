@@ -146,6 +146,7 @@ ul {
     display: flex;
     justify-content: space-between;
     max-width: 1600px;
+    width: 100%;
     margin: 0 auto;
     padding: 40px 20px;
 }
@@ -211,6 +212,11 @@ ul {
     background-position: center center;
     cursor: pointer;
     transition: 0.3s;
+}
+
+
+.shape button.active {
+    filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
 }
 
 .shape button:hover,
@@ -355,6 +361,27 @@ ul {
     justify-content: space-between;
 }
 
+.container-slider{
+    position: relative;
+    pointer-events: none;
+    width: 270px;
+}
+  
+  .container-slider input[type="range"]{
+    height: 2em;
+    display: block;
+    margin: 0;
+  }
+  
+  .container-slider input[type="range"]:last-child{
+    margin-top: -2em;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    pointer-events: all;
+  }
+
+
 .count-slider,
 .year-slider {
     display: inline-block;
@@ -389,6 +416,16 @@ output {
     font-family: 'Open Sans', sans-serif;
     align-self: center;
 }
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+    width: 65%;
+    margin: 0 auto;
+}
+
 
 .copyright {
     padding-right: 20px;
