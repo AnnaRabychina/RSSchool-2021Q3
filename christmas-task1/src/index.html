@@ -35,49 +35,53 @@
             <option value="sort-year-max">Год приобретения по возрастанию</option>
             <option value="sort-year-min">Год приобретения по убыванию</option>
           </select>
-           <h2 class="controls-title">Фильтры по значению</h2>
-          <div class="shape">Форма:  
+          <h2 class="controls-title">Фильтры по значению</h2>
+          <div class="shape">
+            Форма:
             <button data-shape="шар"></button>
             <button data-shape="колокольчик"></button>
             <button data-shape="шишка"></button>
             <button data-shape="снежинка"></button>
             <button data-shape="фигурка"></button>
           </div>
-          <div class="color">Цвет:   
+          <div class="color">
+            Цвет:
             <button data-color="белый"></button>
             <button data-color="желтый"></button>
             <button data-color="красный"></button>
             <button data-color="синий"></button>
             <button data-color="зелёный"></button>
           </div>
-          <div class="size">Размер: 
+          <div class="size">
+            Размер:
             <button data-size="большой"></button>
             <button data-size="средний"></button>
             <button data-size="малый"></button>
           </div>
-          <div class="favorite-container">Только любимые:
-              <input type="checkbox" class="favorite-input" id="checkbox" />
-              <label for="checkbox" class="favorite-input-label"></label>
-          </div> 
+          <div class="favorite-container">
+            Только любимые:
+            <input type="checkbox" class="favorite-input" id="checkbox" />
+            <label for="checkbox" class="favorite-input-label"></label>
+          </div>
           <h2 class="controls-title">Фильтры по диапазону</h2>
           <div class="count">
             <p>Количество экземпляров:</p>
             <div class="count-slider-container">
               <output class="count-min">1</output>
               <div class="container-slider">
-                <input id ="count-range1"  class= "count-range1" type="range" min="1" step="1" max="12" value="1">
-                <input id ="count-range2" class= "count-range2"type="range" min="1" step="1" max="12" value="12">
+                <input id="count-range1" class="count-range1" type="range" min="1" step="1" max="12" value="1" />
+                <input id="count-range2" class="count-range2" type="range" min="1" step="1" max="12" value="12" />
               </div>
               <output class="count-max">12</output>
             </div>
           </div>
           <div class="year">
-            <p>Год приобретения:<p> 
+            <p>Год приобретения:</p>
             <div class="year-slider-container">
               <output class="year-min">1940</output>
               <div class="container-slider">
-                <input id ="year-range1"  class= "year-range1" type="range" min="1940" step="10" max="2020" value="1940">
-                <input id ="year-range2" class= "year-range2" type="range" min="1940" step="10" max="2020" value="2020">
+                <input id="year-range1" class="year-range1" type="range" min="1940" step="10" max="2020" value="1940" />
+                <input id="year-range2" class="year-range2" type="range" min="1940" step="10" max="2020" value="2020" />
               </div>
               <div class="year-slider"></div>
               <output class="year-max">2020</output>

@@ -15,9 +15,10 @@ export interface ICard {
 export class CardsContainer {
   public cardsContainer: HTMLElement;
   constructor() {
-    this.cardsContainer = document.querySelector('.cards-container') as HTMLElement;
+   this.cardsContainer = document.querySelector('.cards-container') as HTMLElement;
   }
-   draw(data:Array<ICard>): void {
+  
+  draw(data:Array<ICard>): void {
       this.clear();
       data.forEach(element => {
         const cardItem = insertElement(this.cardsContainer, 'div', 'card-item','');
@@ -50,7 +51,7 @@ export class CardsContainer {
           alert('Извините, все слоты заполнены');
         } else {
           if (card){
-           changeMark(card);
+            changeMark(card);
             let num =  card.dataset.num;
             if (card.classList.contains('selected')){
               selectedCards.add(num);
@@ -74,8 +75,10 @@ function insertElement(parentNode: HTMLElement, tagName: string, className: stri
   return el;
  }
 
-function changeMark(card: HTMLElement) : void {
-  card.classList.toggle('selected');
-}
+
+ function changeMark(card: HTMLElement) : void {
+      card.classList.toggle('selected');
+ }
+
 
 

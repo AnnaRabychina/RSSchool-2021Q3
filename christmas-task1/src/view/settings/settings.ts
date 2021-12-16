@@ -1,44 +1,13 @@
-import cardsData from '../cards/cardData';
-import {CardsContainer, ICard } from '../cards/cards';
+import { SortList } from '../sorting/sorting';
 
-const selectSortList = document.querySelector('.sort-select') as HTMLSelectElement;
-
-export const enum Sorting{
-  minName="sort-name-min",
-  maxName="sort-name-max",
-  maxYear ="sort-year-max",
-  minYear ="sort-year-min",
+export class SettingsContainer {
+  selectSortList: HTMLElement;
+  sortList: SortList;
+  constructor() {
+    this.selectSortList = document.querySelector('.settings-container') as HTMLElement;
+    this.sortList = new SortList()
+  }
 }
-
-function sortData (value: string, currentData: Array<ICard>) : Array<ICard> {
-  let newCardsData: Array<ICard> = [];
-  switch (value) {
-      case Sorting.minName:
-        newCardsData = cardsData.slice().sort((prev:ICard, next:ICard) => ((prev.name === next.name) ? 0: prev.name < next.name ? 1 : -1))
-      break;
-      case Sorting.maxName:
-        newCardsData = cardsData.slice().sort((prev:ICard, next:ICard) => ((prev.name === next.name) ? 0: next.name < prev.name ? 1 : -1))
-       break;
-     case Sorting.minYear:
-       newCardsData = cardsData.slice().sort((prev:ICard, next:ICard) => ((prev.year === next.year) ? 0: next.year < prev.year ? -1 : 1))
-       break;
-     case Sorting.maxYear:
-       newCardsData = cardsData.slice().sort((prev:ICard, next:ICard) => ((prev.year === next.year) ? 0: next.year < prev.year ? 1 : -1))
-      }
-       return (newCardsData);
-}
-
-function sortCards(value: string){
-  console.log(1)
-  
-  let data = sortData (value, cardsData);
-  console.log(data)
- 
-  const sortCard = new CardsContainer();
-  sortCard.draw(data);
-}
-
-selectSortList.addEventListener('click', () => sortCards(selectSortList.value));
 
 const countRange1 = document.getElementById('count-range1') as HTMLInputElement;
 const countRange2 = document.getElementById('count-range2') as HTMLInputElement;
@@ -81,4 +50,3 @@ yearRange2.addEventListener('input', (e) =>{
   yearMax.value = yearRange2.value
 })
 
-export {selectSortList, sortData, sortCards}

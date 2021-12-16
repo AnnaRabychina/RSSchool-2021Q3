@@ -1,16 +1,14 @@
 import './global.css';
+import {ToyPage} from './app/app'
 import cardsData from './view/cards/cardData';
 import {CardsContainer} from './view/cards/cards';
-import {sortCards, selectSortList, sortData} from './view/settings/settings'
 
-let currentDate = cardsData;
+export let currentData = cardsData;
 
 window.onload = () => {
-    const app = new CardsContainer();
-    app.draw(currentDate);
-    app.selectToy()
-
+    const app = new ToyPage()
+    console.log(app) 
+    app.start()
 }
 
 
-selectSortList.addEventListener('click', () => sortCards(selectSortList.value));

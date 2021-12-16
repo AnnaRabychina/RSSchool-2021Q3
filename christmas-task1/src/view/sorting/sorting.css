@@ -1,0 +1,21 @@
+.sort-select {
+    width: 95%;
+    height: 40px;
+    padding: 5px 25px;
+    margin: 10px;
+    margin-bottom: 30px;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    background-color: rgba(31, 112, 127, 0.3);
+    background-image: url("../../../assets/svg/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: 95% center;
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    border: 1px solid #278D9F;
+    line-height: 28px;
+    color: #fff;
+    cursor: pointer;
+}
