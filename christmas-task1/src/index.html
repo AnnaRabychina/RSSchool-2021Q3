@@ -63,20 +63,24 @@
           <div class="count">
             <p>Количество экземпляров:</p>
             <div class="count-slider-container">
-              <output class="slider-output-min">1</output>
+              <output class="count-min">1</output>
               <div class="container-slider">
-                <input type="range" min="0" step="1" max="10" value="3">
-                <input type="range" min="0" step="1" max="10" value="7">
+                <input id ="count-range1"  class= "count-range1" type="range" min="1" step="1" max="12" value="1">
+                <input id ="count-range2" class= "count-range2"type="range" min="1" step="1" max="12" value="12">
               </div>
-              <output class="slider-output-max">12</output>
+              <output class="count-max">12</output>
             </div>
           </div>
           <div class="year">
             <p>Год приобретения:<p> 
             <div class="year-slider-container">
-              <output class="slider-output">1940</output>
+              <output class="year-min">1940</output>
+              <div class="container-slider">
+                <input id ="year-range1"  class= "year-range1" type="range" min="1940" step="10" max="2020" value="1940">
+                <input id ="year-range2" class= "year-range2" type="range" min="1940" step="10" max="2020" value="2020">
+              </div>
               <div class="year-slider"></div>
-              <output class="slider-output">2020</output>
+              <output class="year-max">2020</output>
             </div>
           </div>
           <button class="reset">Сброс фильтров</button>

@@ -364,29 +364,32 @@ ul {
 .container-slider{
     position: relative;
     pointer-events: none;
-    width: 270px;
+    width: 100%;
 }
-  
-  .container-slider input[type="range"]{
-    height: 2em;
+
+.container-slider input[type="range"]{
+    height: 5px;
     display: block;
     margin: 0;
-  }
+    width: 100%;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 3px;
+    background: #278D9F
+}
+
+.container-slider input[type="range"]:last-child{
+    margin-top: -5px;
+}
   
-  .container-slider input[type="range"]:last-child{
-    margin-top: -2em;
-  }
-  
-  input[type="range"]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
     pointer-events: all;
-  }
-
-
-.count-slider,
-.year-slider {
-    display: inline-block;
-    height: 6px;
-    width: 270px;
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #fff ;
 }
 
 output {

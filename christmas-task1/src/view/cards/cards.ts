@@ -13,11 +13,11 @@ export interface ICard {
 }
 
 export class CardsContainer {
-  cardsContainer: HTMLElement;
+  public cardsContainer: HTMLElement;
   constructor() {
     this.cardsContainer = document.querySelector('.cards-container') as HTMLElement;
   }
-   draw(data:Array<ICard>) {
+   draw(data:Array<ICard>): void {
       this.clear();
       data.forEach(element => {
         const cardItem = insertElement(this.cardsContainer, 'div', 'card-item','');
@@ -37,16 +37,16 @@ export class CardsContainer {
      });
   }
 
-  clear() {
+  clear() : void {
     this.cardsContainer.innerHTML=''
   }
 
   selectToy() {
     const selectedCards = new Set();
       this.cardsContainer.addEventListener('click', function(event) {
-        let target =<HTMLElement> event.target;
-        let card =<HTMLElement> target.closest('.card-item')
-        if ( selectedCards.size === 20 && !card.classList.contains('selected')){
+        let target = event.target as HTMLElement;
+        let card = target.closest('.card-item') as HTMLElement;
+        if (selectedCards.size === 20 && !card.classList.contains('selected')){
           alert('Извините, все слоты заполнены');
         } else {
           if (card){
