@@ -19,30 +19,33 @@ export class SortList {
       }
     }
     sort() {
-      sortCards(this.selectSortList.value)
+      sortCards(this.selectSortList.value);
+  }
+}
+
+export function sortCards(value: string){
+    switch (value) {
+    case Sorting.minName:
+      sortData(Sorting.minName, 'name', false); 
+      break;
+    case Sorting.maxName:
+      sortData(Sorting.minName, 'name', true);
+      break;
+   case Sorting.minYear:
+     sortData(Sorting.minName, 'year', false);
+     break;
+   case Sorting.maxYear:
+     sortData(Sorting.minName, 'year', true);
+  }
+    const sortCard = new CardsContainer();
+    sortCard.draw(currentData);
+  }
+  
+  export  function sortData (value: string, field: keyof ICard, revers:boolean) {
+    if (!revers) {
+      currentData.sort((prev:ICard, next:ICard) => ((prev[field] === next[field]) ? 0: next[field] > prev[field] ? 1 : -1))
+    } else {
+      currentData.sort((prev:ICard, next:ICard) => ((prev[field] === next[field]) ? 0: next[field] < prev[field] ? 1 : -1))
     }
   }
-  
-export function sortCards(value: string){
-    let data = sortData (value, currentData);
-    const sortCard = new CardsContainer();
-    sortCard.draw(data);
-  }
-  
-export  function sortData (value: string, currentData: Array<ICard>) : Array<ICard> {
-    let newCardsData: Array<ICard> = [];
-    switch (value) {
-        case Sorting.minName:
-          newCardsData = currentData.slice().sort((prev:ICard, next:ICard) => ((prev.name === next.name) ? 0: prev.name < next.name ? 1 : -1))
-        break;
-        case Sorting.maxName:
-          newCardsData = currentData.slice().sort((prev:ICard, next:ICard) => ((prev.name === next.name) ? 0: next.name < prev.name ? 1 : -1))
-         break;
-       case Sorting.minYear:
-         newCardsData = currentData.slice().sort((prev:ICard, next:ICard) => ((prev.year === next.year) ? 0: next.year < prev.year ? -1 : 1))
-         break;
-       case Sorting.maxYear:
-         newCardsData = currentData.slice().sort((prev:ICard, next:ICard) => ((prev.year === next.year) ? 0: next.year < prev.year ? 1 : -1))
-        }
-         return (newCardsData);
-  }
+
