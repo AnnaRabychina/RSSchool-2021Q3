@@ -1,3 +1,4 @@
+import { changeProperty } from '../cards/cards';
 import { SortList } from '../sorting/sorting';
 
 export class SettingsContainer {
@@ -50,3 +51,11 @@ yearRange2.addEventListener('input', (e) =>{
   yearMax.value = yearRange2.value
 })
 
+const shapeButtons = document.querySelectorAll('.shape button') ;
+shapeButtons.forEach(button => button.addEventListener('click', () => changeProperty(button,'active' )));
+
+const colorButton = document.querySelectorAll('.color button') ;
+colorButton.forEach(button => button.addEventListener('click', () => changeProperty(button,'active' )));
+
+const sizeButton = document.querySelectorAll('.size button') ;
+sizeButton.forEach(button => button.addEventListener('click', () => changeProperty(button,'active' )));

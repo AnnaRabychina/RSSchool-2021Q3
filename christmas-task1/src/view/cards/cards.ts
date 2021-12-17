@@ -51,7 +51,7 @@ export class CardsContainer {
           alert('Извините, все слоты заполнены');
         } else {
           if (card){
-            changeMark(card);
+            changeProperty(card, 'selected');
             let num =  card.dataset.num;
             if (card.classList.contains('selected')){
               selectedCards.add(num);
@@ -65,7 +65,7 @@ export class CardsContainer {
     }
 }
 
-function insertElement(parentNode: HTMLElement, tagName: string, className: string, content: string): HTMLElement {
+export function insertElement(parentNode: HTMLElement, tagName: string, className: string, content: string): HTMLElement {
   const el = document.createElement(tagName);
   el.className = className;
   el.innerHTML = content;
@@ -76,8 +76,8 @@ function insertElement(parentNode: HTMLElement, tagName: string, className: stri
  }
 
 
- function changeMark(card: HTMLElement) : void {
-      card.classList.toggle('selected');
+export function changeProperty(elem: Element | HTMLButtonElement, nameProperty:string ) : void {
+  elem.classList.toggle(nameProperty);
  }
 
 

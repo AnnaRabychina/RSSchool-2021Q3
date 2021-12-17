@@ -192,14 +192,14 @@ ul {
     transition: 0.3s;
 }
 
-
-.shape button.active {
+.shape button.active,
+.size button.active {
     filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
 }
 
 .shape button:hover,
 .size button:hover {
-    filter: invert(90%) sepia(100%) saturate(300%) hue-rotate(140deg) brightness(70%) contrast(90%);
+    filter: invert(30%);
 }
 
 .shape button:nth-child(1) {
@@ -242,6 +242,19 @@ ul {
     border: 2px solid #121C1E;
 }
 
+.color button.active::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 9px;
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+}
+
 .color button:nth-child(1) {
     background-color: #fff;
     margin-left: 20px;
@@ -263,6 +276,13 @@ ul {
     background-color: #08AA05;
 }
 
+.color button.active:nth-child(1)::after,
+.color button.active:nth-child(2)::after,
+.color button.active:nth-child(3)::after,
+.color button.active:nth-child(4)::after,
+.color button.active:nth-child(5)::after {
+    border-color: #666;
+}
 .size button {
     position: relative;
     width: 50px;
