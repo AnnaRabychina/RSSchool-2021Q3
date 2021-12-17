@@ -1,5 +1,7 @@
-import './cards.css';
 import cardsData from './cardData';
+import './cards.css';
+
+let currentData = cardsData; 
 
 export interface ICard {
   num: string;
@@ -79,6 +81,4 @@ export function insertElement(parentNode: HTMLElement, tagName: string, classNam
 export function changeProperty(elem: Element | HTMLButtonElement, nameProperty:string ) : void {
   elem.classList.toggle(nameProperty);
  }
-
-
 

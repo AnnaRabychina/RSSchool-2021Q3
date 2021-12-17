@@ -1,7 +1,8 @@
 import './sorting.css';
-
-import { currentData } from '../..';
 import { CardsContainer, ICard } from '../cards/cards';
+import cardsData from '../cards/cardData';
+
+let currentData = cardsData;
 
 export const enum Sorting{
     minName="sort-name-min",

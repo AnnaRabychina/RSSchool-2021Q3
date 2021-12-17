@@ -283,6 +283,7 @@ ul {
 .color button.active:nth-child(5)::after {
     border-color: #666;
 }
+
 .size button {
     position: relative;
     width: 50px;
@@ -373,7 +374,7 @@ ul {
     -webkit-appearance: none;
     border: none;
     border-radius: 3px;
-    background: #278D9F
+    background: linear-gradient(to right, #fff  0%,#278D9F 0%, #278D9F  100%, #fff 100%);
 }
 
 .container-slider input[type="range"]:last-child{
