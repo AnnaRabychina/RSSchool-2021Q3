@@ -1,14 +1,13 @@
 import './sorting.css';
-import { CardsContainer, ICard } from '../cards/cards';
-import cardsData from '../cards/cardData';
-
-let currentData = cardsData;
+import { ICard } from '../cards/cards';
+import { getLocalStorage, setLocalStorage } from '../storage/storage';
+import { updateCardsContainer } from '../filters/filters';
 
 export const enum Sorting{
-    minName="sort-name-min",
-    maxName="sort-name-max",
-    maxYear ="sort-year-max",
-    minYear ="sort-year-min",
+    minName= '"sort-name-min"',
+    maxName= '"sort-name-max"',
+    maxYear = '"sort-year-max"',
+    minYear = '"sort-year-min"',
   }
 
 export class SortList {
@@ -20,33 +19,30 @@ export class SortList {
       }
     }
     sort() {
-      sortCards(this.selectSortList.value);
+      setLocalStorage('sortProperty', this.selectSortList.value);
+      updateCardsContainer();
   }
 }
 
-export function sortCards(value: string){
-    switch (value) {
+export function sortCards(value: string, data: ICard[]){
+  switch (value) {
     case Sorting.minName:
-      sortData(Sorting.minName, 'name', false); 
-      break;
+      return sortData(Sorting.minName, 'name', false, data); 
     case Sorting.maxName:
-      sortData(Sorting.minName, 'name', true);
-      break;
+      return sortData(Sorting.maxName, 'name', true, data);
    case Sorting.minYear:
-     sortData(Sorting.minName, 'year', false);
-     break;
+    return sortData(Sorting.minYear, 'year', false,  data);
    case Sorting.maxYear:
-     sortData(Sorting.minName, 'year', true);
+    return sortData(Sorting.maxYear, 'year', true,  data);
   }
-    const sortCard = new CardsContainer();
-    sortCard.draw(currentData);
-  }
+}
   
-  export  function sortData (value: string, field: keyof ICard, revers:boolean) {
+  export function sortData (value: string, field: keyof ICard, revers:boolean, data: ICard[]) {
     if (!revers) {
-      currentData.sort((prev:ICard, next:ICard) => ((prev[field] === next[field]) ? 0: next[field] > prev[field] ? 1 : -1))
+       return data.sort((prev:ICard, next:ICard) => ((prev[field] === next[field]) ? 0: next[field] > prev[field] ? 1 : -1)); 
     } else {
-      currentData.sort((prev:ICard, next:ICard) => ((prev[field] === next[field]) ? 0: next[field] < prev[field] ? 1 : -1))
+      return data.sort((prev:ICard, next:ICard) => ((prev[field] === next[field]) ? 0: next[field] < prev[field] ? 1 : -1))
     }
   }
+
 
