@@ -428,7 +428,6 @@ output {
     margin: 0 auto;
 }
 
-
 .copyright {
     padding-right: 20px;
 }
@@ -447,4 +446,28 @@ output {
     background-repeat: no-repeat;
     background-image: url("../assets/svg/rss.svg");
     transition: 0.3s;
+}
+
+@media (max-width: 1500px) { 
+    .cards-container {
+        width: 60%;
+    }
+    .settings-container {
+        width: 35%;
+    }
+    
+}
+
+@media (max-width: 1070px) { 
+    .cards-container {
+        width: 50%;
+    }
+    .settings-container {
+        width: 45%;
+    }
+
+    .search {
+        width: 300px;
+    }
+    
 }
