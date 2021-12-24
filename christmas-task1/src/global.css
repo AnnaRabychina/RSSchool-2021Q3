@@ -133,7 +133,7 @@ ul {
     background-color: #278D9F;
 }
 
-.main {
+.page {
     display: flex;
     min-width: 100%;
     min-height: calc(100vh - 140px);
@@ -142,7 +142,54 @@ ul {
     background-attachment: fixed;
 }
 
-.page {
+.page-start {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-start-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 600px;
+    height: 250px;
+    margin-bottom: 80px;
+    color: #fff;
+    font-weight: 400;
+    text-align: center;
+    border: 3px solid #278D9F;
+    border-radius: 25px;
+    background-color: rgba(31, 112, 127, .3);
+    backdrop-filter: blur(6px);
+    font-size: 48px;
+    white-space: pre-line;
+}
+
+.start-button {
+    position: relative;
+    width: 320px;
+    height: 60px;
+    border: 3px solid #278D9F;
+    border-radius: 30px;
+    background-color: rgba(31, 112, 127, .3);
+    backdrop-filter: blur(6px);
+    font-weight: 300;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-button:hover {
+    background-color: #278D9F;
+}
+
+.page-toys {
     display: flex;
     justify-content: space-between;
     max-width: 1600px;
@@ -150,7 +197,7 @@ ul {
     margin: 0 auto;
     padding: 40px 20px;
 }
- 
+
 .settings-container {
     position: sticky;
     display: flex;

@@ -24,24 +24,24 @@ export class CardsContainer {
    draw(data: Array<ICard>): void {
        this.clear();
        data.forEach((element) => {
-        const cardItem = insertElement(this.cardsContainer, 'div', ['card-item'], '');
+        const cardItem = insertElement('div', ['card-item'], '', this.cardsContainer);
         cardItem.dataset.num = element.num;
         let arr = getLocalStorage('selectedCards');
         if (arr && arr.includes(cardItem.dataset.num)) {
           cardItem.classList.add('selected');
         }
-        const cardTitle = insertElement(cardItem, 'h2', ['card-title'], element.name);
-        const cardImg = insertElement(cardItem, 'img', ['card-img'], '') as HTMLImageElement;
+        const cardTitle = insertElement('h2', ['card-title'], element.name, cardItem);
+        const cardImg = insertElement('img', ['card-img'], '', cardItem) as HTMLImageElement;
         cardImg.src = `../assets/toys/${element.num}.png`;
         cardImg.alt = element.name;
-        const cardInfo = insertElement(cardItem, 'div', ['card-info'], '');
-        const count = insertElement(cardInfo, 'p', ['count'], `Количество: <span> ${element.count}</span>`);
-        const year = insertElement(cardInfo, 'p', ['year'], `Год покупки:  <span> ${element.year}</span>`);
-        const shape = insertElement(cardInfo, 'p', ['shape'], `Форма:  <span> ${element.shape}</span>`);
-        const color = insertElement(cardInfo, 'p', ['color'], `Цвет:  <span> ${element.color}</span>`);
-        const size = insertElement(cardInfo, 'p', ['size'], `Размер:  <span> ${element.size}</span>`);
-        const favorite = insertElement(cardInfo,'p', ['favorite'], `Любимая: <span> ${element.favorite ? 'да' : 'нет'}</span>`);
-        const mark = insertElement(cardItem, 'div', ['mark'], '');
+        const cardInfo = insertElement('div', ['card-info'], '',cardItem);
+        const count = insertElement('p', ['count'], `Количество: <span> ${element.count}</span>`, cardInfo);
+        const year = insertElement('p', ['year'], `Год покупки:  <span> ${element.year}</span>`, cardInfo);
+        const shape = insertElement('p', ['shape'], `Форма:  <span> ${element.shape}</span>`, cardInfo);
+        const color = insertElement('p', ['color'], `Цвет:  <span> ${element.color}</span>`, cardInfo);
+        const size = insertElement('p', ['size'], `Размер:  <span> ${element.size}</span>`, cardInfo);
+        const favorite = insertElement('p', ['favorite'], `Любимая: <span> ${element.favorite ? 'да' : 'нет'}</span>`, cardInfo);
+        const mark = insertElement('div', ['mark'], '',cardItem);
       });
   }
 
@@ -75,7 +75,7 @@ export class CardsContainer {
     }
 }
 
-export function insertElement( parentNode: HTMLElement, tagName: string, className: Array<string>, content: string): HTMLElement {
+export function insertElement( tagName: keyof HTMLElementTagNameMap, className:string[], content: string, parentNode?: HTMLElement): HTMLElement {
   const el = document.createElement(tagName);
   el.classList.add(...className);
   el.innerHTML = content;
