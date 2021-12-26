@@ -1,6 +1,6 @@
-import { changeProperty } from "../components/cards/cards";
-import { setLocalStorage } from "../components/storage/storage";
-import { PageToys } from "../pages/page-toys";
+import { changeProperty } from '../components/cards/cards';
+import { setLocalStorage } from '../components/storage/storage';
+import { PageToys } from '../pages/page-toys';
 
 abstract class FilterToys {
   protected container: HTMLElement;

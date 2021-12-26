@@ -12,18 +12,18 @@ export const enum Sorting {
 
 export class SortList {
   container: HTMLElement;
-  sortList:  HTMLSelectElement;
+  sortList: HTMLSelectElement;
   constructor() {
-    this.container= document.createElement('div');
+    this.container = document.createElement('div');
     this.container.classList.add('sort');
-    this.sortList =  document.createElement('select');
+    this.sortList = document.createElement('select');
     this.sortList.classList.add('sort-select');
-    this.sortList.innerHTML=`
+    this.sortList.innerHTML = `
       <option value="sort-name-max">По названию от «А» до «Я»</option>
       <option value="sort-name-min">По названию от «Я» до «А»</option>
       <option value="sort-year-max">Год приобретения по возрастанию</option>
       <option value="sort-year-min">Год приобретения по убыванию</option>
-   `
+   `;
     this.sortList.onclick = () => {
       this.sort();
     };
@@ -31,7 +31,7 @@ export class SortList {
 
   private sort() {
     setLocalStorage('sortProperty', this.sortList.value);
-    PageToys.renderNewCardsContainer()
+    PageToys.renderNewCardsContainer();
   }
 
   render() {

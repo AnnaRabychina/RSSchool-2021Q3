@@ -75,7 +75,7 @@ export class App {
   }
 
   start() {
-    App.renderNewPage('page-tree');
+    App.renderNewPage('page-start');
     this.enableRouteChange();
   }
 }
