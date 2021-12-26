@@ -1,6 +1,6 @@
 import cardsData from '../components/cards/cardData';
 import { CardsContainer } from '../components/cards/cards';
-import { SettingsContainer } from '../components/settings/settings';
+import { SettingsContainer } from '../components/settings-card/settings';
 import { setLocalStorage } from '../components/storage/storage';
 import Page from '../templates/page';
 

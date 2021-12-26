@@ -79,7 +79,7 @@ export class CardsContainer {
         }
       }
     });
-    //(document.querySelector('.select-toys span') as HTMLElement).innerHTML = String(selectedCards.size);
+    (document.querySelector('.select-toys span') as HTMLElement).innerHTML = String(selectedCards.size);
   }
 
   render(): HTMLElement {
