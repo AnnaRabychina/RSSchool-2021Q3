@@ -1,9 +1,6 @@
-import { insertElement } from '../../app/app';
 import { PageToys } from '../../pages/page-toys';
 import FilterToys from '../../templates/filterToys';
-import { ICard, changeProperty, CardsContainer } from '../cards/cards';
-import { SettingsContainer } from '../settings/settings';
-import { sortCards } from '../sorting/sorting';
+import { ICard} from '../cards/cards';
 import { getLocalStorage, setLocalStorage } from '../storage/storage';
 
 const buttonsShape = ['шар', 'колокольчик', 'шишка', 'снежинка', 'фигурка'];

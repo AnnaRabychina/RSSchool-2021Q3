@@ -1,44 +1,62 @@
-import cardsData from "../components/cards/cardData";
-import { setLocalStorage } from "../components/storage/storage";
-import { PageToys } from "../pages/page-toys";
+import cardsData from '../components/cards/cardData';
+import Header from '../components/header/header';
+import { setLocalStorage } from '../components/storage/storage';
+import { PageStart } from '../pages/page-start';
+import { PageToys } from '../pages/page-toys';
+import { PageTree } from '../pages/page-tree';
+import Page from '../templates/page';
 
 setLocalStorage('currentData', [...cardsData]);
 
+export const enum PageIds {
+  PageStart = 'page-start',
+  PageToys = 'page-toys',
+  PageTree = 'page-tree',
+}
+
 export class App {
-  private container: HTMLElement;
-  private toysPage: PageToys;
+  private static container: HTMLElement = document.body;
+  private static defaultPageId: string = 'current-page';
+  static header: Header;
 
-  constructor() {
-    this.container = document.body;
-    this.toysPage = new PageToys('page-toys');
+  static renderNewPage(idPage: string) {
+    const currentPageHTML = document.querySelector(`#${App.defaultPageId}`);
+    if (currentPageHTML) {
+      currentPageHTML.remove();
+      document.body.innerHTML = '';
+    }
+
+    let page: Page | null = null;
+
+    if (idPage === PageIds.PageStart) {
+      page = new PageStart(idPage);
+    } else if (idPage === PageIds.PageToys) {
+      page = new PageToys(idPage);
+    } else if (idPage === PageIds.PageTree) {
+      page = new PageTree(idPage);
+    }
+
+    if (page) {
+      const headerHTML = new Header('header', ['header']);
+      App.container.append(headerHTML.render());
+      const pageHTML = page.render();
+      pageHTML.id = App.defaultPageId;
+      App.container.append(pageHTML);
+      App.container.append(App.createFooter());
+    }
   }
 
-  private createHeader() {
-    const header: HTMLElement = document.createElement('header');
-    header.classList.add('header');
-    header.innerHTML = `<div class="container">
-     <div class="header-row">
-       <nav class="nav">
-         <a class="logo btn-page-start" href="#"> </a>
-         <a class="nav-link btn-page-toys" href="#">игрушки</a>
-         <a class="nav-link btn-page-tree" href="#">ёлка</a>
-       </nav>
-       <div class="header-controls">
-         <input type="search" class="search" autocomplete="off" autofocus placeholder="Введите текст для поиска" />
-         <div class="select-toys">
-           <span>0</span>
-         </div>
-       </div>
-     </div>
-   </div>
-   `;
-    return header;
+  private enableRouteChange() {
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.slice(1);
+      App.renderNewPage(hash);
+    });
   }
 
-  private createFooter() {
+  static createFooter(): string | Node {
     const footer: HTMLElement = document.createElement('footer');
     footer.classList.add('footer');
-    footer.innerHTML = `     <div class="container">
+    footer.innerHTML = `     
     <div class="footer-row">
       <div class="footer-info">
         <p class="copyright">©</p>
@@ -52,33 +70,12 @@ export class App {
         target="_blank"
       ></a>
     </div>
-  </div>
  `;
     return footer;
   }
-  start() {
-    const header = this.createHeader();
-    this.container.append(header);
-    const toysPageHTML = this.toysPage.render();
-    this.container.append(toysPageHTML);
-    const footer = this.createFooter();
-    this.container.append(footer);
-  }
-}
 
-export function insertElement(
-  tagName: keyof HTMLElementTagNameMap,
-  className: string[],
-  content: string | undefined,
-  parentNode?: HTMLElement | null
-): HTMLElement {
-  const el = document.createElement(tagName);
-  el.classList.add(...className);
-  if (content) {
-    el.innerHTML = content;
+  start() {
+    App.renderNewPage('page-tree');
+    this.enableRouteChange();
   }
-  if (parentNode) {
-    parentNode.append(el);
-  }
-  return el;
 }

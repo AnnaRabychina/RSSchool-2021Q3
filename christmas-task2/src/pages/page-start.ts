@@ -1,4 +1,4 @@
-import { insertElement } from "../app/app";
+import { insertElement } from "../components/cards/cards";
 import Page from "../templates/page";
 
 export class PageStart extends Page{

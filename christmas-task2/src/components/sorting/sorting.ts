@@ -1,7 +1,6 @@
 import './sorting.css';
-import { ICard } from '../cards/cards';
+import { ICard, insertElement } from '../cards/cards';
 import { getLocalStorage, setLocalStorage } from '../storage/storage';
-import { insertElement } from '../../app/app';
 import { PageToys } from '../../pages/page-toys';
 
 export const enum Sorting {
