@@ -61,6 +61,7 @@ export class FilterSize extends FilterToys {
 export class FilterFavorite {
   container: HTMLElement;
   favoriteInput: HTMLInputElement;
+  
   constructor() {
     this.container = document.createElement('div');
     this.container.classList.add('favorite-container');
@@ -107,12 +108,3 @@ export function filterData() {
 
   return newData;
 }
-
-/*let sortProperty = localStorage.getItem('sortProperty');
-if (sortProperty) {
-  (document.querySelectorAll('.sort-select option') as NodeListOf<HTMLOptionElement>).forEach((option) => {
-    if (option.value === sortProperty) {
-      option.selected = true;
-    }
-  });
-}*/

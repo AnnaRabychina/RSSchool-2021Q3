@@ -3,6 +3,7 @@ import { PageTree } from '../pages/page-tree';
 
 abstract class SettingsMenu {
   protected container: HTMLElement;
+  
   constructor() {
     this.container = document.createElement('div');
   }

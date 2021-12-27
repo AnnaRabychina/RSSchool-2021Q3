@@ -19,6 +19,7 @@ export interface ICard {
 
 export class CardsContainer {
   public cardsContainer: HTMLElement;
+  
   constructor() {
     this.cardsContainer = document.createElement('div');
     this.cardsContainer.classList.add('cards-container');

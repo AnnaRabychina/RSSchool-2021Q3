@@ -7,6 +7,7 @@ let sizeFavorites = 20;
 
 export class FavoritesCards {
   public container: HTMLElement;
+  
   constructor() {
     this.container = document.createElement('div');
     this.container.classList.add('favorites-container');
@@ -41,6 +42,7 @@ export class FavoritesCards {
     const favoriteImg = insertElement('img', ['favorites-card-img'], '', favoriteItem) as HTMLImageElement;
     favoriteImg.src = `../assets/toys/${element.num}.png`;
     favoriteImg.alt = 'toy';
+    favoriteImg.draggable = true;
   }
 
   private clear(): void {

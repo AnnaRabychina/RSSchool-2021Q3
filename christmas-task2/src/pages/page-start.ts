@@ -2,6 +2,7 @@ import { insertElement } from '../components/cards/cards';
 import Page from '../templates/page';
 
 export class PageStart extends Page {
+  
   constructor(id: string) {
     super(id);
     this.container.classList.add('page');

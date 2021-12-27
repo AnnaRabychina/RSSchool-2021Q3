@@ -20,6 +20,7 @@ const Buttons = [
 ];
 
 class Header extends Component {
+  
   constructor(tagName: keyof HTMLElementTagNameMap, className: string[]) {
     super(tagName, className);
   }
