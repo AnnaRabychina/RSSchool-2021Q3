@@ -1,3 +1,4 @@
+import './favorites.css'
 import cardsData from '../cards/cardData';
 import { ICard, insertElement, changeProperty } from '../cards/cards';
 import { getLocalStorage } from '../storage/storage';

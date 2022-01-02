@@ -27,6 +27,11 @@ export class PageTree extends Page {
     PageTree.treeContainer.render();
   }
 
+  static renderNewGarland(color:string) {
+    TreeContainer.garlandContainer.createLightRopes(color);
+    TreeContainer.garlandContainer.render();
+  }
+
   render(): HTMLElement {
     const page = insertElement('div', ['page', 'page-tree'], '', this.container);
     const pageContainer = insertElement('div', ['page-container'], '', page);

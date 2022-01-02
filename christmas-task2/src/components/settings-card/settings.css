@@ -1,0 +1,250 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  top: 40px;
+  height: fit-content;
+  width: 30%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #278d9f;
+  backdrop-filter: blur(6px);
+  background-color: rgba(40, 94, 104, 0.6);
+}
+
+.controls-title {
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.shape,
+.color,
+.size {
+  display: flex;
+  align-items: center;
+}
+
+.shape button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 10px 7px;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.shape button.active,
+.size button.active {
+  filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
+}
+
+.shape button:hover,
+.size button:hover {
+  filter: invert(30%);
+}
+
+.shape button:nth-child(1) {
+  background-image: url('/assets/svg/ball.svg');
+  margin-left: 20px;
+}
+
+.shape button:nth-child(2) {
+  background-image: url('/assets/svg/bell.svg');
+}
+
+.shape button:nth-child(3) {
+  background-image: url('/assets/svg/cone.svg');
+}
+
+.shape button:nth-child(4) {
+  background-image: url('/assets/svg/snowflake.svg');
+}
+
+.shape button:nth-child(5) {
+  background-image: url('/assets/svg/toy.svg');
+  width: 50px;
+}
+
+.color button {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 15px 10px;
+  border: 1px solid #278d9f;
+  border-radius: 5px;
+  outline: 0;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.color button:hover,
+.favorite-input-label:hover {
+  border: 2px solid #121c1e;
+}
+
+.color button.active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 9px;
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+
+.color button:nth-child(1) {
+  background-color: #fff;
+  margin-left: 20px;
+}
+
+.color button:nth-child(2) {
+  background-color: #fdd700;
+}
+
+.color button:nth-child(3) {
+  background-color: #fd0000;
+}
+
+.color button:nth-child(4) {
+  background-color: #2199eb;
+}
+
+.color button:nth-child(5) {
+  background-color: #08aa05;
+}
+
+.color button.active:nth-child(1)::after,
+.color button.active:nth-child(2)::after,
+.color button.active:nth-child(3)::after,
+.color button.active:nth-child(4)::after,
+.color button.active:nth-child(5)::after {
+  border-color: #666;
+}
+
+.size button {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 5px 5px;
+  border: 0;
+  outline: 0;
+  background-image: url(/assets/svg/ball.svg);
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.size button:nth-child(2) {
+  background-size: 40px 40px;
+}
+
+.size button:nth-child(3) {
+  background-size: 30px 30px;
+}
+
+.favorite-container {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  margin: 0;
+}
+
+.favorite-input {
+  width: initial;
+  height: initial;
+  display: none;
+}
+
+.favorite-input-label {
+  position: relative;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  backdrop-filter: blur(6px);
+  border: 1px solid #278d9f;
+  border-radius: 5px;
+  padding: 0;
+  margin: 0;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.favorite-input-label:hover {
+  background-color: #278d9f;
+}
+
+.favorite-input:checked + .favorite-input-label::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 9px;
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+
+.year-slider-container,
+.count-slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container-slider {
+  position: relative;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-slider input[type='range'] {
+  height: 5px;
+  display: block;
+  margin: 0;
+  width: 100%;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 3px;
+  background: linear-gradient(to right, #fff 0%, #278d9f 0%, #278d9f 100%, #fff 100%);
+}
+
+.container-slider input[type='range']:last-child {
+  margin-top: -5px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  pointer-events: all;
+  -webkit-appearance: none;
+  border: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+output {
+  margin: 10px 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 80px;
+  height: 40px;
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  border: 1px solid #278d9f;
+}

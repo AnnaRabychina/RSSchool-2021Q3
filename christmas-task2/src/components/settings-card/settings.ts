@@ -1,3 +1,4 @@
+import './settings.css'
 import { insertElement } from '../cards/cards';
 import { FilterColor, FilterFavorite, FilterShape, FilterSize } from '../filters/filters';
 import { SortList } from '../sorting/sorting';

@@ -62,6 +62,7 @@ export class CardsContainer {
     let arr = getLocalStorage('selectedCards');
     const selectedCards = arr === [] ? new Set() : new Set(arr);
     this.cardsContainer.addEventListener('click', (event) => {
+      console.log(event.target);
       let target = event.target as HTMLElement;
       let card = target.closest('.card-item') as HTMLElement;
       if (selectedCards.size === 20 && !card.classList.contains('selected')) {
@@ -93,7 +94,9 @@ export class CardsContainer {
   }
 }
 
-export function changeProperty(elem: Element | HTMLButtonElement, nameProperty: string): void {
+export function changeProperty(
+  elem: Element | HTMLButtonElement, 
+  nameProperty: string): void {
   elem.classList.toggle(nameProperty);
 }
 

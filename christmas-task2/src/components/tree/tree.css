@@ -1,0 +1,206 @@
+.main-tree-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  background-image: url(/assets/bg/1.jpg);
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 140px);
+  min-height: 750px;
+  width: 800px;
+  padding-bottom: 20px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.snow-container {
+  height: calc(100vh - 150px);
+  width: 800px;
+  position: absolute;
+  left: 50%;
+  margin-left: -400px;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden;
+}
+
+i {
+  display: inline-block;
+  animation: snowflakes linear forwards;
+  position: relative;
+}
+
+i:after,
+i:before {
+  height: 100%;
+  width: 100%;
+  content: '.';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(120deg);
+}
+
+i:before {
+  transform: rotate(240deg);
+}
+
+i,
+i:after,
+i:before {
+  background: white;
+  pointer-events: none;
+}
+
+@keyframes snowflakes {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.5);
+  }
+  100% {
+    transform: translate3d(15px, 1200px, 0px) rotate(360deg) scale(0.5);
+  }
+}
+
+.snow-container i:nth-child(3n) {
+  width: 24px;
+  height: 6px;
+  animation-duration: 6s;
+  animation-iteration-count: 45;
+  transform-origin: right -30px;
+}
+
+.garland-tree-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  height: calc(100vh - 150px);
+  width: 800px;
+  left: 50%;
+  position: absolute;
+  margin-left: -400px;
+  pointer-events: none;
+  z-index: 90;
+}
+
+.lightropes {
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0;
+  pointer-events: none;
+  margin: 50px auto 0;
+}
+
+.lightropes:first-child {
+  margin-top: 100px;
+}
+
+.light {
+  position: relative;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin: -5px;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+}
+
+.lightropes .light:nth-child(2n + 1) {
+  -webkit-animation-duration: 1.8s;
+  animation-duration: 1.8s;
+}
+
+.lightropes .light:nth-child(3n + 1) {
+  -webkit-animation-duration: 1.4s;
+  animation-duration: 1.4s;
+}
+
+.lightropes .light.multicolor:nth-child(1n + 1) {
+  animation-name: red;
+}
+
+.lightropes .light.multicolor:nth-child(2n + 2) {
+  animation-name: green;
+}
+
+.lightropes .light.multicolor:nth-child(3n + 3) {
+  animation-name: blue;
+}
+
+.lightropes .light.multicolor:nth-child(4n + 4) {
+  animation-name: yellow;
+}
+
+.lightropes .red {
+  animation-name: red;
+}
+
+.lightropes .green {
+  animation-name: green;
+}
+
+.lightropes .yellow {
+  animation-name: yellow;
+}
+
+.lightropes .blue {
+  animation-name: blue;
+}
+
+@keyframes green {
+  0%,
+  100% {
+    background: rgba(0, 247, 165, 1);
+    box-shadow: 0px 2px 12px 2px rgb(0 247 165);
+  }
+
+  50% {
+    background: rgba(0, 247, 165, 0.4);
+    box-shadow: 0px 2px 12px 2px rgb(0 247 165 / 20%);
+  }
+}
+
+@keyframes blue {
+  0%,
+  100% {
+    background: rgba(0, 255, 255, 1);
+    box-shadow: 0px 2px 12px 2px rgb(0 255 255);
+  }
+
+  50% {
+    background: rgba(0, 255, 255, 0.4);
+    box-shadow: 0px 2px 12px 2px rgb(0 255 255 / 20%);
+  }
+}
+
+@keyframes red {
+  0%,
+  100% {
+    background: rgba(247, 0, 118, 1);
+    box-shadow: 0px 2px 10px 2px rgb(247 0 118);
+  }
+  50% {
+    background: rgba(247, 0, 118, 0.4);
+    box-shadow: 0px 2px 10px 2px rgb(247 0 118 / 20%);
+  }
+}
+
+@keyframes yellow {
+  0%,
+  100% {
+    background: rgba(255, 255, 0, 1);
+    box-shadow: 0px 2px 12px 2px rgb(255 255 0);
+  }
+
+  50% {
+    background: rgba(255, 255, 0, 0.4);
+    box-shadow: 0px 2px 12px 2px rgb(255 255 0 / 20%);
+  }
+}
