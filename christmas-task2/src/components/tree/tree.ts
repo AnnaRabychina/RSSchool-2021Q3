@@ -1,5 +1,6 @@
-import  './tree.css';
+import './tree.css';
 import { getLocalStorage } from '../storage/storage';
+import { PageTree } from '../../pages/page-tree';
 
 export class TreeContainer {
   public container: HTMLElement;
@@ -18,6 +19,7 @@ export class TreeContainer {
     this.clear();
     this.container.append(TreeContainer.snowContainer);
     this.container.append(TreeContainer.garlandContainer.render());
+
     let numImgTree = 1;
     let numBgTree = 1;
 
@@ -35,9 +37,9 @@ export class TreeContainer {
     treeImg.useMap = '#tree-map';
     this.container.style.backgroundImage = `url(../assets/bg/${numBgTree}.jpg)`;
     this.container.append(treeImg);
-    const map = document.createElement('map') as HTMLMapElement;
+    const map = <HTMLMapElement>document.createElement('map');
     map.name = 'tree-map';
-    const area = document.createElement('area') as HTMLAreaElement;
+    const area = <HTMLAreaElement>document.createElement('area');
     area.coords =
       '365,699,189,706,113,683,31,608,2,555,2,539,18,437,73,351,106,224,161,134,243,-1,306,75,353,144,399,221,424,359,452,459,496,550,444,664';
     area.shape = 'poly';
@@ -60,14 +62,14 @@ export class GarlandContainer {
 
   constructor() {
     this.container = document.createElement('div');
-    this.container.classList.add('garland-tree-container', 'hide');
+    this.container.classList.add('garland-tree-container');
   }
 
   public clear(): void {
     this.container.innerHTML = '';
   }
 
-  public createLightRopes(color: string) {
+  public renderLightRopes(color: string) {
     this.clear();
     let countLightRopes = 8;
     let width = 30;
@@ -75,13 +77,13 @@ export class GarlandContainer {
     let countLight = 5;
 
     for (let i = 0; i < countLightRopes; i++) {
-      const lightRopes: HTMLElement = document.createElement('ul');
-      lightRopes.classList.add('lightropes');
+      const lightRopes = <HTMLElement>document.createElement('ul');
+      lightRopes.classList.add('light-ropes');
       let angle = 100 / countLight;
       let rotate = 40;
 
       for (let i = 0; i <= countLight; i++) {
-        const light: HTMLElement = document.createElement('li');
+        const light = <HTMLElement>document.createElement('li');
         light.classList.add('light', color);
         light.style.transform = `rotate(${rotate}deg) translate(${width / 2}px) rotate(-${rotate}deg)`;
         rotate = rotate + angle;
@@ -94,7 +96,15 @@ export class GarlandContainer {
   }
 
   public render(): HTMLElement {
-   // this.createLightRopes('red');
+    if (getLocalStorage('isOnGarland')) {
+      let color = 'red';
+
+      if (getLocalStorage('garlandColor')) {
+        color = getLocalStorage('garlandColor');
+      }
+
+      this.renderLightRopes(color);
+    }
     return this.container;
   }
 }

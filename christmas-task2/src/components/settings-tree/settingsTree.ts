@@ -3,7 +3,6 @@ import { PageTree } from '../../pages/page-tree';
 import SettingsMenu from '../../templates/settingsMenu';
 import { TreeContainer } from '../tree/tree';
 import { getLocalStorage, setLocalStorage } from '../storage/storage';
-import { changeProperty } from '../cards/cards';
 
 const buttonsGarland = ['red', 'blue', 'yellow', 'green', 'multicolor'];
 let isPlay = false;
@@ -165,24 +164,29 @@ export class SettingsGarland {
     };
   }
 
-  setGarland() {
+  setGarland(): void {
     setLocalStorage('isOnGarland', this.garlandInput.checked ? 'true' : '');
-    if (!this.garlandInput.checked) {
+    SettingsGarland.turnOnGarland();
+  }
+
+  static turnOnGarland(): void {
+    if (getLocalStorage('isOnGarland')) {
+      TreeContainer.garlandContainer.render();
+    } else {
       TreeContainer.garlandContainer.clear();
     }
   }
 
-  renderInputContainer() {
-    let isOnGarland = getLocalStorage('isOnGarland');
-    if (isOnGarland) {
+  renderInputContainer(): HTMLElement {
+    if (getLocalStorage('isOnGarland')) {
       this.garlandInput.checked = true;
     } else {
       this.garlandInput.checked = false;
     }
-    const garlandInputContainer = document.createElement('div');
+    const garlandInputContainer = <HTMLElement>document.createElement('div');
     garlandInputContainer.classList.add('on-switch');
     garlandInputContainer.append(this.garlandInput);
-    const label = document.createElement('label');
+    const label = <HTMLLabelElement>document.createElement('label');
     label.classList.add('on-switch-label');
     label.setAttribute('for', 'garland-on-switch');
     label.innerHTML = `
@@ -214,29 +218,21 @@ export class ButtonsGarland {
 
   renderButtonsGarland(arrButtons: Array<string>) {
     arrButtons.forEach((button) => {
-      const buttonHTML: HTMLButtonElement = document.createElement('button');
+      const buttonHTML = <HTMLButtonElement>document.createElement('button');
       buttonHTML.classList.add(`${button}-btn`, 'color-btn');
       buttonHTML.dataset.color = button;
       this.container.append(buttonHTML);
     });
   }
 
-  turnOnGarland(color: string): void {
-    let isOnGarland = getLocalStorage('isOnGarland');
-    if (isOnGarland) {
-      PageTree.renderNewGarland(color);
-    } else {
-      TreeContainer.garlandContainer.clear();
-    }
-  }
-
   setColorGarland() {
     this.container.addEventListener('click', (event: Event) => {
-      let target = event.target as HTMLElement;
-      let btn = target.closest('.color-btn') as HTMLElement;
+      let target = <HTMLElement>event.target;
+      let btn = <HTMLElement>target.closest('.color-btn');
       if (btn) {
-        let color = target.dataset.color as string;
-        this.turnOnGarland(color);
+        let color = <string>target.dataset.color;
+        setLocalStorage('garlandColor', color);
+        SettingsGarland.turnOnGarland();
       }
     });
   }

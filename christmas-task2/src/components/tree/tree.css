@@ -83,7 +83,7 @@ i:before {
   z-index: 90;
 }
 
-.lightropes {
+.light-ropes {
   display: block;
   text-align: center;
   white-space: nowrap;
@@ -92,7 +92,7 @@ i:before {
   margin: 50px auto 0;
 }
 
-.lightropes:first-child {
+.light-ropes:first-child {
   margin-top: 100px;
 }
 
@@ -112,45 +112,45 @@ i:before {
   -webkit-animation-duration: 2s;
 }
 
-.lightropes .light:nth-child(2n + 1) {
+.light-ropes .light:nth-child(2n + 1) {
   -webkit-animation-duration: 1.8s;
   animation-duration: 1.8s;
 }
 
-.lightropes .light:nth-child(3n + 1) {
+.light-ropes .light:nth-child(3n + 1) {
   -webkit-animation-duration: 1.4s;
   animation-duration: 1.4s;
 }
 
-.lightropes .light.multicolor:nth-child(1n + 1) {
+.light-ropes .light.multicolor:nth-child(1n + 1) {
   animation-name: red;
 }
 
-.lightropes .light.multicolor:nth-child(2n + 2) {
+.light-ropes .light.multicolor:nth-child(2n + 2) {
   animation-name: green;
 }
 
-.lightropes .light.multicolor:nth-child(3n + 3) {
+.light-ropes .light.multicolor:nth-child(3n + 3) {
   animation-name: blue;
 }
 
-.lightropes .light.multicolor:nth-child(4n + 4) {
+.light-ropes .light.multicolor:nth-child(4n + 4) {
   animation-name: yellow;
 }
 
-.lightropes .red {
+.light-ropes .red {
   animation-name: red;
 }
 
-.lightropes .green {
+.light-ropes .green {
   animation-name: green;
 }
 
-.lightropes .yellow {
+.light-ropes .yellow {
   animation-name: yellow;
 }
 
-.lightropes .blue {
+.light-ropes .blue {
   animation-name: blue;
 }
 
