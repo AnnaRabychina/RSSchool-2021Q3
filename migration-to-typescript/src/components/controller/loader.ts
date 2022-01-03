@@ -1,22 +1,24 @@
-import {CallbackType} from '../controller/controller';
+import { CallbackType, TUrlOptions } from './options';
+
 class Loader {
     baseLink: string;
-      options: { [key: string]: string };
-      constructor(baseLink: string, options: { [key: string]: string }) {
-          this.baseLink = baseLink;
-          this.options = options;
+    options: TUrlOptions;
+      
+    constructor(baseLink: string, options: TUrlOptions) {
+        this.baseLink = baseLink;
+        this.options = options;
       }
 
     getResp(
         { endpoint, options = {} }: { endpoint: string; options?: Record<string, unknown> },
-        callback: CallbackType<object> = () => {
+          callback: CallbackType<object> = () => {
             console.error('No callback for GET response');
         }
-    ) {
-        this.load('GET', endpoint, callback, options);
+    ): void {
+        this.load('GET', endpoint, callback, options); 
     }
 
-    errorHandler(res: Response) {
+    errorHandler(res: Response): Response {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -26,8 +28,9 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: object, endpoint:string) {
-        const urlOptions = { ...this.options, ...options };
+    makeUrl(options: object, endpoint: string): string {
+        console.log('option', options);
+        const urlOptions: TUrlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
         Object.keys(urlOptions).forEach((key) => {
@@ -37,7 +40,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method:string, endpoint:string, callback:CallbackType<object>, options = {}) {
+    load(method: string, endpoint: string, callback: CallbackType<object>, options = {}): void{
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

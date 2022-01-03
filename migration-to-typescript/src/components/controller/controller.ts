@@ -1,10 +1,8 @@
 import AppLoader from './appLoader';
-import {IApiSources, IApiNews} from '../view/appView'; 
-
-export type CallbackType<T> = (data: T) => void;
+import { IApiSources, IApiNews, CallbackType } from './options';
 
 class AppController extends AppLoader {
-        getSources(callback:CallbackType<IApiSources>) {
+        getSources(callback: CallbackType<IApiSources>) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -13,14 +11,14 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback:CallbackType<IApiNews>) : void {
-        let target = e.target as HTMLElement;
-        const newsContainer = e.currentTarget as HTMLElement;
+    getNews(e: Event, callback: CallbackType<IApiNews>): void {
+        let target = <HTMLElement> e.target;
+        const newsContainer = <HTMLElement> e.currentTarget;
 
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id') as string;
+                const sourceId = <string>target.getAttribute('data-source-id');
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
@@ -35,7 +33,7 @@ class AppController extends AppLoader {
                 }
                 return;
             }
-            target = target.parentNode as HTMLElement;
+            target = <HTMLElement> target.parentNode;
         }
     }
 }

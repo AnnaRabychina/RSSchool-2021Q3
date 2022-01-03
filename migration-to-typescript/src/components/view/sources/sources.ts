@@ -1,13 +1,14 @@
 import './sources.css';
-import {ISource} from '../appView';
+import { ISource } from '../../controller/options';
 
 class Sources {
-    draw(data:Array<ISource>) : void {
-        const fragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp')  as HTMLTemplateElement;;
+    draw(data:Array<ISource>): void {
+        const fragment = <DocumentFragment> document.createDocumentFragment();
+        const sourceItemTemp = <HTMLTemplateElement> document.querySelector('#sourceItemTemp');
 
         data.forEach((item) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLTemplateElement;;
+            const sourceClone = <HTMLTemplateElement> sourceItemTemp.content.cloneNode(true);
+            console.log(item);
 
             (sourceClone.querySelector('.source__item-name') as HTMLElement).textContent = item.name;
             (sourceClone.querySelector('.source__item') as HTMLElement).setAttribute('data-source-id', item.id);

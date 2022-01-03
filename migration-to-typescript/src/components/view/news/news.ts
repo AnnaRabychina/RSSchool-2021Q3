@@ -1,15 +1,15 @@
+import { IArticle } from '../../controller/options';
 import './news.css';
-import { IArticle } from '../appView';
 
 class News {
-    draw(data:Array<IArticle>) : void {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    draw(data:Array<IArticle>): void {
+        const news: Array<IArticle> = data.length >= 10 ? data.filter((_item: IArticle, idx: number) => idx < 10): data;
 
-        const fragment = document.createDocumentFragment() as DocumentFragment;
-        const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
+        const fragment = <DocumentFragment> document.createDocumentFragment();
+        const newsItemTemp = <HTMLTemplateElement> document.querySelector('#newsItemTemp');
 
         news.forEach((item, idx) => {
-            const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
+            const newsClone = <HTMLElement> newsItemTemp.content.cloneNode(true);
 
             if (idx % 2) (newsClone.querySelector('.news__item') as HTMLElement).classList.add('alt');
 
