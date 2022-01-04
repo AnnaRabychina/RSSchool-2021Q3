@@ -1,26 +1,28 @@
-import './favorites.css'
+import './favorites.css';
 import cardsData from '../cards/cardData';
-import { ICard, insertElement, changeProperty } from '../cards/cards';
+import { ICard, insertElement} from '../cards/cards';
 import { getLocalStorage } from '../storage/storage';
 
-let data = cardsData;
-let sizeFavorites = 20;
+let data: ICard[] = cardsData;
+let sizeFavorites: number = 20;
+export let coordinateX: number;
+export let coordinateY: number;
 
 export class FavoritesCards {
   public container: HTMLElement;
-  
+
   constructor() {
     this.container = document.createElement('div');
     this.container.classList.add('favorites-container');
   }
 
-  private renderFavoriteCards(data: Array<ICard>) {
+  private renderFavoriteCards(data: Array<ICard>): void {
     this.clear();
     let arr: Array<string> = getLocalStorage('selectedCards');
     if (arr) {
       data.forEach((element) => {
         if (arr.includes(element.num)) {
-          this.createFavoriteCard(element);
+          this.createFavoriteToys(element);
         }
       });
 
@@ -32,18 +34,27 @@ export class FavoritesCards {
       (document.querySelector('.select-toys span') as HTMLElement).innerHTML = String(arr.length);
     } else {
       for (let i = 0; i < sizeFavorites; i++) {
-        this.createFavoriteCard(data[i]);
+        this.createFavoriteToys(data[i]);
       }
     }
   }
 
-  private createFavoriteCard(element: ICard) {
+  private createFavoriteToys(element: ICard): void {
+    let count = +element.count;
     const favoriteItem = insertElement('div', ['favorites-card'], '', this.container);
+    favoriteItem.dataset.num = element.num;
     const favoriteCount = insertElement('p', ['favorites-count'], element.count, favoriteItem);
-    const favoriteImg = insertElement('img', ['favorites-card-img'], '', favoriteItem) as HTMLImageElement;
-    favoriteImg.src = `../assets/toys/${element.num}.png`;
-    favoriteImg.alt = 'toy';
-    favoriteImg.draggable = true;
+    for (let i = 1; i <= count; i++) {
+      const favoriteImg = document.createElement('img');
+      favoriteImg.classList.add('favorites-card-img');
+      favoriteImg.src = `../assets/toys/${element.num}.png`;
+      favoriteImg.alt = 'toy';
+      favoriteImg.dataset.img = element.num;
+      favoriteImg.id = `${element.num}-${i}`;
+      favoriteImg.draggable = true;
+      favoriteImg.addEventListener('dragstart', handleDragStart);
+      favoriteItem.append(favoriteImg);
+    }
   }
 
   private clear(): void {
@@ -55,3 +66,10 @@ export class FavoritesCards {
     return this.container;
   }
 }
+
+export const handleDragStart = (event: DragEvent) => {
+  let target = event.target as HTMLElement;
+  (event.dataTransfer as DataTransfer).setData('id', target.id);
+  coordinateX = event.offsetX;
+  coordinateY = event.offsetY;
+};

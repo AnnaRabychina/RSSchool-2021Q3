@@ -14,6 +14,12 @@
   margin: 0 auto;
 }
 
+.main-tree {
+  display: block;
+  width: 500px;
+  height: 714px;
+}
+
 .snow-container {
   height: calc(100vh - 150px);
   width: 800px;
@@ -21,7 +27,7 @@
   left: 50%;
   margin-left: -400px;
   pointer-events: none;
-  z-index: 100;
+  z-index: 11;
   overflow: hidden;
 }
 
@@ -80,7 +86,7 @@ i:before {
   position: absolute;
   margin-left: -400px;
   pointer-events: none;
-  z-index: 90;
+  z-index: 9;
 }
 
 .light-ropes {
