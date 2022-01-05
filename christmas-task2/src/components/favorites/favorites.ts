@@ -1,7 +1,8 @@
 import './favorites.css';
 import cardsData from '../cards/cardData';
-import { ICard, insertElement} from '../cards/cards';
 import { getLocalStorage } from '../storage/storage';
+import { ICard } from '../../options/options';
+import { insertElement } from '../cards/cards';
 
 let data: ICard[] = cardsData;
 let sizeFavorites: number = 20;

@@ -1,7 +1,8 @@
 import './sorting.css';
-import { ICard, insertElement } from '../cards/cards';
-import { getLocalStorage, setLocalStorage } from '../storage/storage';
+import {insertElement } from '../cards/cards';
+import {setLocalStorage } from '../storage/storage';
 import { PageToys } from '../../pages/page-toys';
+import { ICard } from '../../options/options';
 
 export const enum Sorting {
   minName = '"sort-name-min"',

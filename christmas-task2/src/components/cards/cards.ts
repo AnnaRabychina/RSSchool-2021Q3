@@ -1,3 +1,4 @@
+import { ICard } from '../../options/options';
 import { filterData } from '../filters/filters';
 import { sortCards } from '../sorting/sorting';
 import { getLocalStorage } from '../storage/storage';
@@ -5,17 +6,6 @@ import cardsData from './cardData';
 import './cards.css';
 
 export let currentData = cardsData;
-
-export interface ICard {
-  num: string;
-  name: string;
-  count: string;
-  year: string;
-  shape: string;
-  color: string;
-  size: string;
-  favorite: boolean;
-}
 
 export class CardsContainer {
   public cardsContainer: HTMLElement;
