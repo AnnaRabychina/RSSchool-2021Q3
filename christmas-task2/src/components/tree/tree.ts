@@ -120,7 +120,7 @@ export class GarlandContainer {
   }
 }
 
-const handleDrop = (event: DragEvent): void  => {
+const handleDrop = (event: DragEvent): void => {
   let target = event.target as HTMLElement;
   let itemId = (event.dataTransfer as DataTransfer).getData('id');
 

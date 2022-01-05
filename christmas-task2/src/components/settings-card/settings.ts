@@ -1,4 +1,4 @@
-import './settings.css'
+import './settings.css';
 import { insertElement } from '../cards/cards';
 import { FilterColor, FilterFavorite, FilterShape, FilterSize } from '../filters/filters';
 import { SortList } from '../sorting/sorting';
@@ -10,7 +10,7 @@ export class SettingsContainer {
   protected filterColor: FilterColor;
   protected filterSize: FilterSize;
   protected filterFavorite: FilterFavorite;
-  
+
   constructor() {
     this.settingsContainer = document.createElement('div');
     this.settingsContainer.classList.add('settings-container');
@@ -122,4 +122,3 @@ if (yearRange2) {
     yearMax.value = yearRange2.value;
   });
 }
-

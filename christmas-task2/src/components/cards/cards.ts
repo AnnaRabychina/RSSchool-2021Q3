@@ -9,7 +9,7 @@ export let currentData = cardsData;
 
 export class CardsContainer {
   public cardsContainer: HTMLElement;
-  
+
   constructor() {
     this.cardsContainer = document.createElement('div');
     this.cardsContainer.classList.add('cards-container');
@@ -84,9 +84,7 @@ export class CardsContainer {
   }
 }
 
-export function changeProperty(
-  elem: Element | HTMLButtonElement, 
-  nameProperty: string): void {
+export function changeProperty(elem: Element | HTMLButtonElement, nameProperty: string): void {
   elem.classList.toggle(nameProperty);
 }
 
