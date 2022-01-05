@@ -7,16 +7,16 @@ const buttonsShape = ['шар', 'колокольчик', 'шишка', 'сне�
 const buttonsColor = ['белый', 'желтый', 'красный', 'синий', 'зелёный'];
 const buttonsSize = ['большой', 'средний', 'малый'];
 
-let selectedShapes = getLocalStorage('selectedShapes')
-  ? new Set<string>(getLocalStorage('selectedShapes'))
+let selectedShapes = <string[] | ''>getLocalStorage('selectedShapes')
+  ? new Set<string>(<string[]>getLocalStorage('selectedShapes'))
   : new Set<string>();
 
-let selectedColors = getLocalStorage('selectedColors')
-  ? new Set<string>(getLocalStorage('selectedColors'))
+let selectedColors = <string[] | ''>getLocalStorage('selectedColors')
+  ? new Set<string>(<string[]>getLocalStorage('selectedColors'))
   : new Set<string>();
 
-let selectedSizes = getLocalStorage('selectedSizes')
-  ? new Set<string>(getLocalStorage('selectedSizes'))
+let selectedSizes = <string[] | ''>getLocalStorage('selectedSizes')
+  ? new Set<string>(<string[]>getLocalStorage('selectedSizes'))
   : new Set<string>();
 
 export class FilterShape extends FilterToys {
@@ -25,7 +25,7 @@ export class FilterShape extends FilterToys {
     this.container.classList.add('shape');
   }
 
-  render() {
+  render(): HTMLElement {
     this.renderButtons(buttonsShape, selectedShapes, 'shape', this.container, 'Форма:');
     this.setFilterToys(selectedShapes, 'shape', 'selectedShapes');
     return this.container;
@@ -38,7 +38,7 @@ export class FilterColor extends FilterToys {
     this.container.classList.add('color');
   }
 
-  render() {
+  render(): HTMLElement {
     this.renderButtons(buttonsColor, selectedColors, 'color', this.container, 'Цвет:');
     this.setFilterToys(selectedColors, 'color', 'selectedColors');
     return this.container;
@@ -51,7 +51,7 @@ export class FilterSize extends FilterToys {
     this.container.classList.add('size');
   }
 
-  render() {
+  render(): HTMLElement {
     this.renderButtons(buttonsSize, selectedSizes, 'size', this.container, 'Размер:');
     this.setFilterToys(selectedSizes, 'size', 'selectedSizes');
     return this.container;
@@ -74,12 +74,12 @@ export class FilterFavorite {
     };
   }
 
-  setFilterFavorite() {
+  setFilterFavorite(): void {
     setLocalStorage('isFavorite', this.favoriteInput.checked ? 'true' : '');
     PageToys.renderNewCardsContainer();
   }
 
-  render() {
+  render(): HTMLElement {
     this.container.append('Только любимые:');
     this.container.append(this.favoriteInput);
     const label = document.createElement('label');
@@ -90,19 +90,19 @@ export class FilterFavorite {
   }
 }
 
-export function filterData() {
-  let currentData = getLocalStorage('currentData');
-  let filterShapes = getLocalStorage('selectedShapes');
-  let filterColors = getLocalStorage('selectedColors');
-  let filterSizes = getLocalStorage('selectedSizes');
-  let isFavorite = getLocalStorage('isFavorite');
+export function filterData(): ICard[] | [] {
+  let currentData = <ICard[] | [] > getLocalStorage('currentData');
+  let filterShapes = <string[] | ''>getLocalStorage('selectedShapes');
+  let filterColors = <string[] |''>getLocalStorage('selectedColors');
+  let filterSizes = <string[]|''>getLocalStorage('selectedSizes');
+  let isFavorite = <string |''>getLocalStorage('isFavorite');
 
   const newData = currentData.filter((el: ICard) => {
     return (
       (filterShapes ? filterShapes.includes(el.shape) : true) &&
       (filterColors ? filterColors.includes(el.color) : true) &&
-      (filterSizes ? filterSizes.includes(el.size) : true) &&
-      (isFavorite ? String(el.favorite) === isFavorite : true)
+      (filterSizes ?  filterSizes.includes(el.size) : true) &&
+      (isFavorite ? `${el.favorite}` === isFavorite : true)
     );
   });
 

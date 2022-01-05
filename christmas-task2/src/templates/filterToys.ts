@@ -45,6 +45,7 @@ abstract class FilterToys {
       PageToys.renderNewCardsContainer();
     });
   }
+  
   render(): HTMLElement {
     return this.container;
   }

@@ -19,7 +19,7 @@ export class FavoritesCards {
 
   private renderFavoriteCards(data: Array<ICard>): void {
     this.clear();
-    let arr: Array<string> = getLocalStorage('selectedCards');
+    let arr = <string[]>getLocalStorage('selectedCards');
     if (arr) {
       data.forEach((element) => {
         if (arr.includes(element.num)) {

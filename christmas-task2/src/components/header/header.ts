@@ -24,7 +24,7 @@ class Header extends Component {
     super(tagName, className);
   }
 
-  renderHeaderButtons() {
+  renderHeaderButtons(): HTMLElement {
     const headerButtons = document.createElement('nav');
     headerButtons.classList.add('nav');
 
@@ -38,7 +38,7 @@ class Header extends Component {
     return headerButtons;
   }
 
-  createHeaderControls() {
+  createHeaderControls(): HTMLElement {
     const headerControls = document.createElement('div');
     headerControls.classList.add('header-controls');
     headerControls.innerHTML = `
@@ -50,7 +50,7 @@ class Header extends Component {
     return headerControls;
   }
 
-  render() {
+  render(): HTMLElement {
     const headerContainer = document.createElement('div');
     headerContainer.classList.add('header-row');
     headerContainer.append(this.renderHeaderButtons());

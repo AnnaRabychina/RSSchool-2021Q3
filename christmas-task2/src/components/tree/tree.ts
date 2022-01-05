@@ -111,7 +111,7 @@ export class GarlandContainer {
       let color: string = 'red';
 
       if (getLocalStorage('garlandColor')) {
-        color = getLocalStorage('garlandColor');
+        color =<string> getLocalStorage('garlandColor');
       }
 
       this.renderLightRopes(color);

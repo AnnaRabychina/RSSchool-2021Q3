@@ -17,7 +17,7 @@ export class CardsContainer {
 
   private draw(data: Array<ICard>) {
     this.clear();
-    let arr = getLocalStorage('selectedCards');
+    let arr = <string[]> getLocalStorage('selectedCards');
     data.forEach((element) => {
       const cardItem = insertElement('div', ['card-item'], '', this.cardsContainer);
       cardItem.dataset.num = element.num;
@@ -49,10 +49,9 @@ export class CardsContainer {
   }
 
   private selectToy() {
-    let arr = getLocalStorage('selectedCards');
+    let arr = <string[]>getLocalStorage('selectedCards');
     const selectedCards = arr === [] ? new Set() : new Set(arr);
     this.cardsContainer.addEventListener('click', (event) => {
-      console.log(event.target);
       let target = event.target as HTMLElement;
       let card = target.closest('.card-item') as HTMLElement;
       if (selectedCards.size === 20 && !card.classList.contains('selected')) {
@@ -75,9 +74,9 @@ export class CardsContainer {
   }
 
   render(): HTMLElement {
-    let data = filterData();
+    let data = <ICard[] | []>filterData();
     let sortProperty = localStorage.getItem('sortProperty');
-    if (sortProperty) data = sortCards(sortProperty, data);
+    if (sortProperty) data = <ICard[]> sortCards(sortProperty, data);
     this.draw(data);
     this.selectToy();
     return this.cardsContainer;

@@ -30,12 +30,12 @@ export class SortList {
     };
   }
 
-  private sort() {
+  private sort(): void {
     setLocalStorage('sortProperty', this.sortList.value);
     PageToys.renderNewCardsContainer();
   }
 
-  render() {
+  render(): HTMLElement  {
     const title = insertElement('h2', ['controls-title'], 'Сортировать');
     this.container.append(title);
     this.container.append(this.sortList);
@@ -56,7 +56,7 @@ export function sortCards(value: string, data: ICard[]) {
   }
 }
 
-export function sortData(field: keyof ICard, revers: boolean, data: ICard[]) {
+export function sortData(field: keyof ICard, revers: boolean, data: ICard[]) : ICard[] {
   if (!revers) {
     return data.sort((prev: ICard, next: ICard) =>
       prev[field] === next[field] ? 0 : next[field] > prev[field] ? 1 : -1

@@ -6,8 +6,8 @@ import { getLocalStorage, setLocalStorage } from '../storage/storage';
 import { FavoritesCards } from '../favorites/favorites';
 
 const buttonsGarland = ['red', 'blue', 'yellow', 'green', 'multicolor'];
-let isPlay = false;
-let isSnow = false;
+let isPlay: boolean = false;
+let isSnow: boolean  = false;
 
 export class SettingsMenuContainer {
   private container: HTMLElement;
@@ -32,7 +32,7 @@ export class SettingsMenuContainer {
     };
   }
 
-  resetSettings() {
+  resetSettings(): void {
     localStorage.removeItem('numBgTree');
     localStorage.removeItem('numImgTree');
     PageTree.treeContainer.render();
@@ -218,7 +218,7 @@ export class ButtonsGarland {
     this.container.classList.add('garland-btns');
   }
 
-  renderButtonsGarland(arrButtons: Array<string>) {
+  renderButtonsGarland(arrButtons: Array<string>): void {
     arrButtons.forEach((button) => {
       const buttonHTML = <HTMLButtonElement>document.createElement('button');
       buttonHTML.classList.add(`${button}-btn`, 'color-btn');
@@ -227,7 +227,7 @@ export class ButtonsGarland {
     });
   }
 
-  setColorGarland() {
+  setColorGarland(): void {
     this.container.addEventListener('click', (event: Event) => {
       let target = <HTMLElement>event.target;
       let btn = <HTMLElement>target.closest('.color-btn');
