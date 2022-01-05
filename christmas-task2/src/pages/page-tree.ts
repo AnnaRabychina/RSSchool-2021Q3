@@ -5,7 +5,7 @@ import { TreeContainer } from '../components/tree/tree';
 import Page from '../templates/page';
 
 export class PageTree extends Page {
-  private favoritesCards: FavoritesCards;
+  static favoritesCards: FavoritesCards;
   private settingsMenu: SettingsMenuContainer;
   static treeContainer: TreeContainer;
   static snowInterval: NodeJS.Timer;
@@ -14,17 +14,7 @@ export class PageTree extends Page {
     super(id);
     this.settingsMenu = new SettingsMenuContainer();
     PageTree.treeContainer = new TreeContainer();
-    this.favoritesCards = new FavoritesCards();
-  }
-
-  createPageTree() {
-    const pageTree = document.createElement('div');
-    pageTree.classList.add('page-container');
-    return pageTree;
-  }
-
-  static renderNewTreeContainer() {
-    PageTree.treeContainer.render();
+    PageTree.favoritesCards = new FavoritesCards();
   }
 
   render(): HTMLElement {
@@ -33,7 +23,7 @@ export class PageTree extends Page {
     pageContainer.append(this.settingsMenu.render());
     pageContainer.append(PageTree.treeContainer.render());
     const favoritesContainer = insertElement('div', ['favorites-aside'], '', pageContainer);
-    favoritesContainer.append(this.favoritesCards.render());
+    favoritesContainer.append(PageTree.favoritesCards.render());
 
     return this.container;
   }

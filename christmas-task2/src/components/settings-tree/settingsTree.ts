@@ -3,18 +3,19 @@ import { PageTree } from '../../pages/page-tree';
 import SettingsMenu from '../../templates/settingsMenu';
 import { TreeContainer } from '../tree/tree';
 import { getLocalStorage, setLocalStorage } from '../storage/storage';
+import { FavoritesCards } from '../favorites/favorites';
 
 const buttonsGarland = ['red', 'blue', 'yellow', 'green', 'multicolor'];
 let isPlay = false;
 let isSnow = false;
 
 export class SettingsMenuContainer {
+  private container: HTMLElement;
+  private settingsAudioAndSnow: SettingsAudioAndSnow;
   private settingsTree: SettingsTree;
   private settingsBg: SettingsBg;
-  private settingsAudioAndSnow: SettingsAudioAndSnow;
-  private container: HTMLElement;
-  private resetButton: HTMLButtonElement;
   private settingsGarland: SettingsGarland;
+  private resetButton: HTMLButtonElement;
 
   constructor() {
     this.container = document.createElement('div');
@@ -37,6 +38,7 @@ export class SettingsMenuContainer {
     PageTree.treeContainer.render();
     TreeContainer.garlandContainer.clear();
     TreeContainer.snowContainer.classList.add('hide');
+    PageTree.favoritesCards.render();
   }
 
   render(): HTMLElement {

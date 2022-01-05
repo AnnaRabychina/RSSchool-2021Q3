@@ -25,7 +25,7 @@ abstract class SettingsMenu {
         settingNum = target.dataset[setting];
       if (settingNum) {
         setLocalStorage(keyStorage, settingNum);
-        PageTree.renderNewTreeContainer();
+        PageTree.treeContainer.render();
       }
     });
   }
