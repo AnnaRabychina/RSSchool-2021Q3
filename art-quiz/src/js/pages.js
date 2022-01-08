@@ -1,3 +1,5 @@
+import { changeProperty } from './categories';
+
 const buttons = document.querySelectorAll('.btn-page');
 const pages = document.querySelectorAll('.page');
 
@@ -6,13 +8,13 @@ function openPage() {
   let pageName = this.dataset.page;
   pages.forEach(page => {
     if (page.classList.contains(pageName)) {
-      page.classList.remove('show');
-      page.classList.add('hide');
+      changeProperty(page, 'show');
+      changeProperty(page, 'hide');
     }
-    setTimeout(() =>{
+    setTimeout(() => {
       if (page.classList.contains(nextPage)) {
-        page.classList.remove('hide');
-        page.classList.add('show');
+        changeProperty(page, 'hide');
+        changeProperty(page, 'show');
       }
     }, 500);
   });

@@ -1,58 +1,49 @@
+import { changeProperty, showScore } from './categories';
+import { categoryArtists, categoryPictures } from './options';
+
 let roundsArtists;
 let roundsPictures;
 let resultsArtists;
 let resultsPictures;
 
-const getLocalStorage = () => {
-  if (localStorage.getItem('roundsArtists')) {
-    roundsArtists = localStorage.getItem('roundsArtists');
-  } else {
-    roundsArtists = '000000000000';
-  }
+const getLocalStorage = (keyProperty) => {
+  return localStorage.getItem(keyProperty) ? localStorage.getItem(keyProperty) : '000000000000';
+};
 
-  if (localStorage.getItem('roundsPictures')) {
-    roundsPictures = localStorage.getItem('roundsPictures');
-  } else {
-    roundsPictures = '000000000000';
-  }
-
-  if (localStorage.getItem('resultsArtists')) {
-    resultsArtists = localStorage.getItem('resultsArtists');
-  } else {
-    resultsArtists = '000000000000';
-  }
-
-  if (localStorage.getItem('resultsPictures')) {
-    resultsPictures = localStorage.getItem('resultsPictures');
-  } else {
-    resultsPictures = '000000000000';
-  }
+const setProperty = (keyRounds, keyResults, index, value) => {
+  let rounds = getLocalStorage(keyRounds);
+  let results = getLocalStorage(keyResults);
+  rounds = rounds.slice(0, index) + '1' + rounds.slice(Number(index) + 1);
+  results = results.slice(0, index) + `${value}` + results.slice(Number(index) + 1);
+  localStorage.setItem(keyRounds, rounds);
+  localStorage.setItem(keyResults, results);
 };
 
 const setResults = (type, index, value) => {
-  if (type === 'artists') {
-    roundsArtists = roundsArtists.slice(0, index) + '1' + roundsArtists.slice(Number(index) + 1);
-    resultsArtists = resultsArtists.slice(0, index) + `${value}` + resultsArtists.slice(Number(index) + 1);
-    localStorage.setItem('roundsArtists', roundsArtists);
-    localStorage.setItem('resultsArtists', resultsArtists);
+  if (type === categoryArtists.id) {
+    setProperty(categoryArtists.rounds, categoryArtists.results, index, value);
   }
 
-  if (type === 'pictures') {
-    roundsPictures = roundsPictures.slice(0, index) + '1' + roundsPictures.slice(Number(index) + 1);
-    resultsPictures = resultsPictures.slice(0, index) + `${value}` + resultsPictures.slice(Number(index) + 1);
-    localStorage.setItem('roundsPictures', roundsPictures);
-    localStorage.setItem('resultsPictures', resultsPictures);
+  if (type === categoryPictures.id) {
+    setProperty(categoryPictures.rounds, categoryPictures.results, index, value);
   }
 
   document.querySelectorAll('.category-item').forEach(el => {
     if (el.dataset.id === index) {
-      el.querySelector('.category-img').classList.remove('category-img-inactive');
-      el.querySelector('.category-score').textContent = `${value}/10`;
+      changeProperty(el.querySelector('.category-img'), 'category-img-inactive');
+      showScore(el.querySelector('.category-score'), value);
     }
   });
 };
 
-window.addEventListener('load', getLocalStorage);
+const getProperty = () => {
+  roundsArtists = getLocalStorage(categoryArtists.rounds);
+  roundsPictures = getLocalStorage(categoryPictures.rounds);
+  resultsArtists = getLocalStorage(categoryPictures.results);
+  resultsPictures = getLocalStorage(categoryPictures.results);
+};
+
+window.addEventListener('load', getProperty);
 
 export {
   roundsPictures, roundsArtists, resultsArtists, getLocalStorage, resultsPictures, setResults

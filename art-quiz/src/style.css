@@ -16,11 +16,11 @@
 html {
   scroll-behavior: smooth;
 }
- 
+
 body {
   min-height: 100vh;
   font-family: "Montserrat", sans-serif;
-  font-size:  var(--font1);
+  font-size: var(--font1);
   font-weight: 300;
   color: var(--dark-red);
   background-color: #dddddd;
@@ -45,7 +45,7 @@ ul {
 
 header {
   text-align: center;
- }
+}
 
 h1 {
   height: 1px;
@@ -54,13 +54,13 @@ h1 {
   padding: 0;
   position: absolute;
   width: 1px;
-} 
+}
 
 h2,
 .page-title {
   font-size: var(--font1);
   font-weight: 300;
-  text-transform: uppercase;  
+  text-transform: uppercase;
 }
 
 p {
@@ -95,16 +95,16 @@ p {
   width: 330px;
   height: 213px;
   margin-bottom: 10px;
- }
+}
 
 .navigation:hover,
 .btn:hover,
 .btn:focus,
 .category-item:hover {
-  box-shadow:0 0 15px 7px rgba(0, 0, 0, 0.3) ;
+  box-shadow: 0 0 15px 7px rgba(0, 0, 0, 0.3);
   cursor: pointer;
- }
- 
+}
+
 .page {
   padding: 10px;
   box-sizing: border-box;
@@ -160,7 +160,7 @@ p {
   margin: 10px 0;
   height: 50px;
   width: 150px;
-  background-color:  var(--dark-red);
+  background-color: var(--dark-red);
   color: var(--light);
   font-size: var(--font2);
   text-transform: uppercase;
@@ -174,7 +174,7 @@ p {
   position: relative;
   padding: 14px 7px 14px 53px;
   text-align: right;
-  align-self: center; 
+  align-self: center;
 }
 
 .btn-home,
@@ -205,7 +205,7 @@ p {
 }
 
 .btn-settings:hover:before {
-  transform:rotate(180deg)
+  transform: rotate(180deg);
 }
 
 .btn-home:before {
@@ -257,7 +257,7 @@ p {
 .settings-img {
   width: 67px;
   height: 67px;
-  background-size:cover;
+  background-size: cover;
   margin: 5px;
 }
 
@@ -273,11 +273,19 @@ p {
 }
 
 .progress {
-  background: linear-gradient(to right, var(--dark-red), 0%,  var(--dark-red), 50%, #C4C4C4 50%, #C4C4C4 100%);
+  background: linear-gradient(
+    to right,
+    var(--dark-red),
+    0%,
+    var(--dark-red),
+    50%,
+    #c4c4c4 50%,
+    #c4c4c4 100%
+  );
   border-radius: 0;
   -webkit-appearance: none;
   height: 5px;
-} 
+}
 
 .progress::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -285,7 +293,7 @@ p {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  border: 2px solid var(--light)  ;
+  border: 2px solid var(--light);
   background: var(--dark-red);
   cursor: pointer;
 }
@@ -316,7 +324,7 @@ p {
   opacity: 0;
 }
 
-.checkbox:checked+.label {
+.checkbox:checked + .label {
   background-image: url("images/check.svg");
   background-repeat: no-repeat;
   background-size: contain;
@@ -345,7 +353,7 @@ label {
   margin-right: 5px;
 }
 
-.categories-container{
+.categories-container {
   gap: 5px 3px;
   margin: 0 auto;
 }
@@ -363,17 +371,17 @@ label {
   bottom: 0;
 }
 
-.category-img{
+.category-img {
   width: 100%;
   height: 100%;
 }
 
-.category-img-inactive{
+.category-img-inactive {
   filter: grayscale(100%);
 }
 
 .category-number,
-.category-title { 
+.category-title {
   margin: 0;
 }
 
@@ -401,7 +409,7 @@ label {
 
 .category-results {
   align-items: center;
-  background-color:var(--dark-red);;
+  background-color: var(--dark-red);
   bottom: -50%;
   display: flex;
   flex-direction: column;
@@ -416,7 +424,7 @@ label {
   z-index: 20;
 }
 
-.page-pictures-question, 
+.page-pictures-question,
 .page-artists-question {
   padding: 5px 0;
   text-align: center;
@@ -430,9 +438,9 @@ label {
 .answers-list {
   display: grid;
   gap: 10px;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: stretch;
-  grid-template-columns : 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .answer-item {
@@ -441,18 +449,17 @@ label {
   border-radius: 25px;
   font-size: var(--font3);
   text-align: center;
-
 }
 
 .answer-item:hover {
   cursor: pointer;
 }
 
-.answer-correct{
+.answer-correct {
   background-color: green;
 }
 
-.answer-wrong{
+.answer-wrong {
   background-color: red;
 }
 
@@ -491,11 +498,11 @@ label {
   border-radius: 10px;
   cursor: pointer;
   height: 200px;
-  transition: box-shadow .5s ease;
+  transition: box-shadow 0.5s ease;
   width: 49%;
 }
 
-.answer-picture-check{
+.answer-picture-check {
   display: none;
   position: absolute;
   width: 100%;
@@ -517,7 +524,7 @@ label {
 
 .answers-tracker-item {
   border: 1px solid #000;
-  background-color:#C4C4C4;
+  background-color: #c4c4c4;
   border-radius: 50%;
   height: 10px;
   width: 10px;
@@ -595,11 +602,11 @@ label {
 }
 
 .popup-answer-correct {
-  background-image: url('./images/answer-correct.png');
+  background-image: url("./images/answer-correct.png");
 }
 
 .popup-answer-wrong {
-  background-image: url('./images/answer-wrong.png');
+  background-image: url("./images/answer-wrong.png");
 }
 
 .popup-picture {
@@ -635,7 +642,8 @@ label {
 footer {
   position: fixed;
   display: none;
-  left: 0; bottom: 0; 
+  left: 0;
+  bottom: 0;
   padding: 10px;
   width: 100%;
   background-color: transparent;
@@ -659,17 +667,17 @@ footer {
   width: auto;
 }
 
-@media (min-width: 520px) { 
+@media (min-width: 520px) {
   .logo-image {
     height: 95px;
     width: 150px;
   }
- 
+
   .page-pictures-container {
     width: 90%;
     margin: 0 auto;
   }
-  
+
   .page-artists-img {
     width: 90%;
   }
@@ -681,7 +689,7 @@ footer {
   }
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
   :root {
     --font1: 36px;
     --font2: 18px;
@@ -698,8 +706,8 @@ footer {
   .settings {
     width: 500px;
     height: 320px;
- }
-  
+  }
+
   .settings {
     padding: 20px;
   }
@@ -756,7 +764,7 @@ footer {
     text-align: center;
     text-transform: uppercase;
   }
-  
+
   .popup-picture {
     height: 400px;
     width: 400px;
@@ -767,8 +775,7 @@ footer {
   }
 }
 
-@media (min-width: 1024px) { 
-
+@media (min-width: 1024px) {
   .main-container {
     max-width: 1440px;
     width: 100%;
@@ -797,8 +804,8 @@ footer {
     width: 415px;
     height: 415px;
     margin-bottom: var(--margin);
- }
-  
+  }
+
   .navigation-title {
     position: static;
     margin: 15px 10px 10px 0;
@@ -825,8 +832,8 @@ footer {
   .page-pictures-container {
     width: 800px;
   }
-  
-  .page-artists-picture{
+
+  .page-artists-picture {
     width: 80%;
     margin: 20px auto;
   }

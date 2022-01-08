@@ -6,20 +6,15 @@ import {
   openPage
 } from './pages';
 
+import { pageCategories } from './options';
+
+import { changeProperty } from './categories';
+
 const popupContent = document.querySelector('.popup-content');
 
-const showPopup = () =>{
-  document.querySelector('.popup-content').classList.add('popup-content-show');
-  document.querySelector('.overlay').classList.add('overlay-show');
-};
-
-const hidePopup = () => {
-  document.querySelector('.popup-content').classList.remove('popup-content-show');
-  document.querySelector('.overlay').classList.remove('overlay-show');
-};
-
-const finalStep = () => {
-  hidePopup();
+const updateVisibilityPopup = () =>{
+  changeProperty(document.querySelector('.popup-content'), 'popup-content-show');
+  changeProperty(document.querySelector('.overlay'), 'overlay-show');
 };
 
 const renderResultPopup = (type) =>{
@@ -29,12 +24,12 @@ const renderResultPopup = (type) =>{
     <p class="popup-text-score">${score}/${currQuestion}</p>
     <div class="popup-finish-icon" style="background-image:url('./images/finish.png')"></div>
     <button class="btn btn-end btn-page"
-      data-next-page="page-categories"
+      data-next-page="${pageCategories}"
       data-page="page-${type}">
     next</button>`;
   const endBtn = document.querySelector('.btn-end');
   endBtn.addEventListener('click', openPage);
-  endBtn.addEventListener('click', finalStep);
+  endBtn.addEventListener('click', updateVisibilityPopup);
 };
 
 const renderPopup = () => {
@@ -44,12 +39,12 @@ const renderPopup = () => {
     <h2 class="popup-title">${questions[currQuestion].name}</h2>
     <p class="popup-text popup-text-author">${questions[currQuestion].author}</p>
     <p class="popup-text popup-text-year">${questions[currQuestion].year}</p>
-    <button class="btn btn-next">next</button>`;
+    <button class="btn btn-next">next</button>
+    `;
   const nextBtn = document.querySelector('.btn-next');
-
   nextBtn.addEventListener('click', openNextStep);
 };
 
 export {
-  renderPopup, showPopup, hidePopup, renderResultPopup
+  renderPopup, updateVisibilityPopup, renderResultPopup
 };
