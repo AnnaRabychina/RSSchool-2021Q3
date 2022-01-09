@@ -53,7 +53,7 @@ export interface IRangeSlider {
   value: string
 }
 
-export const countRange1 = {
+export const countRangeMin = {
   stiles: ['count-range1'],
   min: '1',
   max: '12',
@@ -61,7 +61,7 @@ export const countRange1 = {
   value: '1',
 };
 
-export const countRange2 = {
+export const countRangeMax = {
   stiles: ['count-range2'],
   min: '1',
   max: '12',
@@ -69,7 +69,7 @@ export const countRange2 = {
   value: '12',
 };
 
-export const yearRange1 = {
+export const yearRangeMin = {
   stiles: ['year-range1'],
   min: '1940',
   max: '2020',
@@ -77,7 +77,7 @@ export const yearRange1 = {
   value: '1940',
 };
 
-export const yearRange2 = {
+export const yearRangeMax = {
   stiles: ['year-range2'],
   min: '1940',
   max: '2020',

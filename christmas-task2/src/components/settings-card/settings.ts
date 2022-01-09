@@ -1,79 +1,9 @@
 import './settings.css';
 import { insertElement } from '../cards/cards';
-import { FilterColor, FilterFavorite, FilterShape, FilterSize } from '../filters/filters';
+import { CountRange, FilterColor, FilterFavorite, FilterShape, FilterSize, YearRange } from '../filters/filters';
 import { SortList } from '../sorting/sorting';
-import { RangeSlider } from '../../templates/rangeSlider';
-import { countRange1, countRange2, yearRange1, yearRange2 } from '../../options/options';
 import { setLocalStorage } from '../storage/storage';
 import PageToys from '../../pages/page-toys';
-
-export class CountRange extends RangeSlider {
-  sliderContainer: HTMLElement;
-  minOutput: HTMLOutputElement;
-  maxOutput: HTMLOutputElement;
-  rangeInput1: HTMLInputElement;
-  rangeInput2: HTMLInputElement;
- 
-  constructor() {
-    super();
-    this.container.classList.add('count');
-    this.sliderContainer = document.createElement('div');
-    this.sliderContainer.classList.add('count-slider-container');
-    this.minOutput = this.renderOutput(['count-min'], '1');
-    this.maxOutput = this.renderOutput(['count-max'], '12');
-    this.rangeInput1 = this.renderInput(countRange1);
-    this.rangeInput1.addEventListener('input', () =>{
-      this.updateRange(this.rangeInput1, this.rangeInput2, this.minOutput, this.maxOutput);
-    });
-    this.rangeInput2 = this.renderInput(countRange2);
-    this.rangeInput2.addEventListener('input', () =>{
-      this.updateRange(this.rangeInput1, this.rangeInput2, this.minOutput, this.maxOutput);
-    });
-  }
-
-  render(): HTMLElement {
-    const containerInputs = document.createElement('div');
-    containerInputs.classList.add('container-slider');
-    containerInputs.append(this.rangeInput1, this.rangeInput2);
-    this.sliderContainer.append(this.minOutput, containerInputs, this.maxOutput);
-    this.container.append(this.sliderContainer);
-    return this.container;
-  }
-}
-
-export class YearRange extends RangeSlider {
-  sliderContainer: HTMLElement;
-  minOutput: HTMLOutputElement;
-  maxOutput: HTMLOutputElement;
-  rangeInput1: HTMLInputElement;
-  rangeInput2: HTMLInputElement;
-
-  constructor() {
-    super();
-    this.container.classList.add('year');
-    this.sliderContainer = document.createElement('div');
-    this.sliderContainer.classList.add('year-slider-container');
-    this.minOutput = this.renderOutput(['year-min'], '1940');
-    this.maxOutput = this.renderOutput(['year-max'], '2020');
-    this.rangeInput1 = this.renderInput(yearRange1);
-    this.rangeInput1.addEventListener('input', () =>{
-      this.updateRange(this.rangeInput1, this.rangeInput2, this.minOutput, this.maxOutput);
-    });
-    this.rangeInput2 = this.renderInput(yearRange2);
-    this.rangeInput2.addEventListener('input', () =>{
-      this.updateRange(this.rangeInput1, this.rangeInput2, this.minOutput, this.maxOutput);
-    });
-  }
-
-  render(): HTMLElement {
-    const containerInputs = document.createElement('div');
-    containerInputs.classList.add('container-slider');
-    containerInputs.append(this.rangeInput1, this.rangeInput2);
-    this.sliderContainer.append(this.minOutput, containerInputs, this.maxOutput);
-    this.container.append(this.sliderContainer);
-    return this.container;
-  }
-}
 
 export class SettingsContainer {
   protected settingsContainer: HTMLElement;
@@ -106,6 +36,10 @@ export class SettingsContainer {
     localStorage.removeItem('selectedShapes');
     localStorage.removeItem('selectedColors');
     localStorage.removeItem('selectedSizes');
+    localStorage.removeItem('minCount');
+    localStorage.removeItem('maxCount');
+    localStorage.removeItem('minYear');
+    localStorage.removeItem('maxYear');
     setLocalStorage('isFavorite', '');
     PageToys.renderNewCardsContainer();
   }
