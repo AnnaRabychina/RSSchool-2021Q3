@@ -6,7 +6,7 @@ import Page from '../templates/page';
 
 setLocalStorage('currentData', [...cardsData]);
 
-export class PageToys extends Page {
+class PageToys extends Page {
   private static cardsContainer: CardsContainer;
   private settingsContainer: SettingsContainer;
   private page: HTMLElement;
@@ -25,10 +25,11 @@ export class PageToys extends Page {
 
   render(): HTMLElement {
     const settingsContainerHTML = this.settingsContainer.render();
-    this.page.append(settingsContainerHTML);
     const cardsContainerHTML = PageToys.cardsContainer.render();
-    this.page.append(cardsContainerHTML);
+    this.page.append(settingsContainerHTML, cardsContainerHTML);
     this.container.append(this.page);
     return this.container;
   }
 }
+
+export default PageToys;

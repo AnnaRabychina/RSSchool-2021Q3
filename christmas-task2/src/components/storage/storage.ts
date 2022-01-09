@@ -1,4 +1,4 @@
-export function getLocalStorage(key: string): string| object| undefined {
+export function getLocalStorage(key: string): string | object | undefined {
   if (localStorage.getItem(key)) {
     return JSON.parse(localStorage.getItem(key) || '');
   }

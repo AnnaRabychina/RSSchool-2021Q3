@@ -3,63 +3,17 @@ import { PageTree } from '../../pages/page-tree';
 import SettingsMenu from '../../templates/settingsMenu';
 import { TreeContainer } from '../tree/tree';
 import { getLocalStorage, setLocalStorage } from '../storage/storage';
-import { FavoritesCards } from '../favorites/favorites';
+import { buttonsGarland } from '../../options/options';
+import { insertElement } from '../cards/cards';
 
-const buttonsGarland = ['red', 'blue', 'yellow', 'green', 'multicolor'];
-let isPlay: boolean = false;
-let isSnow: boolean  = false;
-
-export class SettingsMenuContainer {
-  private container: HTMLElement;
-  private settingsAudioAndSnow: SettingsAudioAndSnow;
-  private settingsTree: SettingsTree;
-  private settingsBg: SettingsBg;
-  private settingsGarland: SettingsGarland;
-  private resetButton: HTMLButtonElement;
-
-  constructor() {
-    this.container = document.createElement('div');
-    this.container.classList.add('settings-tree-menu');
-    this.settingsAudioAndSnow = new SettingsAudioAndSnow();
-    this.settingsTree = new SettingsTree();
-    this.settingsBg = new SettingsBg();
-    this.settingsGarland = new SettingsGarland();
-    this.resetButton = document.createElement('button');
-    this.resetButton.classList.add('reset-button');
-    this.resetButton.innerText = 'Сброс настроек';
-    this.resetButton.onclick = () => {
-      this.resetSettings();
-    };
-  }
-
-  resetSettings(): void {
-    localStorage.removeItem('numBgTree');
-    localStorage.removeItem('numImgTree');
-    PageTree.treeContainer.render();
-    TreeContainer.garlandContainer.clear();
-    TreeContainer.snowContainer.classList.add('hide');
-    PageTree.favoritesCards.render();
-  }
-
-  render(): HTMLElement {
-    const settingsAudioAndSnowHTML = this.settingsAudioAndSnow.render();
-    this.container.append(settingsAudioAndSnowHTML);
-    const settingsTreeHTML = this.settingsTree.render();
-    this.container.append(settingsTreeHTML);
-    const settingsBgHTML = this.settingsBg.render();
-    this.container.append(settingsBgHTML);
-    const settingsGarlandHTML = this.settingsGarland.render();
-    this.container.append(settingsGarlandHTML);
-    this.container.append(this.resetButton);
-    return this.container;
-  }
-}
+let isPlay = false;
+let isSnow  = false;
 
 export class SettingsAudioAndSnow {
-  container: HTMLElement;
-  audio: HTMLAudioElement;
-  audioControl: HTMLElement;
-  snowControl: HTMLElement;
+  protected container: HTMLElement;
+  protected audio: HTMLAudioElement;
+  protected audioControl: HTMLElement;
+  protected snowControl: HTMLElement;
 
   constructor() {
     this.container = document.createElement('div');
@@ -115,8 +69,7 @@ export class SettingsAudioAndSnow {
   }
 
   render(): HTMLElement {
-    this.container.append(this.audioControl);
-    this.container.append(this.snowControl);
+    this.container.append(this.audioControl, this.snowControl);
     return this.container;
   }
 }
@@ -147,9 +100,47 @@ export class SettingsBg extends SettingsMenu {
   }
 }
 
+export class ButtonsGarland {
+  container: HTMLElement;
+
+  constructor() {
+    this.container = document.createElement('div');
+    this.container.classList.add('garland-btns');
+  }
+
+  renderButtonsGarland(arrButtons: Array<string>): void {
+    arrButtons.forEach((button) => {
+      const buttonHTML = <HTMLButtonElement>document.createElement('button');
+      buttonHTML.classList.add(`${button}-btn`, 'color-btn');
+      buttonHTML.dataset.color = button;
+      this.container.append(buttonHTML);
+    });
+  }
+
+  setColorGarland(): void {
+    this.container.addEventListener('click', (event: Event) => {
+      const target = <HTMLElement>event.target;
+      const btn = <HTMLElement>target.closest('.color-btn');
+      if (btn) {
+        const color = <string>target.dataset.color;
+        setLocalStorage('garlandColor', color);
+        SettingsGarland.turnOnGarland();
+      }
+    });
+  }
+
+  render(): HTMLElement {
+    this.renderButtonsGarland(buttonsGarland);
+    this.setColorGarland();
+    return this.container;
+  }
+}
+
 export class SettingsGarland {
   container: HTMLElement;
+
   buttonsGarland: ButtonsGarland;
+
   garlandInput: HTMLInputElement;
 
   constructor() {
@@ -203,45 +194,54 @@ export class SettingsGarland {
 
   render(): HTMLElement {
     const buttonsGarlandHTML = this.buttonsGarland.render();
-    this.container.append(buttonsGarlandHTML);
     const inputContainerHTML = this.renderInputContainer();
-    this.container.append(inputContainerHTML);
+    this.container.append(buttonsGarlandHTML, inputContainerHTML);
     return this.container;
   }
 }
 
-export class ButtonsGarland {
-  container: HTMLElement;
+export class SettingsMenuContainer {
+  private container: HTMLElement;
+
+  private settingsAudioAndSnow: SettingsAudioAndSnow;
+
+  private settingsTree: SettingsTree;
+
+  private settingsBg: SettingsBg;
+
+  private settingsGarland: SettingsGarland;
+
+  private resetButton: HTMLButtonElement;
 
   constructor() {
     this.container = document.createElement('div');
-    this.container.classList.add('garland-btns');
+    this.container.classList.add('settings-tree-menu');
+    this.settingsAudioAndSnow = new SettingsAudioAndSnow();
+    this.settingsTree = new SettingsTree();
+    this.settingsBg = new SettingsBg();
+    this.settingsGarland = new SettingsGarland();
+    this.resetButton = <HTMLButtonElement>insertElement('button', ['reset-button'], 'Сброс настроек');
+    this.resetButton.onclick = () => {
+      this.resetSettings();
+    };
   }
 
-  renderButtonsGarland(arrButtons: Array<string>): void {
-    arrButtons.forEach((button) => {
-      const buttonHTML = <HTMLButtonElement>document.createElement('button');
-      buttonHTML.classList.add(`${button}-btn`, 'color-btn');
-      buttonHTML.dataset.color = button;
-      this.container.append(buttonHTML);
-    });
-  }
-
-  setColorGarland(): void {
-    this.container.addEventListener('click', (event: Event) => {
-      let target = <HTMLElement>event.target;
-      let btn = <HTMLElement>target.closest('.color-btn');
-      if (btn) {
-        let color = <string>target.dataset.color;
-        setLocalStorage('garlandColor', color);
-        SettingsGarland.turnOnGarland();
-      }
-    });
+  resetSettings(): void {
+    localStorage.removeItem('numBgTree');
+    localStorage.removeItem('numImgTree');
+    PageTree.treeContainer.render();
+    TreeContainer.garlandContainer.clear();
+    TreeContainer.snowContainer.classList.add('hide');
+    PageTree.favoritesCards.render();
   }
 
   render(): HTMLElement {
-    this.renderButtonsGarland(buttonsGarland);
-    this.setColorGarland();
+    const settingsAudioAndSnowHTML = this.settingsAudioAndSnow.render();
+    const settingsTreeHTML = this.settingsTree.render();
+    const settingsBgHTML = this.settingsBg.render();
+    const settingsGarlandHTML = this.settingsGarland.render();
+    this.container.append(settingsAudioAndSnowHTML, settingsTreeHTML, 
+      settingsBgHTML, settingsGarlandHTML, this.resetButton);
     return this.container;
   }
 }

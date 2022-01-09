@@ -21,7 +21,7 @@ abstract class SettingsMenu {
 
   setSettings(setting: string, keyStorage: string) {
     this.container.addEventListener('click', (event) => {
-      let target = event.target as HTMLElement,
+      const target = event.target as HTMLElement,
         settingNum = target.dataset[setting];
       if (settingNum) {
         setLocalStorage(keyStorage, settingNum);

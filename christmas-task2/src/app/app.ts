@@ -1,22 +1,17 @@
 import cardsData from '../components/cards/cardData';
 import Header from '../components/header/header';
 import { setLocalStorage } from '../components/storage/storage';
-import { PageStart } from '../pages/page-start';
-import { PageToys } from '../pages/page-toys';
+import { PageIds } from '../options/options';
+import PageStart from '../pages/page-start';
+import PageToys from '../pages/page-toys';
 import { PageTree } from '../pages/page-tree';
 import Page from '../templates/page';
 
 setLocalStorage('currentData', [...cardsData]);
 
-export const enum PageIds {
-  PageStart = 'page-start',
-  PageToys = 'page-toys',
-  PageTree = 'page-tree',
-}
-
 export class App {
   private static container: HTMLElement = document.body;
-  private static defaultPageId: string = 'current-page';
+  private static defaultPageId = 'current-page';
   static header: Header;
 
   static renderNewPage(idPage: string) {
@@ -41,8 +36,7 @@ export class App {
       App.container.append(headerHTML.render());
       const pageHTML = page.render();
       pageHTML.id = App.defaultPageId;
-      App.container.append(pageHTML);
-      App.container.append(App.createFooter());
+      App.container.append(pageHTML, App.createFooter());
     }
   }
 

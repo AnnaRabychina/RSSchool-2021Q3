@@ -23,6 +23,44 @@
   align-items: center;
 }
 
+.shape::before,
+.color::before,
+.size::before,
+.count::before,
+.year::before,
+.favorite-container::before {
+  content: '';
+  width: fit-content;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 5px;
+  padding-left: 0;
+}
+
+.shape::before {
+  content: 'Форма:';
+}
+
+.color::before {
+  content: 'Цвет:';
+}
+
+.size::before {
+  content: 'Размер:';
+}
+
+.count::before {
+  content: 'Количество экземпляров:';
+}
+
+.year::before {
+  content: 'Год приобретения:';
+}
+
+.favorite-container::before {
+  content: 'Только любимые:';
+}
+
 .shape button {
   position: relative;
   width: 40px;
@@ -199,11 +237,17 @@
   transform: rotate(45deg);
 }
 
+.count, 
+.year{
+  padding-top: 10px;
+}
+
 .year-slider-container,
 .count-slider-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 10px;
 }
 
 .container-slider {

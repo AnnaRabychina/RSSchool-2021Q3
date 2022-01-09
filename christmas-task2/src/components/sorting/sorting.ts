@@ -1,19 +1,13 @@
 import './sorting.css';
-import {insertElement } from '../cards/cards';
-import {setLocalStorage } from '../storage/storage';
-import { PageToys } from '../../pages/page-toys';
-import { ICard } from '../../options/options';
-
-export const enum Sorting {
-  minName = '"sort-name-min"',
-  maxName = '"sort-name-max"',
-  maxYear = '"sort-year-max"',
-  minYear = '"sort-year-min"',
-}
+import { insertElement } from '../cards/cards';
+import { setLocalStorage } from '../storage/storage';
+import PageToys from '../../pages/page-toys';
+import { ICard, Sorting } from '../../options/options';
 
 export class SortList {
-  container: HTMLElement;
-  sortList: HTMLSelectElement;
+  protected container: HTMLElement;
+  protected sortList: HTMLSelectElement;
+
   constructor() {
     this.container = document.createElement('div');
     this.container.classList.add('sort');
@@ -43,6 +37,18 @@ export class SortList {
   }
 }
 
+export function sortData(field: keyof ICard, revers: boolean, data: ICard[]) : ICard[] {
+  if (!revers) {
+    return data.sort((prev: ICard, next: ICard) =>
+      prev[field] === next[field] ? 0 : next[field] > prev[field] ? 1 : -1,
+    );
+  } else {
+    return data.sort((prev: ICard, next: ICard) =>
+      prev[field] === next[field] ? 0 : next[field] < prev[field] ? 1 : -1,
+    );
+  }
+}
+
 export function sortCards(value: string, data: ICard[]) {
   switch (value) {
     case Sorting.minName:
@@ -56,14 +62,4 @@ export function sortCards(value: string, data: ICard[]) {
   }
 }
 
-export function sortData(field: keyof ICard, revers: boolean, data: ICard[]) : ICard[] {
-  if (!revers) {
-    return data.sort((prev: ICard, next: ICard) =>
-      prev[field] === next[field] ? 0 : next[field] > prev[field] ? 1 : -1
-    );
-  } else {
-    return data.sort((prev: ICard, next: ICard) =>
-      prev[field] === next[field] ? 0 : next[field] < prev[field] ? 1 : -1
-    );
-  }
-}
+

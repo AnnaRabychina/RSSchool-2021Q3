@@ -4,10 +4,17 @@ import { getLocalStorage } from '../storage/storage';
 import { ICard } from '../../options/options';
 import { insertElement } from '../cards/cards';
 
-let data: ICard[] = cardsData;
-let sizeFavorites: number = 20;
+const sizeFavorites = 20;
+
 export let coordinateX: number;
 export let coordinateY: number;
+
+export const handleDragStart = (event: DragEvent) => {
+  const target = event.target as HTMLElement;
+  (event.dataTransfer as DataTransfer).setData('id', target.id);
+  coordinateX = event.offsetX;
+  coordinateY = event.offsetY;
+};
 
 export class FavoritesCards {
   public container: HTMLElement;
@@ -17,9 +24,9 @@ export class FavoritesCards {
     this.container.classList.add('favorites-container');
   }
 
-  private renderFavoriteCards(data: Array<ICard>): void {
+  private renderFavoriteCards(data: ICard[]): void {
     this.clear();
-    let arr = <string[]>getLocalStorage('selectedCards');
+    const arr = <string[]>getLocalStorage('selectedCards');
     if (arr) {
       data.forEach((element) => {
         if (arr.includes(element.num)) {
@@ -28,24 +35,25 @@ export class FavoritesCards {
       });
 
       if (arr.length < sizeFavorites) {
-        for (let i = arr.length; i < sizeFavorites; i++) {
-          const favoriteItem = insertElement('div', ['favorites-card'], '', this.container);
+        for (let i = arr.length; i < sizeFavorites; i += 1) {
+          const favoriteItem = insertElement('div', ['favorites-card'], '', '');
+          this.container.append(favoriteItem)
         }
       }
       (document.querySelector('.select-toys span') as HTMLElement).innerHTML = String(arr.length);
     } else {
-      for (let i = 0; i < sizeFavorites; i++) {
+      for (let i = 0; i < sizeFavorites; i += 1) {
         this.createFavoriteToys(data[i]);
       }
     }
   }
 
   private createFavoriteToys(element: ICard): void {
-    let count = +element.count;
+    const count = +element.count;
     const favoriteItem = insertElement('div', ['favorites-card'], '', this.container);
     favoriteItem.dataset.num = element.num;
-    const favoriteCount = insertElement('p', ['favorites-count'], element.count, favoriteItem);
-    for (let i = 1; i <= count; i++) {
+    const favoriteCount = insertElement('p', ['favorites-count'], element.count, '');
+    for (let i = 1; i <= count; i += 1) {
       const favoriteImg = document.createElement('img');
       favoriteImg.classList.add('favorites-card-img');
       favoriteImg.src = `../assets/toys/${element.num}.png`;
@@ -54,7 +62,7 @@ export class FavoritesCards {
       favoriteImg.id = `${element.num}-${i}`;
       favoriteImg.draggable = true;
       favoriteImg.addEventListener('dragstart', handleDragStart);
-      favoriteItem.append(favoriteImg);
+      favoriteItem.append(favoriteImg, favoriteCount);
     }
   }
 
@@ -63,14 +71,10 @@ export class FavoritesCards {
   }
 
   render(): HTMLElement {
+    const data: ICard[] = cardsData;
     this.renderFavoriteCards(data);
     return this.container;
   }
 }
 
-export const handleDragStart = (event: DragEvent) => {
-  let target = event.target as HTMLElement;
-  (event.dataTransfer as DataTransfer).setData('id', target.id);
-  coordinateX = event.offsetX;
-  coordinateY = event.offsetY;
-};
+

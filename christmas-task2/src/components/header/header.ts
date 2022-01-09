@@ -1,23 +1,5 @@
-import { PageIds } from '../../app/app';
+import { Buttons } from '../../options/options';
 import Component from '../../templates/component';
-
-const Buttons = [
-  {
-    id: PageIds.PageStart,
-    text: '',
-    class: ['logo', 'btn-page-start'],
-  },
-  {
-    id: PageIds.PageToys,
-    text: 'игрушки',
-    class: ['nav-link', 'btn-page-toys'],
-  },
-  {
-    id: PageIds.PageTree,
-    text: 'ёлка',
-    class: ['nav-link', 'btn-page-tree'],
-  },
-];
 
 class Header extends Component {
   constructor(tagName: keyof HTMLElementTagNameMap, className: string[]) {
@@ -27,7 +9,6 @@ class Header extends Component {
   renderHeaderButtons(): HTMLElement {
     const headerButtons = document.createElement('nav');
     headerButtons.classList.add('nav');
-
     Buttons.forEach((button) => {
       const buttonHTML = document.createElement('a');
       buttonHTML.href = `#${button.id}`;
@@ -53,8 +34,7 @@ class Header extends Component {
   render(): HTMLElement {
     const headerContainer = document.createElement('div');
     headerContainer.classList.add('header-row');
-    headerContainer.append(this.renderHeaderButtons());
-    headerContainer.append(this.createHeaderControls());
+    headerContainer.append(this.renderHeaderButtons(), this.createHeaderControls());
     this.container.append(headerContainer);
     return this.container;
   }

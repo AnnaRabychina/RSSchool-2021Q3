@@ -1,7 +1,7 @@
 import { insertElement } from '../components/cards/cards';
 import Page from '../templates/page';
 
-export class PageStart extends Page {
+class PageStart extends Page {
   constructor(id: string) {
     super(id);
     this.container.classList.add('page');
@@ -15,7 +15,7 @@ export class PageStart extends Page {
 
   private createStartButton() {
     const startButton = document.createElement('a');
-    startButton.href = `#page-toys`;
+    startButton.href = '#page-toys';
     startButton.classList.add('start-button');
     startButton.innerText = 'Начать';
 
@@ -24,9 +24,10 @@ export class PageStart extends Page {
 
   render(): HTMLElement {
     const title = this.createTitle('Новогодняя игра  \r\n  «Наряди ёлку»');
-    this.container.append(title);
     const startButtonHTML = this.createStartButton();
-    this.container.append(startButtonHTML);
+    this.container.append(title, startButtonHTML);
     return this.container;
   }
 }
+
+export default PageStart;
