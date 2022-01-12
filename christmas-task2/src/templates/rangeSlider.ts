@@ -1,6 +1,6 @@
-import { getLocalStorage, setLocalStorage } from '../components/storage/storage';
 import { IRangeSlider } from '../options/options';
 import PageToys from '../pages/page-toys';
+import { getLocalStorage, setLocalStorage } from '../services/storage';
 
 export class RangeSlider{
   container: HTMLElement;
@@ -28,7 +28,7 @@ export class RangeSlider{
     return itemOutput;
   }
 
-  setRange(keyProperty: string, value: string) {
+  setRange(keyProperty: string, value: string): void {
     setLocalStorage(keyProperty, value);
     PageToys.renderNewCardsContainer();
   }

@@ -1,6 +1,6 @@
-import { changeProperty } from '../components/cards/cards';
-import { setLocalStorage } from '../components/storage/storage';
 import PageToys from '../pages/page-toys';
+import { changeProperty } from '../services/services';
+import { setLocalStorage } from '../services/storage';
 
 abstract class FilterToys {
   protected container: HTMLElement;
@@ -14,7 +14,7 @@ abstract class FilterToys {
     filterSet: Set<string>,
     field: string,
     parentNode: HTMLElement,
-  ) {
+  ): void {
     arrButtons.forEach((button) => {
       const buttonHTML: HTMLButtonElement = document.createElement('button');
       buttonHTML.dataset[field] = button;
@@ -25,10 +25,10 @@ abstract class FilterToys {
     });
   }
 
-  setFilterToys(filterSet: Set<string>, filter: string, keyStorage: string) {
+  setFilterToys(filterSet: Set<string>, filter: string, keyStorage: string): void {
     this.container.addEventListener('click', (event) => {
-      const target = event.target as HTMLElement,
-        filterField = target.dataset[filter];
+      const target = event.target as HTMLElement;
+      const filterField = target.dataset[filter];
       changeProperty(target, 'active');
       if (target.classList.contains('active')) {
         filterSet.add(<string>filterField);

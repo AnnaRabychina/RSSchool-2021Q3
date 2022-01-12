@@ -1,18 +1,18 @@
-import { insertElement } from '../components/cards/cards';
 import { FavoritesCards } from '../components/favorites/favorites';
-import { SettingsMenuContainer } from '../components/settings-tree/settingsTree';
+import { SettingsMenuTreeContainer } from '../components/settings-menu-tree/SettingsMenuTree';
 import { TreeContainer } from '../components/tree/tree';
+import { insertElement } from '../services/services';
 import Page from '../templates/page';
 
 export class PageTree extends Page {
   static favoritesCards: FavoritesCards;
-  private settingsMenu: SettingsMenuContainer;
+  private settingsMenu: SettingsMenuTreeContainer;
   static treeContainer: TreeContainer;
   static snowInterval: NodeJS.Timer;
 
   constructor(id: string) {
     super(id);
-    this.settingsMenu = new SettingsMenuContainer();
+    this.settingsMenu = new SettingsMenuTreeContainer();
     PageTree.treeContainer = new TreeContainer();
     PageTree.favoritesCards = new FavoritesCards();
   }

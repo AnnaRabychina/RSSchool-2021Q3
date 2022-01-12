@@ -1,8 +1,9 @@
 import './sorting.css';
-import { insertElement } from '../cards/cards';
-import { setLocalStorage } from '../storage/storage';
 import PageToys from '../../pages/page-toys';
-import { ICard, Sorting } from '../../options/options';
+import { sortListHTMLContent } from '../../options/options';
+import { setLocalStorage } from '../../services/storage';
+import { insertElement } from '../../services/services';
+
 
 export class SortList {
   protected container: HTMLElement;
@@ -13,12 +14,7 @@ export class SortList {
     this.container.classList.add('sort');
     this.sortList = document.createElement('select');
     this.sortList.classList.add('sort-select');
-    this.sortList.innerHTML = `
-      <option value="sort-name-max">По названию от «А» до «Я»</option>
-      <option value="sort-name-min">По названию от «Я» до «А»</option>
-      <option value="sort-year-max">Год приобретения по возрастанию</option>
-      <option value="sort-year-min">Год приобретения по убыванию</option>
-   `;
+    this.sortList.innerHTML = sortListHTMLContent;
     this.sortList.onclick = () => {
       this.sort();
     };
@@ -36,30 +32,3 @@ export class SortList {
     return this.container;
   }
 }
-
-export function sortData(field: keyof ICard, revers: boolean, data: ICard[]) : ICard[] {
-  if (!revers) {
-    return data.sort((prev: ICard, next: ICard) =>
-      prev[field] === next[field] ? 0 : next[field] > prev[field] ? 1 : -1,
-    );
-  } else {
-    return data.sort((prev: ICard, next: ICard) =>
-      prev[field] === next[field] ? 0 : next[field] < prev[field] ? 1 : -1,
-    );
-  }
-}
-
-export function sortCards(value: string, data: ICard[]) {
-  switch (value) {
-    case Sorting.minName:
-      return sortData('name', false, data);
-    case Sorting.maxName:
-      return sortData('name', true, data);
-    case Sorting.minYear:
-      return sortData('year', false, data);
-    case Sorting.maxYear:
-      return sortData('year', true, data);
-  }
-}
-
-

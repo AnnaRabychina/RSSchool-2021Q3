@@ -1,4 +1,4 @@
-import { Buttons } from '../../options/options';
+import { Buttons, headerHTMLContent } from '../../options/options';
 import Component from '../../templates/component';
 
 class Header extends Component {
@@ -22,12 +22,7 @@ class Header extends Component {
   createHeaderControls(): HTMLElement {
     const headerControls = document.createElement('div');
     headerControls.classList.add('header-controls');
-    headerControls.innerHTML = `
-      <input type="search" class="search" autocomplete="off" autofocus placeholder="Введите текст для поиска" />
-      <div class="select-toys">
-        <span>0</span>
-      </div>
-      `;
+    headerControls.innerHTML = headerHTMLContent;
     return headerControls;
   }
 

@@ -1,10 +1,8 @@
 import './favorites.css';
 import cardsData from '../cards/cardData';
-import { getLocalStorage } from '../storage/storage';
-import { ICard } from '../../options/options';
-import { insertElement } from '../cards/cards';
-
-const sizeFavorites = 20;
+import { ICard, sizeFavorites } from '../../options/options';
+import { insertElement } from '../../services/services';
+import { getLocalStorage } from '../../services/storage';
 
 export let coordinateX: number;
 export let coordinateY: number;

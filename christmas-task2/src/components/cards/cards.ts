@@ -1,33 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { ICard } from '../../options/options';
-import { createSet, filterData } from '../filters/filters';
-import { sortCards } from '../sorting/sorting';
-import { getLocalStorage, setLocalStorage } from '../storage/storage';
-import cardsData from './cardData';
+import { ICard, sizeSelected } from '../../options/options';
+import { changeProperty, createSet, filterData, insertElement, sortCards } from '../../services/services';
+import { getLocalStorage, setLocalStorage } from '../../services/storage';
 import './cards.css';
-
-export const currentData: ICard[] = cardsData;
-
-export function insertElement(
-  tagName: keyof HTMLElementTagNameMap,
-  className: string[],
-  content: string | undefined,
-  parentNode?: HTMLElement | null | '',
-): HTMLElement {
-  const el = document.createElement(tagName);
-  el.classList.add(...className);
-  if (content) {
-    el.innerHTML = content;
-  }
-  if (parentNode) {
-    parentNode.append(el);
-  }
-  return el;
-}
-
-export function changeProperty(elem: Element | HTMLButtonElement, nameProperty: string): void {
-  elem.classList.toggle(nameProperty);
-}
 
 export class CardsContainer {
   public cardsContainer: HTMLElement;
@@ -77,7 +52,7 @@ export class CardsContainer {
     this.cardsContainer.addEventListener('click', (event) => {
       const target = event.target as HTMLElement;
       const card = target.closest('.card-item') as HTMLElement;
-      if (selectedCards.size === 20 && !card.classList.contains('selected')) {
+      if (selectedCards.size === sizeSelected && !card.classList.contains('selected')) {
         alert('Извините, все слоты заполнены');
       } else if (card) {
         changeProperty(card, 'selected');
@@ -94,9 +69,9 @@ export class CardsContainer {
   }
 
   render(): HTMLElement | HTMLButtonElement{
-    let data = <ICard[] | []>filterData();
-    const sortProperty = localStorage.getItem('sortProperty');
-    if (sortProperty) data = <ICard[]>sortCards(sortProperty, data);
+    let data = filterData();
+    const sortProperty = getLocalStorage('sortProperty');
+    if (sortProperty) data = <ICard[]>sortCards(<string>sortProperty, data);
     this.draw(data);
     this.selectToy();
     return this.cardsContainer;

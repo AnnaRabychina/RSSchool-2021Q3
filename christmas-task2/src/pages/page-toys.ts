@@ -1,7 +1,7 @@
 import cardsData from '../components/cards/cardData';
 import { CardsContainer } from '../components/cards/cards';
-import { SettingsContainer } from '../components/settings-card/settings';
-import { setLocalStorage } from '../components/storage/storage';
+import { SettingsContainer } from '../components/settings-card/settingsCard';
+import { setLocalStorage } from '../services/storage';
 import Page from '../templates/page';
 
 setLocalStorage('currentData', [...cardsData]);
@@ -19,7 +19,7 @@ class PageToys extends Page {
     PageToys.cardsContainer = new CardsContainer();
   }
 
-  static renderNewCardsContainer() {
+  static renderNewCardsContainer(): void {
     PageToys.cardsContainer.render();
   }
 

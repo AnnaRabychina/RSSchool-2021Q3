@@ -1,9 +1,16 @@
 import './settings.css';
-import { insertElement } from '../cards/cards';
-import { CountRange, FilterColor, FilterFavorite, FilterShape, FilterSize, YearRange } from '../filters/filters';
+
 import { SortList } from '../sorting/sorting';
-import { setLocalStorage } from '../storage/storage';
 import PageToys from '../../pages/page-toys';
+import { insertElement } from '../../services/services';
+import { setLocalStorage } from '../../services/storage';
+import { CountRange } from '../filter-cards/countRange';
+import { FilterColor } from '../filter-cards/filterColor';
+import { FilterFavorite } from '../filter-cards/filterFavorite';
+import { FilterShape } from '../filter-cards/filterShape';
+import { FilterSize } from '../filter-cards/filterSize';
+import { YearRange } from '../filter-cards/yearRange';
+
 
 export class SettingsContainer {
   protected settingsContainer: HTMLElement;

@@ -1,4 +1,4 @@
-import { insertElement } from '../components/cards/cards';
+import { insertElement } from '../services/services';
 import Page from '../templates/page';
 
 class PageStart extends Page {
@@ -8,12 +8,12 @@ class PageStart extends Page {
     this.container.classList.add('page-start');
   }
 
-  private createTitle(text: string) {
+  private createTitle(text: string): HTMLElement {
     const mainTitle = insertElement('h1', ['page-start-title'], text);
     return mainTitle;
   }
 
-  private createStartButton() {
+  private createStartButton(): HTMLElement {
     const startButton = document.createElement('a');
     startButton.href = '#page-toys';
     startButton.classList.add('start-button');

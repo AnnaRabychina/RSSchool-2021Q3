@@ -1,10 +1,10 @@
 import cardsData from '../components/cards/cardData';
 import Header from '../components/header/header';
-import { setLocalStorage } from '../components/storage/storage';
-import { PageIds } from '../options/options';
+import { footerHTMLContent, PageIds } from '../options/options';
 import PageStart from '../pages/page-start';
 import PageToys from '../pages/page-toys';
 import { PageTree } from '../pages/page-tree';
+import { setLocalStorage } from '../services/storage';
 import Page from '../templates/page';
 
 setLocalStorage('currentData', [...cardsData]);
@@ -50,21 +50,7 @@ export class App {
   static createFooter(): string | Node {
     const footer: HTMLElement = document.createElement('footer');
     footer.classList.add('footer');
-    footer.innerHTML = `     
-    <div class="footer-row">
-      <div class="footer-info">
-        <p class="copyright">©</p>
-        <time>2021</time>
-        <a class="github-username" href="https://github.com/AnnaRabychina" target="_blank">Anna Rabychina</a>
-      </div>
-      <a
-        class="footer-logo"
-        src="https://rs.school/images/rs_school_js.svg"
-        href="https://rs.school/js/"
-        target="_blank"
-      ></a>
-    </div>
- `;
+    footer.innerHTML = footerHTMLContent;
     return footer;
   }
 
