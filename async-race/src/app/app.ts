@@ -2,8 +2,8 @@ import { PageIds } from "../options/options";
 import PageGarage from "../view/garage";
 import PageWinners from "../view/winners";
 import Page from "../templates/page";
-import Header from "../components/header/header";
-import Footer from "../components/header/footer";
+import Footer from "../components/footer";
+import Header from "../components/header";
 
 export class App {
     private static container: HTMLElement = document.body;

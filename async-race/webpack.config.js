@@ -2,9 +2,15 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
   entry: path.resolve(__dirname, './src/index.ts'),
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: '[file]',
+  },
   mode: 'development',
   module: {
     rules: [
@@ -37,7 +43,12 @@ const baseConfig = {
       filename: 'index.html',
     }),
     new CleanWebpackPlugin(),
-  ],
+    new CopyPlugin(
+      { patterns: [ 
+      { from: "./assets", to: "assets" }, 
+      ], 
+      }),
+],
 };
 
 module.exports = ({ mode }) => {

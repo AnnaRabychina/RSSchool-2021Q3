@@ -1,5 +1,5 @@
-import { buttonsPage } from '../../options/options';
-import Component from '../../templates/component';
+import { buttonsPage } from '../options/options';
+import Component from '../templates/component';
 
 class Header extends Component {
   constructor(tagName: keyof HTMLElementTagNameMap, className: string[]) {
