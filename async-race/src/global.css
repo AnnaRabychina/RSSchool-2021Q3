@@ -21,12 +21,13 @@ button {
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 body {
   margin: 0;
   color: #fff;
-  background: #17181c;
+  background: #4a4b4e;
   font-family: sans-serif;
 }
 
@@ -94,9 +95,9 @@ body {
 }
 
 .input-text {
-  padding: 2px 15px;
+  padding: 5px 15px;
   width: 40%;
-  font-size: 13px;
+  font-size: 14px;
   color: #000;
   font-weight: 400;
   background-color: #fff;
@@ -107,7 +108,7 @@ body {
 .input-text,
 .input-color,
 .btn {
-  height: 18px;
+  height: 22px;
   border-radius: 3px;
   margin-right: 5px;
 }
@@ -142,6 +143,7 @@ body {
 .btn-stop {
   font-size: 14px;
   font-weight: 700;
+  color: #ff0;
   width: 60px;
   height: 16px;
   margin: 0 10px 4px 0;
@@ -175,7 +177,7 @@ body {
 }
 
 .page-pagination {
-  margin: 10px 0;
+  margin: 20px 0;
   display: flex;
 }
 
@@ -199,7 +201,7 @@ body {
   height: 40px;
   position: relative;
   display: flex;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px dashed #fff;
 }
 
 .car-img {
@@ -219,6 +221,31 @@ body {
 .car-control {
   display: flex;
   flex-direction: column;
+}
+
+.winners-table {
+  width: 50%;
+  min-width: 300px;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  border-collapse: collapse; 
+  color: #ff0;
+  line-height: 1.5;
+}
+ 
+th {
+  border: 2px solid #ff0;
+}
+
+.table-row {
+  border-bottom: 2px dashed #ff0;
+  align-items: center;
+}
+
+.table-row td {
+  text-align: center;
+  padding: 5px;
 }
 
 .footer-logo {

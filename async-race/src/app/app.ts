@@ -41,7 +41,6 @@ export class App {
       });
     }
   
-   
     start(): void {
       App.renderNewPage('garage');
       this.enableRouteChange();
