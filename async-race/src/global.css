@@ -229,11 +229,11 @@ body {
   font-size: 14px;
   text-transform: uppercase;
   margin-top: 20px;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   color: #ff0;
   line-height: 1.5;
 }
- 
+
 th {
   border: 2px solid #ff0;
 }

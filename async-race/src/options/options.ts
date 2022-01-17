@@ -1,22 +1,22 @@
 export const enum PageIds {
-    Garage = 'garage',
-    Winners = 'winners',
+  Garage = 'garage',
+  Winners = 'winners',
 }
 
 export const buttonsPage = [
-    {
-      id: PageIds.Garage,
-      label: 'Garage',
-      class: ['nav-link'],
-    },
-    {
-      id: PageIds.Winners,
-      label: 'Winners',
-      class: ['nav-link'],
-    },
-  ];
+  {
+    id: PageIds.Garage,
+    label: 'Garage',
+    class: ['nav-link'],
+  },
+  {
+    id: PageIds.Winners,
+    label: 'Winners',
+    class: ['nav-link'],
+  },
+];
 
-  export const footerContentHTML = `     
+export const footerContentHTML = `
   <div class="footer-row">
     <div class="footer-info">
       <p class="copyright">©</p>
