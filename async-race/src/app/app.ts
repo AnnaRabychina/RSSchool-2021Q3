@@ -11,7 +11,7 @@ export class App {
   static header: Header;
   static footer: Footer;
 
-  static renderNewPage(idPage: string) {
+  static async renderNewPage(idPage: string) {
     const currentPageHTML = document.querySelector(`#${App.defaultPageId}`);
     if (currentPageHTML) {
       currentPageHTML.remove();
@@ -28,9 +28,9 @@ export class App {
     if (page) {
       const headerHTML = new Header('header', ['header']);
       const pageHTML = page.render();
-      pageHTML.id = App.defaultPageId;
+      (await pageHTML).id = App.defaultPageId;
       const footerHTML = new Footer('footer', ['footer']);
-      App.container.append(headerHTML.render(), pageHTML, footerHTML.render());
+      App.container.append(headerHTML.render(), await pageHTML, footerHTML.render());
     }
   }
 

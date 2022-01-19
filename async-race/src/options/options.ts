@@ -31,3 +31,13 @@ export const footerContentHTML = `
     ></a>
   </div>
 `;
+
+export const winnersTableHeader = `
+<tr class="table-head">
+  <th>№</th>
+  <th>car</th>
+  <th>name</th>
+  <th>total wins</th>
+  <th>best time</th>
+</tr>
+`;
