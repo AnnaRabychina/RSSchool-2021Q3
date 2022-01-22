@@ -11,8 +11,7 @@ export class ControlsContainer {
   protected generateButton: HTMLButtonElement;
 
   constructor() {
-    this.container = document.createElement('div');
-    this.container.classList.add('garage-controls');
+    this.container = insertElement ('div', ['garage-controls'], ''); 
     this.controlsCreate = new ControlsCreate();
     this.controlsUpdate = new ControlsUpdate();
     this.raceButton = <HTMLButtonElement>insertElement('button', ['btn', 'btn-options', 'btn-race'], 'race');
@@ -25,8 +24,7 @@ export class ControlsContainer {
   }
 
   render(): HTMLElement {
-    const buttonsContainer = document.createElement('div');
-    this.container.classList.add('garage-control-buttons');
+    const buttonsContainer = insertElement('div', ['garage-control-buttons'], ''); 
     buttonsContainer.append(this.raceButton, this.resetButton, this.generateButton);
     this.container.append(this.controlsCreate.render(), this.controlsUpdate.render(), buttonsContainer);
     return this.container;

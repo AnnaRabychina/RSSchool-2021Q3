@@ -16,7 +16,8 @@ export const buttonsPage = [
   },
 ];
 
-
+export const valueForColor = '0123456789ABCDEF';
+export const lengthColorHEX = 6; 
 
 export const footerContentHTML = `
   <div class="footer-row">

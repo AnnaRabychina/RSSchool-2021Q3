@@ -1,4 +1,4 @@
-import { getCar, getCars, ICar } from "../../api/api";
+import { deleteCar, getCar, getCars, ICar } from "../../api/api";
 import { renderCars } from "../../services/render-cars";
 import { insertElement } from "../../services/services";
 import { setLocalStorage } from "../../services/storage";
@@ -23,11 +23,22 @@ export class CarsContainer {
     });
   }
 
+  private removeCar() {
+    this.container.addEventListener('click', async (event: Event) => {
+      const target = event.target as HTMLElement;
+      if (target.classList.contains('btn-remove')) {
+        await deleteCar(Number(target.dataset.remove));
+        await PageGarage.carsContainer.render();
+      }
+    });
+  }
+
   async render(): Promise<HTMLElement> {
     let carsItems: ICar[] = <ICar[]>(await getCars(1, 7)).items;
     let arrCars: ICar[] = [...carsItems];
     this.container.innerHTML = renderCars(arrCars);
     this.selectCar();
+    this.removeCar();
     return this.container;
   }
 }

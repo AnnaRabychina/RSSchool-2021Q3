@@ -1,7 +1,6 @@
 import { brandsCars } from '../options/brands-cars';
 import { modelsCars } from '../options/models-cars';
-
-
+import { lengthColorHEX, valueForColor } from '../options/options';
 
 export function insertElement(
   tagName: keyof HTMLElementTagNameMap,
@@ -19,3 +18,18 @@ export function insertElement(
   }
   return el;
 }
+
+export const getRandomName = (): string => {
+  const brand: string = brandsCars[Math.floor(Math.random() * brandsCars.length)];
+  const model: string = modelsCars[Math.floor(Math.random() * modelsCars.length)];
+  return `${brand} ${model}`;
+};
+
+export const getRandomColor = (): string => {
+  const values = valueForColor;
+  let color = '#';
+  while (color.length < lengthColorHEX) {
+    color += values[Math.floor(Math.random() * values.length)];
+  }
+  return `${color}`;
+};
