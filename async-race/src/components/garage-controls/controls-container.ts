@@ -1,4 +1,7 @@
-import { insertElement } from '../../services/services';
+import { createCar } from '../../api/api';
+import { countOfCars } from '../../options/options';
+import { createRandomCars, insertElement } from '../../services/services';
+import PageGarage from '../../view/garage';
 import { ControlsCreate } from './controls-create';
 import { ControlsUpdate } from './controls-update';
 
@@ -20,9 +23,16 @@ export class ControlsContainer {
       insertElement('button', ['btn', 'btn-options', 'btn-generate'], 'generate')
     );
     this.generateButton.onclick = () => {
+      this.generateCars();
    };
   }
 
+  async generateCars() {
+   const cars = createRandomCars(countOfCars);
+   await Promise.all(cars.map(async car => await createCar(car)));
+   await PageGarage.carsContainer.render();
+  }
+  
   render(): HTMLElement {
     const buttonsContainer = insertElement('div', ['garage-control-buttons'], ''); 
     buttonsContainer.append(this.raceButton, this.resetButton, this.generateButton);

@@ -1,3 +1,4 @@
+import { IBodyCar } from '../api/api';
 import { brandsCars } from '../options/brands-cars';
 import { modelsCars } from '../options/models-cars';
 import { lengthColorHEX, valueForColor } from '../options/options';
@@ -32,4 +33,12 @@ export const getRandomColor = (): string => {
     color += values[Math.floor(Math.random() * values.length)];
   }
   return `${color}`;
+};
+
+export const createRandomCars = (count: number): IBodyCar[] => {
+  let randomCars = [];
+  for (let i = 0; i < count; i += 1) {
+    randomCars.push({name: getRandomName(), color: getRandomColor()});
+  }
+  return randomCars;
 };

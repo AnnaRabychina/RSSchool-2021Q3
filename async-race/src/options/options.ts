@@ -17,7 +17,8 @@ export const buttonsPage = [
 ];
 
 export const valueForColor = '0123456789ABCDEF';
-export const lengthColorHEX = 6; 
+export const lengthColorHEX = 7; 
+export const countOfCars = 100; 
 
 export const footerContentHTML = `
   <div class="footer-row">
