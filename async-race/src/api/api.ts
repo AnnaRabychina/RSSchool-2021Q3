@@ -12,6 +12,11 @@ export interface ICar {
   id: number;
 }
 
+export interface IBodyCar {
+  name: string;
+  color: string;
+}
+
 export interface IGetData {
   items: ICar[] | IWinner[];
   count: string | null;
@@ -33,6 +38,17 @@ export const getCars = async (page?: number, limit: number = 7): Promise<IGetDat
 };
 
 export const getCar = async (id: number): Promise<ICar> => (await fetch(`${baseUrl}${Path.garage}/${id}`)).json();
+
+export const updateCar = async (id: number, body: IBodyCar) =>
+  (
+    await fetch(`${baseUrl}${Path.garage}/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  ).json();
 
 export const getWinners = async (page?: number, limit: number = 10): Promise<IGetData> => {
   const response: Response = await fetch(`${baseUrl}${Path.winners}?_page=${page}&_limit=${limit}`);

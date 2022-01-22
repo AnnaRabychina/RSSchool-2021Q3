@@ -48,7 +48,7 @@ body {
 .header,
 .main,
 .footer-row {
-  padding: 10px;
+  padding: 15px;
 }
 
 .header-controls,
@@ -80,7 +80,7 @@ body {
   padding: 10px;
 }
 
-.garage-option {
+.garage-controls {
   display: flex;
   flex-direction: column;
   width: auto;
@@ -96,7 +96,7 @@ body {
 
 .input-text {
   padding: 5px 15px;
-  width: 40%;
+  width: 30%;
   font-size: 14px;
   color: #000;
   font-weight: 400;
@@ -127,7 +127,8 @@ body {
   min-width: 100px;
 }
 
-.btn.disable {
+.btn:disabled,
+.input-text:disabled {
   pointer-events: none;
   background-color: #bbb;
 }

@@ -16,6 +16,8 @@ export const buttonsPage = [
   },
 ];
 
+
+
 export const footerContentHTML = `
   <div class="footer-row">
     <div class="footer-info">

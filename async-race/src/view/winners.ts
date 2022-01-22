@@ -1,5 +1,6 @@
 import { getCar, getWinners, IWinner } from '../api/api';
 import { winnersTableHeader } from '../options/options';
+import { renderCarImage } from '../services/render-img-car';
 import Page from '../templates/page';
 
 class PageWinners extends Page {
@@ -15,7 +16,7 @@ class PageWinners extends Page {
     let winner = `
       <tr class="table-row">
         <td>${id}</td>
-        <td>${this.renderCarImage(color)}</td>
+        <td>${renderCarImage(color)}</td>
         <td>${name}</td>
         <td>${wins}</td>
         <td>${time}</td>
