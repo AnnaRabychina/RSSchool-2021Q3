@@ -21,8 +21,7 @@ export class ControlsContainer {
       insertElement('button', ['btn', 'btn-options', 'btn-generate'], 'generate')
     );
     this.generateButton.onclick = () => {
-     
-    };
+   };
   }
 
   render(): HTMLElement {

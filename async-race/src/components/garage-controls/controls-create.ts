@@ -1,5 +1,7 @@
+import { createCar } from '../../api/api';
 import { insertElement } from '../../services/services';
 import ControlItem from '../../templates/controls-item';
+import PageGarage from '../../view/garage';
 
 export class ControlsCreate extends ControlItem {
   buttonCreate: HTMLButtonElement;
@@ -8,6 +10,17 @@ export class ControlsCreate extends ControlItem {
     super();
     this.container.classList.add('garage-form-create');
     this.buttonCreate = <HTMLButtonElement>insertElement('button', ['btn', 'btn-create'], 'create');
+    this.buttonCreate.addEventListener('click', (event: Event) => {
+      event.preventDefault();
+      this.create();
+    });
+  }
+  
+  async create() {
+    await createCar({ name: this.inputText.value, color: this.inputColor.value });
+    console.log({ name: this.inputText.value, color: this.inputColor.value })
+    this.setValues('', '#000000');
+    await PageGarage.carsContainer.render();
   }
 
   render() {

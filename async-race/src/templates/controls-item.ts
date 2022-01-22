@@ -6,10 +6,8 @@ abstract class ControlItem {
   constructor() {
     this.container = document.createElement('div');
     this.inputText = this.renderInput('input-text', 'text', '');
-    this.inputText.disabled = true;
     this.inputColor = this.renderInput('input-color', 'color', '#000000');
-    this.inputColor.disabled = true;
- }
+  }
 
   renderInput(stiles: string, type: string, value?: string | undefined): HTMLInputElement {
     const itemInput = document.createElement('input');
@@ -19,6 +17,11 @@ abstract class ControlItem {
       itemInput.value = value;
     }
     return itemInput;
+  }
+
+  setValues(text: string, color: string): void {
+    this.inputColor.value = color;
+    this.inputText.value = text;
   }
 
   render(): HTMLElement {

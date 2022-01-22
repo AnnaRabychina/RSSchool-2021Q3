@@ -11,27 +11,30 @@ export class ControlsUpdate extends ControlItem {
     super();
     this.container.classList.add('garage-form-update');
     this.buttonUpdate = <HTMLButtonElement>insertElement('button', ['btn', 'btn-update'], 'update');
-    this.buttonUpdate.disabled = true;
     this.buttonUpdate.addEventListener('click', (event: Event) => {
       event.preventDefault();
-      this.UpdateCar();
+      this.update();
     });
   }
 
-  async UpdateCar() {
+  async update(): Promise<void> {
     const selectedCar = <ICar>getLocalStorage('selectedCar'); 
     await updateCar(selectedCar.id, { name: this.inputText.value, color: this.inputColor.value });
-    this.inputText.disabled = true;
-    this.inputColor.disabled = true;
-    this.buttonUpdate.disabled = true;
-    this.inputColor.value = '#000000';
-    this.inputText.value = '';
+    this.setState(true);
+    this.setValues('', '#000000');
     await PageGarage.carsContainer.render();
+  }
+
+  setState(value: boolean): void {
+    this.buttonUpdate.disabled = value;
+    this.inputText.disabled = value;
+    this.inputColor.disabled = value;
   }
 
   render(): HTMLElement {
     const title = insertElement('h3', ['page-subtitle'], 'update a car');
     this.container.append(title, this.inputText, this.inputColor, this.buttonUpdate);
+    this.setState(true);
     return this.container;
   }
 }

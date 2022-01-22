@@ -50,6 +50,17 @@ export const updateCar = async (id: number, body: IBodyCar) =>
     })
   ).json();
 
+  export const createCar = async (body: IBodyCar) => (
+    await fetch(`${baseUrl}${Path.garage}`,
+    {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  ));
+
 export const getWinners = async (page?: number, limit: number = 10): Promise<IGetData> => {
   const response: Response = await fetch(`${baseUrl}${Path.winners}?_page=${page}&_limit=${limit}`);
 
