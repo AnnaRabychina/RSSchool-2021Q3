@@ -18,7 +18,7 @@ export class ControlsUpdate extends ControlItem {
   }
 
   async update(): Promise<void> {
-    const selectedCar = <ICar>getLocalStorage('selectedCar'); 
+    const selectedCar = <ICar>getLocalStorage('selectedCar');
     await updateCar(selectedCar.id, { name: this.inputText.value, color: this.inputColor.value });
     this.setState(true);
     this.setValues('', '#000000');

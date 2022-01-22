@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-shadow
 export const enum PageIds {
   Garage = 'garage',
   Winners = 'winners',
@@ -7,18 +9,20 @@ export const buttonsPage = [
   {
     id: PageIds.Garage,
     label: 'Garage',
-    class: ['nav-link'],
+    class: ['nav-link']
   },
   {
     id: PageIds.Winners,
     label: 'Winners',
-    class: ['nav-link'],
-  },
+    class: ['nav-link']
+  }
 ];
 
 export const valueForColor = '0123456789ABCDEF';
-export const lengthColorHEX = 7; 
-export const countOfCars = 100; 
+export const lengthColorHEX = 7;
+export const countOfCars = 100;
+export const carsOnPage = 7;
+export const winnersOnPage = 10;
 
 export const footerContentHTML = `
   <div class="footer-row">

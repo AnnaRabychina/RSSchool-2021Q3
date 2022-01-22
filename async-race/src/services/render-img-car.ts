@@ -27,4 +27,6 @@ export const renderCarImage = (color: string): string => {
   </svg>`;
 
   return carImg;
-}
+};
+
+export default renderCarImage;

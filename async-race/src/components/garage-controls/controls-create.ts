@@ -15,10 +15,9 @@ export class ControlsCreate extends ControlItem {
       this.create();
     });
   }
-  
+
   async create() {
     await createCar({ name: this.inputText.value, color: this.inputColor.value });
-    console.log({ name: this.inputText.value, color: this.inputColor.value })
     this.setValues('', '#000000');
     await PageGarage.carsContainer.render();
   }

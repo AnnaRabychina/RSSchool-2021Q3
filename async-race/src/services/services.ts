@@ -4,7 +4,7 @@ import { modelsCars } from '../options/models-cars';
 import { lengthColorHEX, valueForColor } from '../options/options';
 
 export function insertElement(
-  tagName: keyof HTMLElementTagNameMap,
+  tagName: string,
   className: string[],
   content: string | undefined,
   parentNode?: HTMLElement | null | ''
@@ -36,9 +36,9 @@ export const getRandomColor = (): string => {
 };
 
 export const createRandomCars = (count: number): IBodyCar[] => {
-  let randomCars = [];
+  const randomCars = [];
   for (let i = 0; i < count; i += 1) {
-    randomCars.push({name: getRandomName(), color: getRandomColor()});
+    randomCars.push({ name: getRandomName(), color: getRandomColor() });
   }
   return randomCars;
 };

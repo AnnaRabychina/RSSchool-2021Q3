@@ -1,7 +1,7 @@
-import { renderCarImage } from "./render-img-car";
+import renderCarImage from './render-img-car';
 
 export const createItemCar = (name: string, color: string, id: number): string => {
-  let car = `
+  const car = `
   <li class="garage-car">
     <div class="car-header">
       <button class="btn btn-control btn-select" data-select=${id}> select </button>
@@ -20,4 +20,6 @@ export const createItemCar = (name: string, color: string, id: number): string =
   </div>
 </li>`;
   return car;
-}
+};
+
+export default createItemCar;

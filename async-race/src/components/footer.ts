@@ -2,7 +2,7 @@ import { footerContentHTML } from '../options/options';
 import Component from '../templates/component';
 
 class Footer extends Component {
-  constructor(tagName: keyof HTMLElementTagNameMap, className: string[]) {
+  constructor(tagName: string, className: string[]) {
     super(tagName, className);
   }
 
