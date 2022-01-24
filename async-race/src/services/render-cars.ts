@@ -1,5 +1,5 @@
 import { ICar } from '../api/api';
-import { createItemCar } from './render-car';
+import { createItemCar } from './create-car';
 
 export const renderCars = (arrCars: ICar[]): string => {
   let carsContainerHTML = '';

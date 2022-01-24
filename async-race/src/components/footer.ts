@@ -1,4 +1,4 @@
-import { footerContentHTML } from '../options/options';
+import { FOOTER_CONTENT_HTML } from '../options/options';
 import Component from '../templates/component';
 
 class Footer extends Component {
@@ -7,7 +7,7 @@ class Footer extends Component {
   }
 
   render(): HTMLElement {
-    this.container.innerHTML = footerContentHTML;
+    this.container.innerHTML = FOOTER_CONTENT_HTML;
     return this.container;
   }
 }

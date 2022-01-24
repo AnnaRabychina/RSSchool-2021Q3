@@ -1,4 +1,4 @@
-export const renderCarImage = (color: string): string => {
+export const getCarImage = (color: string): string => {
   const carImg = `
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="car-img" viewBox="0 5 21 9" x="0px" y="0px">
     <g>
@@ -28,5 +28,3 @@ export const renderCarImage = (color: string): string => {
 
   return carImg;
 };
-
-export default renderCarImage;

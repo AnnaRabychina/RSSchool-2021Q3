@@ -1,22 +1,16 @@
+import { renderInput } from '../services/services';
+
 abstract class ControlItem {
   protected container: HTMLElement;
+
   inputText: HTMLInputElement;
+
   inputColor: HTMLInputElement;
 
   constructor() {
     this.container = document.createElement('div');
-    this.inputText = this.renderInput('input-text', 'text', '');
-    this.inputColor = this.renderInput('input-color', 'color', '#000000');
-  }
-
-  renderInput(stiles: string, type: string, value?: string | undefined): HTMLInputElement {
-    const itemInput = document.createElement('input');
-    itemInput.classList.add(stiles);
-    itemInput.type = type;
-    if (value) {
-      itemInput.value = value;
-    }
-    return itemInput;
+    this.inputText = renderInput('input-text', 'text', '');
+    this.inputColor = renderInput('input-color', 'color', '#000000');
   }
 
   setValues(text: string, color: string): void {

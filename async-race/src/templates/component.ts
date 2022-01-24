@@ -6,7 +6,7 @@ abstract class Component {
     this.container.classList.add(...className);
   }
 
-  render() {
+  render(): HTMLElement {
     return this.container;
   }
 }

@@ -1,4 +1,4 @@
-import renderCarImage from './render-img-car';
+import { getCarImage } from './get-img-car';
 
 export const createItemCar = (name: string, color: string, id: number): string => {
   const car = `
@@ -10,16 +10,14 @@ export const createItemCar = (name: string, color: string, id: number): string =
     </div>
     <div class="car-race">
       <div class="car-control">
-        <button class="btn btn-start data-start=${id}"> start </button>
-        <button class="btn btn-stop data-stop=${id}"> stop </button>
+        <button class="btn btn-start" data-start=${id}> start </button>
+        <button class="btn btn-stop" data-stop=${id}> stop </button>
       </div>
-      <div class="car" data-car = ${id}>
-        ${renderCarImage(color)}
-      <div>
+      <div class="car-box" data-car=${id}>
+        ${getCarImage(color)}
+      </div>
     <img class="flag" src="./../assets/svg/flag.svg" alt="flag">
   </div>
 </li>`;
   return car;
 };
-
-export default createItemCar;

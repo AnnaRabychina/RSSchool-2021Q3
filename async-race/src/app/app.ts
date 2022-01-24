@@ -1,48 +1,51 @@
-import { PageIds } from '../options/options';
 import PageGarage from '../view/garage';
 import PageWinners from '../view/winners';
 import Page from '../templates/page';
 import Footer from '../components/footer';
 import Header from '../components/header';
+import { PageIds } from '../options/options';
 
 export class App {
   private static container: HTMLElement = document.body;
-  private static defaultPageId = 'current-page';
+
+  private defaultPageId = 'current-page';
+
   static header: Header;
+
   static footer: Footer;
 
-  static async renderNewPage(idPage: string) {
-    const currentPageHTML = document.querySelector(`#${App.defaultPageId}`);
+  async renderNewPage(idPage: string): Promise<void> {
+    const currentPageHTML = document.querySelector(`#${this.defaultPageId}`);
     if (currentPageHTML) {
       currentPageHTML.remove();
       document.body.innerHTML = '';
     }
 
     let page: Page | null = null;
-    if (idPage === PageIds.Garage) {
+    if (idPage === PageIds.PageGarage) {
       page = new PageGarage(idPage);
-    } else if (idPage === PageIds.Winners) {
+    } else if (idPage === PageIds.PageWinners) {
       page = new PageWinners(idPage);
     }
 
     if (page) {
       const headerHTML = new Header('header', ['header']);
       const pageHTML = page.render();
-      (await pageHTML).id = App.defaultPageId;
+      (await (pageHTML)).id = this.defaultPageId;
       const footerHTML = new Footer('footer', ['footer']);
       App.container.append(headerHTML.render(), await pageHTML, footerHTML.render());
     }
   }
 
-  private enableRouteChange() {
+  private enableRouteChange(): void {
     window.addEventListener('hashchange', () => {
       const hash = window.location.hash.slice(1);
-      App.renderNewPage(hash);
+      this.renderNewPage(hash);
     });
   }
 
   start(): void {
-    App.renderNewPage('garage');
+    this.renderNewPage(PageIds.PageGarage);
     this.enableRouteChange();
   }
 }

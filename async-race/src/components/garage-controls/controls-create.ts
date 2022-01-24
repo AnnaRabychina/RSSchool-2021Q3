@@ -16,13 +16,13 @@ export class ControlsCreate extends ControlItem {
     });
   }
 
-  async create() {
+  async create(): Promise<void> {
     await createCar({ name: this.inputText.value, color: this.inputColor.value });
     this.setValues('', '#000000');
     await PageGarage.carsContainer.render();
   }
 
-  render() {
+  render(): HTMLElement {
     const title = insertElement('h3', ['page-subtitle'], 'create a car');
     this.container.append(title, this.inputText, this.inputColor, this.buttonCreate);
     return this.container;
